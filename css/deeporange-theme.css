@@ -333,6 +333,11 @@ body {
   background-repeat: no-repeat;
   background-position: center center;   
   background-size: cover;
+  background-color: #d46b08;
+}
+
+.grey-textured .img-fluid {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
 }
 
 /*------------------------------------------*/
@@ -1402,7 +1407,7 @@ span.id-color {
   width: 60px;
   height: 60px;
   position: relative;
-  border: 9px solid rgb(102,116,246);
+  border: 9px solid #d46b08;
   animation: cssload-loader 2.3s infinite ease;
   -o-animation: cssload-loader 2.3s infinite ease;
   -ms-animation: cssload-loader 2.3s infinite ease;
@@ -1414,7 +1419,7 @@ span.id-color {
   vertical-align: top;
   display: inline-block;
   width: 100%;
-  background-color: rgb(102,116,246);
+  background-color: #d46b08;
   animation: cssload-loader-inner 2.3s infinite ease-in;
   -o-animation: cssload-loader-inner 2.3s infinite ease-in;
   -ms-animation: cssload-loader-inner 2.3s infinite ease-in;
@@ -2247,7 +2252,7 @@ span.id-color {
 }
 
 #hero-2 .hero-txt p {
-  padding: 0 5%;
+  padding: 0 15%;
 }
 
 #hero-7 .hero-txt p {
