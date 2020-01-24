@@ -1726,6 +1726,11 @@ span.id-color {
   color: #3a3a3a;
 }
 
+.navbar-light .navbar-nav .nav-icon {
+  font-size: 1.5rem;
+  padding: 2px 10px;
+}
+
 .navbar-text {
   padding-top: 0;
   padding-bottom: 0;
@@ -3588,6 +3593,10 @@ ul.features li.disabled-option,
   line-height: 1;
   padding-top: 12px;
   margin-bottom: 3px;
+}
+
+.review-author a:hover {
+  text-decoration: underline;
 }
 
 /*------------------------------------------*/
