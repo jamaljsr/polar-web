@@ -519,6 +519,10 @@ ul.content-list li:last-child {
   transition: all 450ms ease-in-out;  
 }
 
+.btn i {
+  margin-right: 5px;
+}
+
 .btn.btn-tra {
   padding: 0.8rem 1.45rem;
 }
@@ -2952,6 +2956,10 @@ span.id-color {
 /*   CONTENT IMAGE
 /*------------------------------------------*/ 
 
+.content-1-img {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
 .img-block,
 .content-7-img,
 .content-8-img {
@@ -5124,6 +5132,11 @@ p.footer-copyright span {
 .footer-links li a:hover {
   color: #000;
   text-decoration: underline;
+}
+
+.footer-links .btn {
+  display: block;
+  margin-bottom: 10px;
 }
 
 .blue-waves .footer-links li,
