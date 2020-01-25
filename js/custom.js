@@ -1,6 +1,7 @@
 // JavaScript Document
 
 
+
 	$(window).on('load', function() {
 	
 		"use strict";
@@ -35,11 +36,66 @@
 
 	});
 
+	/*----------------------------------------------------*/
+	/*	Download links
+	/*----------------------------------------------------*/
+	var version = '0.2.1';
+
+	function getOS() {
+		var userAgent = window.navigator.userAgent,
+				platform = window.navigator.platform,
+				macPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+				windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+				iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+				os = null;
+	
+		if (macPlatforms.indexOf(platform) !== -1) {
+			os = 'Mac';
+		} else if (iosPlatforms.indexOf(platform) !== -1) {
+			os = 'iOS';
+		} else if (windowsPlatforms.indexOf(platform) !== -1) {
+			os = 'Windows';
+		} else if (/Android/.test(userAgent)) {
+			os = 'Android';
+		} else if (!os && /Linux/.test(platform)) {
+			os = 'Linux';
+		}
+	
+		return os;
+	}
+
+	function updateDownloadLinks() {
+		const baseUrl = `https://github.com/jamaljsr/polar/releases/download/v${version}`;
+		const fileUrls = {
+			apple: `${baseUrl}/polar-mac-v${version}.dmg`,
+			linux: `${baseUrl}/polar-linux-x86_64-v${version}.AppImage`,
+			windows: `${baseUrl}/polar-win-v${version}.exe`,
+		}
+		let primaryUrl = 'https://github.com/jamaljsr/polar/releases';
+		let alt = 1;
+		const detectedOS = getOS();
+		Object.keys(fileUrls).forEach(os => {
+			$(`a.dl-${os}`).prop('href', fileUrls[os]);
+			let osName = os[0].toUpperCase() + os.substring(1);
+			if (osName === 'Apple') osName = 'Mac';
+			if (detectedOS === osName) {
+				primaryUrl = fileUrls[os];
+				$('#hero-dl-icon').prop('class', `fab fa-${os}`);
+				$('#hero-dl-text').text(`Download for ${osName}`);
+			} else {
+				$(`.dl-alt${alt}`).text(osName).prop('href', fileUrls[os]);
+				alt++;
+			}
+		});
+		$(`a.dl-primary`).prop('href', primaryUrl);
+	};
+
 
 	$(document).ready(function() {
 			
 		"use strict";
 
+		updateDownloadLinks();
 
 		/*----------------------------------------------------*/
 		/*	Animated Scroll To Anchor

@@ -436,7 +436,7 @@ a:focus {
 
 .content-list a,
 .grey-color a {
-  font-weight: 400;
+  font-weight: 300;
   color: #ff5607;
 }
 
@@ -1964,7 +1964,7 @@ span.id-color {
   display: block;
 }
 
-@media (min-width: 576px) and (max-width: 767.99px) {
+@media (min-width: 576px) and (max-width: 767px) {
   .navbar.bg-tra { background-color: #fff!important; }
 }
 
