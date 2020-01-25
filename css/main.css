@@ -434,6 +434,18 @@ a:focus {
   text-decoration: none;
 }
 
+.content-list a,
+.grey-color a {
+  font-weight: 400;
+  color: #ff5607;
+}
+
+.content-list a:hover,
+.grey-color a:hover {
+  text-decoration: underline;
+}
+
+
 /*------------------------------------------*/
 /*  LISTS
 /*------------------------------------------*/
@@ -1220,7 +1232,6 @@ span.id-color {
 .grey-color h5, 
 .grey-color h6, 
 .grey-color p, 
-.grey-color a,
 .grey-color li, 
 .grey-color i, 
 .grey-color span { color: #666; }
@@ -2520,9 +2531,6 @@ span.id-color {
   line-height: 1;
 }
 
-.hero-links a {
-  font-weight: 500;
-}
 .hero-links a:hover {
   text-decoration: underline;
 }
