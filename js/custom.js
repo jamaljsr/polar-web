@@ -185,22 +185,6 @@
 		$.scrollUp();
 
 
-		/*----------------------------------------------------*/
-		/*	Video Link #1 Lightbox
-		/*----------------------------------------------------*/
-		
-		$('.video-popup1').magnificPopup({
-		    type: 'iframe',		  	  
-				iframe: {
-					patterns: {
-						youtube: {			   
-							index: 'youtube.com',
-							src: 'https://www.youtube.com/embed/HInI_G3oYpc?autoplay=1'				
-								}
-							}
-						}		  		  
-		});
-
 
 		/*----------------------------------------------------*/
 		/*	Video Link #2 Lightbox
