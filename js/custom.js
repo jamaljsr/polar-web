@@ -196,7 +196,7 @@
 					patterns: {
 						youtube: {			   
 							index: 'youtube.com',
-							src: 'https://www.youtube.com/embed/HInI_G3oYpc?autoplay=1'				
+							src: 'https://www.youtube.com/embed/mb37durvPns?autoplay=1'				
 								}
 							}
 						}		  		  
