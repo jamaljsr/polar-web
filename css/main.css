@@ -3770,7 +3770,9 @@ ul.features li.disabled-option,
   margin-bottom: 0;
 }
 
-
+.video-modal .mfp-content {
+  max-width: 1200px;
+}
 
 
 /* ==========================================================================

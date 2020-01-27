@@ -191,6 +191,8 @@
 		/*----------------------------------------------------*/
 		
 		$('.video-popup2').magnificPopup({
+				mainClass: 'video-modal',
+				closeOnBgClick: false,
 		    type: 'iframe',		  	  
 				iframe: {
 					patterns: {
