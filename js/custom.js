@@ -39,7 +39,7 @@
 	/*----------------------------------------------------*/
 	/*	Download links
 	/*----------------------------------------------------*/
-	var version = '0.2.1';
+	var version = '1.0.0';
 
 	function getOS() {
 		var userAgent = window.navigator.userAgent,
