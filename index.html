@@ -1,1512 +1,1663 @@
 <!DOCTYPE html>
 <!-- ShiftKey - Software & Startup Premium Landing Page Template design by DSAThemes (http://www.dsathemes.com) -->
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if lt IE 7]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="jamaljsr" />
+    <meta
+      name="description"
+      content="One-click Bitcoin Lightning networks for local app development & testing. Spend less time setting up your development environment, so you can spend more time building your next killer Lightning app."
+    />
+    <meta
+      name="keywords"
+      content="Polar, Bitcoin, Lightning, Lightning Network, Developer Tool, Regtest"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<head>
+    <!-- SHARE META -->
+    <meta property="og:url" content="https://lightningpolar.com" />
+    <meta
+      property="og:title"
+      content="Polar - Regtest Lightning Networks, Made Easy"
+    />
+    <meta
+      property="og:description"
+      content="One-click Bitcoin Lightning networks for local app development & testing. Spend less time setting up your development environment, so you can spend more time building your next killer Lightning app."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://lightningpolar.com/images/image-12a.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@jamaljsr" />
 
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="author" content="jamaljsr"/>	
-		<meta name="description" content="One-click Bitcoin Lightning networks for local app development & testing. Spend less time setting up your development environment, so you can spend more time building your next killer Lightning app."/>
-		<meta name="keywords" content="Polar, Bitcoin, Lightning, Lightning Network, Developer Tool, Regtest">		
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- SITE TITLE -->
+    <title>Polar - Regtest Lightning Networks, Made Easy</title>
 
-		<!-- SHARE META -->
-		<meta property="og:url" content="https://lightningpolar.com" />
-		<meta property="og:title" content="Polar - Regtest Lightning Networks, Made Easy" />
-		<meta property="og:description" content="One-click Bitcoin Lightning networks for local app development & testing. Spend less time setting up your development environment, so you can spend more time building your next killer Lightning app." />
-		<meta property="og:type" content="website" />
-		<meta property="og:image" content="https://lightningpolar.com/images/image-12a.png" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:creator" content="@jamaljsr" />
+    <!-- FAVICON AND TOUCH ICONS  -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="images/apple-touch-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="images/apple-touch-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="images/apple-touch-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="images/apple-touch-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="images/apple-touch-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="images/apple-touch-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="images/apple-touch-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/apple-touch-icon-180x180.png"
+    />
 
-		<!-- SITE TITLE -->
-		<title>Polar - Regtest Lightning Networks, Made Easy</title>
-							
-		<!-- FAVICON AND TOUCH ICONS  -->
-		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
-		<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-		<link rel="apple-touch-icon" sizes="57x57" href="images/apple-touch-icon-57x57.png" />
-		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-		<link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-76x76.png" />
-		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-		<link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-120x120.png" />
-		<link rel="apple-touch-icon" sizes="144x144" href="images/apple-touch-icon-144x144.png" />
-		<link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon-152x152.png" />
-		<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-180x180.png" />
+    <!-- GOOGLE FONTS -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700,900"
+      rel="stylesheet"
+    />
 
-		<!-- GOOGLE FONTS -->
-		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet"> 	
-		<link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700,900" rel="stylesheet"> 
+    <!-- BOOTSTRAP CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
 
-		<!-- BOOTSTRAP CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-				
-		<!-- FONT ICONS -->
-		<link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" rel="stylesheet" crossorigin="anonymous">		
-		<link href="css/flaticon.css" rel="stylesheet">
+    <!-- FONT ICONS -->
+    <link
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link href="css/flaticon.css" rel="stylesheet" />
 
-		<!-- PLUGINS STYLESHEET -->
-		<link href="css/magnific-popup.css" rel="stylesheet">	
-		<link href="css/owl.carousel.min.css" rel="stylesheet">
-		<link href="css/owl.theme.default.min.css" rel="stylesheet">
-		<link href="css/animate.css" rel="stylesheet">
-						
-		<!-- TEMPLATE CSS -->
-		<link href="css/main.css" rel="stylesheet"> 
+    <!-- PLUGINS STYLESHEET -->
+    <link href="css/magnific-popup.css" rel="stylesheet" />
+    <link href="css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="css/animate.css" rel="stylesheet" />
 
-		<!-- RESPONSIVE CSS -->
-		<link href="css/responsive.css" rel="stylesheet"> 
-	
-	</head>
-	
+    <!-- TEMPLATE CSS -->
+    <link href="css/main.css" rel="stylesheet" />
 
+    <!-- RESPONSIVE CSS -->
+    <link href="css/responsive.css" rel="stylesheet" />
+  </head>
 
+  <body>
+    <!-- PRELOADER SPINNER
+		============================================= -->
+    <div id="loader-wrapper">
+      <div id="loader">
+        <span class="cssload-loader">
+          <span class="cssload-loader-inner"></span>
+        </span>
+      </div>
+    </div>
 
-	<body>
-
-
-
-
-		<!-- PRELOADER SPINNER
-		============================================= -->		
-		<div id="loader-wrapper">
-			<div id="loader">
-				<span class="cssload-loader">
-					<span class="cssload-loader-inner"></span>
-				</span>
-			</div>
-		</div>
-
-
-
-
-		<!-- PAGE CONTENT
-		============================================= -->	
-		<div id="page" class="page">
-
-
-
-
-			<!-- HEADER
+    <!-- PAGE CONTENT
+		============================================= -->
+    <div id="page" class="page">
+      <!-- HEADER
 			============================================= -->
-			<header id="header" class="header">
-				<nav class="navbar fixed-top navbar-expand-md navbar-light bg-tra hover-menu">
-					<div class="container">
+      <header id="header" class="header">
+        <nav
+          class="navbar fixed-top navbar-expand-md navbar-light bg-tra hover-menu"
+        >
+          <div class="container">
+            <!-- LOGO IMAGE -->
+            <!-- For Retina Ready displays take a image with double the amount of pixels that your image will be displayed (e.g 240 x 60 pixels) -->
+            <a href="#hero-2" class="navbar-brand logo-black"
+              ><img
+                src="images/logo.png"
+                width="120"
+                height="30"
+                alt="header-logo"
+            /></a>
 
+            <!-- Responsive Menu Button -->
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-bar-icon"><i class="fas fa-bars"></i></span>
+            </button>
 
-						<!-- LOGO IMAGE -->
-						<!-- For Retina Ready displays take a image with double the amount of pixels that your image will be displayed (e.g 240 x 60 pixels) -->
-				 		<a href="#hero-2" class="navbar-brand logo-black"><img src="images/logo.png" width="120" height="30" alt="header-logo"></a>
-
-
-				 		<!-- Responsive Menu Button -->
-				 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				   		 	<span class="navbar-bar-icon"><i class="fas fa-bars"></i></span>
-				  		</button>
-
-
-				  		<!-- Navigation Menu -->
-				  		<div id="navbarSupportedContent" class="collapse navbar-collapse">				  			
-					   		<ul class="navbar-nav ml-auto">
-
-					     		<li class="nav-item nl-simple"><a class="nav-link" href="#services-1">Benefits</a></li>
-					     		<li class="nav-item nl-simple"><a class="nav-link" href="#content-1">Features</a></li>
-					     		<li class="nav-item nl-simple"><a class="nav-link" href="#reviews-2">Reviews</a></li>
-					     		<li class="nav-item nl-simple"><a class="nav-link" href="#faqs-2">FAQs</a></li>					     									    
-					     		<!-- <li class="nav-item nl-simple">
+            <!-- Navigation Menu -->
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item nl-simple">
+                  <a class="nav-link" href="#services-1">Benefits</a>
+                </li>
+                <li class="nav-item nl-simple">
+                  <a class="nav-link" href="#content-1">Features</a>
+                </li>
+                <li class="nav-item nl-simple">
+                  <a class="nav-link" href="#reviews-2">Reviews</a>
+                </li>
+                <li class="nav-item nl-simple">
+                  <a class="nav-link" href="#faqs-2">FAQs</a>
+                </li>
+                <!-- <li class="nav-item nl-simple">
 										<a class="nav-link nav-icon" href="https://github.com/jamaljsr/polar" target="_blank">
 											<i class="fab fa-github"></i>
 										</a>
 									</li>					     									     -->
+              </ul>
 
-								</ul>
+              <!-- Header Button -->
+              <span class="navbar-text white-color">
+                <a
+                  href="#"
+                  class="dl-primary btn btn-primary-color tra-black-hover"
+                  >Download</a
+                >
+              </span>
+            </div>
+            <!-- End Navigation Menu -->
+          </div>
+          <!-- End container -->
+        </nav>
+        <!-- End navbar -->
+      </header>
+      <!-- END HEADER -->
 
-					      	<!-- Header Button -->
-								<span class="navbar-text white-color">						      															
-									<a href="#" class="dl-primary btn btn-primary-color tra-black-hover">Download</a>
-						    </span>	
-
-					    </div>	<!-- End Navigation Menu -->
-
-
-					</div>	  <!-- End container -->
-				</nav>	   <!-- End navbar -->
-			</header>	<!-- END HEADER -->
-
-
-
-
-			<!-- HERO-2
-			============================================= -->	
-			<section id="hero-2" class="hero-section">
-
-
-				<!-- HERO TEXT -->
-				<div class="bg-fixed bg-lightgrey hero-2-txt division">
-					<div class="container">					
-						<div id="hero-2-content" class="row">
-							<div class="col-md-10 offset-md-1">
-								<div class="hero-txt text-center">
-
-									<!-- Title -->
-									<h3>One-click Bitcoin Lightning networks for local app development & testing</h3>
-
-									<!-- Text -->
-									<p class="p-md">
-										Spend less time setting up your development environment, so you can spend more time building your next killer Lightning app.
-									</p>
-
-									<!-- HERO NEWSLETTER FORM -->
-									<form class="hero-newsletter-form">
-											
-										<!-- Newsletter Inputs -->			
-										<a class="btn btn-primary-color black-hover dl-primary" href="#">
-											<i id="hero-dl-icon" class="fas fa-download"></i>
-											<span id='hero-dl-text'>Download</span>
-										</a>
-
-									</form>								
-
-									<!-- HERO LINKS -->
-									<div class="hero-links">
-										<span class="grey-color">
-											Also available for 
-											<a class="dl-alt1" href="#"></a> 
-											and 
-											<a class="dl-alt2" href="#"></a>. 
-											Other downloads available on 
-											<a href="https://github.com/jamaljsr/polar/releases">GitHub</a>.
-										</span>
-									</div>
-			
-								</div>
-							</div>	
-						</div>
-					</div>
-				</div>	<!-- END HERO TEXT -->
-
-
-				<!-- HERO IMAGE -->
-				<div class="hero-2-img division">
-					<div class="container">		
-						<div class="row">
-							<div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
-								<div class="video-preview text-center">
-
-					 				<!-- Change the link HERE!!! -->						
-									<a class="video-popup2" href="https://www.youtube.com/watch?v=mb37durvPns">
-
-										<!-- Play Icon --> 							
-										<div class="video-btn play-icon-purple">	
-											<div class="video-block-wrapper">
-												<i class="fas fa-play"></i>
-											</div>
-										</div>
-
-										<!-- Preview Image -->
-										<img class="img-fluid" src="images/hero-2-img.png" alt="video-preview">
-
-									</a>
-
-						 		</div>
-							</div>
-						</div>
-					</div>
-				</div>	<!-- END HERO IMAGE -->		
-
-
-			</section>	<!-- END HERO-2 -->
-
-
-
-
-			<!-- SERVICES-1
+      <!-- HERO-2
 			============================================= -->
-			<section id="services-1" class="wide-60 services-section division">
-				<div class="container">
-			 		<div class="row">
+      <section id="hero-2" class="hero-section">
+        <!-- HERO TEXT -->
+        <div class="bg-fixed bg-lightgrey hero-2-txt division">
+          <div class="container">
+            <div id="hero-2-content" class="row">
+              <div class="col-md-10 offset-md-1">
+                <div class="hero-txt text-center">
+                  <!-- Title -->
+                  <h3>
+                    One-click Bitcoin Lightning networks for local app
+                    development & testing
+                  </h3>
 
+                  <!-- Text -->
+                  <p class="p-md">
+                    Spend less time setting up your development environment, so
+                    you can spend more time building your next killer Lightning
+                    app.
+                  </p>
 
-			 			<!-- SERVICE BOX #1 -->
-						<div class="col-sm-6 col-lg-3">
-							<div class="sbox-1 wow fadeInUp" data-wow-delay="0.4s">
-								
-								<!-- Icon -->
-								<img class="img-70" src="images/icons/time.png" alt="service-icon" />
-									
-								<!-- Title -->
-								<h5 class="h5-xs steelblue-color">Reduce Setup Time</h5>
+                  <!-- HERO NEWSLETTER FORM -->
+                  <form class="hero-newsletter-form">
+                    <!-- Newsletter Inputs -->
+                    <a
+                      class="btn btn-primary-color black-hover dl-primary"
+                      href="#"
+                    >
+                      <i id="hero-dl-icon" class="fas fa-download"></i>
+                      <span id="hero-dl-text">Download</span>
+                    </a>
+                  </form>
 
-								<!-- Text -->
-								<p>
-									Get started building on Lightning in minutes, instead of hours, or potentially days, if you setup a local network manually
-								</p>
+                  <!-- HERO LINKS -->
+                  <div class="hero-links">
+                    <span class="grey-color">
+                      Also available for
+                      <a class="dl-alt1" href="#"></a>
+                      and
+                      <a class="dl-alt2" href="#"></a>. Other downloads
+                      available on
+                      <a href="https://github.com/jamaljsr/polar/releases"
+                        >GitHub</a
+                      >.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END HERO TEXT -->
 
-							</div>							
-						</div>
+        <!-- HERO IMAGE -->
+        <div class="hero-2-img division">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
+                <div class="video-preview text-center">
+                  <!-- Change the link HERE!!! -->
+                  <a
+                    class="video-popup2"
+                    href="https://www.youtube.com/watch?v=mb37durvPns"
+                  >
+                    <!-- Play Icon -->
+                    <div class="video-btn play-icon-purple">
+                      <div class="video-block-wrapper">
+                        <i class="fas fa-play"></i>
+                      </div>
+                    </div>
 
+                    <!-- Preview Image -->
+                    <img
+                      class="img-fluid"
+                      src="images/hero-2-img.png"
+                      alt="video-preview"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END HERO IMAGE -->
+      </section>
+      <!-- END HERO-2 -->
 
-						<!-- SERVICE BOX #2 -->
-						<div class="col-sm-6 col-lg-3">
-							<div class="sbox-1 wow fadeInUp" data-wow-delay="0.6s">
-								
-								<!-- Icon -->
-								<img class="img-70" src="images/icons/graphic-design.png" alt="service-icon" />
-									
-								<!-- Title -->
-								<h5 class="h5-xs steelblue-color">Visual Experience</h5>
-
-								<!-- Text -->
-								<p>
-									Say goodbye to the command line and config files. Say hello to a pleasing graphical interface with all of the same functionality
-								</p>								
-							
-							</div>							
-						</div>
-
-
-						<!-- SERVICE BOX #3 -->
-						<div class="col-sm-6 col-lg-3">
-							<div class="sbox-1 wow fadeInUp" data-wow-delay="0.8s">
-								
-								<!-- Icon -->
-								<img class="img-70" src="images/icons/startup.png" alt="service-icon" />
-									
-								<!-- Title -->
-								<h5 class="h5-xs steelblue-color">Improved Productivity</h5>
-
-								<!-- Text -->
-								<p>
-									Spend more time building your app, and less time building your developer environment. Iterate faster so you can release faster
-								</p>
-
-							</div>							
-						</div>	
-
-
-						<!-- SERVICE BOX #4 -->
-						<div class="col-sm-6 col-lg-3">
-							<div class="sbox-1 wow fadeInUp" data-wow-delay="1s">
-								
-								<!-- Icon -->
-								<img class="img-70" src="images/icons/chat-2.png" alt="service-icon" />
-									
-								<!-- Title -->
-								<h5 class="h5-xs steelblue-color">Open Source</h5>
-									
-								<!-- Text -->
-								<p>
-									The source code is open for all to view. Community contributions of code, suggestions or issues are welcomed and appreciated
-								</p>				
-									
-							</div>							
-						</div>
-
-
-			 		</div>	   <!-- End row -->		
-			 	</div>	   <!-- End container -->		
-			</section>	<!-- END SERVICES-1 -->
-
-
-
-
-			<!-- HORIZONTAL GREY LINE
+      <!-- SERVICES-1
 			============================================= -->
-			<div class="grey-border">
-				<div class="container"><div class="row"><div class="col b-bottom"></div></div></div>
-			</div>
+      <section id="services-1" class="wide-60 services-section division">
+        <div class="container">
+          <div class="row">
+            <!-- SERVICE BOX #1 -->
+            <div class="col-sm-6 col-lg-3">
+              <div class="sbox-1 wow fadeInUp" data-wow-delay="0.4s">
+                <!-- Icon -->
+                <img
+                  class="img-70"
+                  src="images/icons/time.png"
+                  alt="service-icon"
+                />
 
+                <!-- Title -->
+                <h5 class="h5-xs steelblue-color">Reduce Setup Time</h5>
 
+                <!-- Text -->
+                <p>
+                  Get started building on Lightning in minutes, instead of
+                  hours, or potentially days, if you setup a local network
+                  manually
+                </p>
+              </div>
+            </div>
 
+            <!-- SERVICE BOX #2 -->
+            <div class="col-sm-6 col-lg-3">
+              <div class="sbox-1 wow fadeInUp" data-wow-delay="0.6s">
+                <!-- Icon -->
+                <img
+                  class="img-70"
+                  src="images/icons/graphic-design.png"
+                  alt="service-icon"
+                />
 
-			<!-- CONTENT-1
+                <!-- Title -->
+                <h5 class="h5-xs steelblue-color">Visual Experience</h5>
+
+                <!-- Text -->
+                <p>
+                  Say goodbye to the command line and config files. Say hello to
+                  a pleasing graphical interface with all of the same
+                  functionality
+                </p>
+              </div>
+            </div>
+
+            <!-- SERVICE BOX #3 -->
+            <div class="col-sm-6 col-lg-3">
+              <div class="sbox-1 wow fadeInUp" data-wow-delay="0.8s">
+                <!-- Icon -->
+                <img
+                  class="img-70"
+                  src="images/icons/startup.png"
+                  alt="service-icon"
+                />
+
+                <!-- Title -->
+                <h5 class="h5-xs steelblue-color">Improved Productivity</h5>
+
+                <!-- Text -->
+                <p>
+                  Spend more time building your app, and less time building your
+                  developer environment. Iterate faster so you can release
+                  faster
+                </p>
+              </div>
+            </div>
+
+            <!-- SERVICE BOX #4 -->
+            <div class="col-sm-6 col-lg-3">
+              <div class="sbox-1 wow fadeInUp" data-wow-delay="1s">
+                <!-- Icon -->
+                <img
+                  class="img-70"
+                  src="images/icons/chat-2.png"
+                  alt="service-icon"
+                />
+
+                <!-- Title -->
+                <h5 class="h5-xs steelblue-color">Open Source</h5>
+
+                <!-- Text -->
+                <p>
+                  The source code is open for all to view. Community
+                  contributions of code, suggestions or issues are welcomed and
+                  appreciated
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END SERVICES-1 -->
+
+      <!-- HORIZONTAL GREY LINE
 			============================================= -->
-			<section id="content-1" class="wide-60 content-section division">
-				<div class="container">
-					<div class="row d-flex align-items-center">
+      <div class="grey-border">
+        <div class="container">
+          <div class="row"><div class="col b-bottom"></div></div>
+        </div>
+      </div>
 
-
-						<!-- TEXT BLOCK -->	
-						<div class="col-md-6">
-							<div class="txt-block pc-30 wow fadeInUp" data-wow-delay="0.4s">
-
-								<!-- Section ID -->	
-					 			<span class="section-id primary-color">Ease of Access</span>
-
-								<!-- Title -->
-								<h3 class="h3-md steelblue-color">RPC Connection info at your fingertips</h3>
-
-								<!-- Text -->
-								<p>
-									What good are Lightning nodes if you don't know how to connect to them? Polar surfaces some of
-									the most common pieces of RPC connection information, which you will need to connect from your app.
-									You'll also have quick links to the API documentation for each node. 
-								</p>
-
-								<!-- Title -->	
-								<h5 class="h5-md steelblue-color">Credentials in many formats</h5>
-
-								<!-- CONTENT BOX #1 -->
-								<div class="box-list m-top-15">							
-									<div class="box-list-icon"><i class="fas fa-genderless"></i></div>
-									<p>
-										 The full file paths to the certificate and macaroons
-									</p>							
-								</div>
-									
-								<!-- CONTENT BOX #2 -->
-								<div class="box-list">							
-									<div class="box-list-icon"><i class="fas fa-genderless"></i></div>
-									<p>
-										Some SDKs require credentials in HEX format
-									</p>							
-								</div>
-									
-								<!-- CONTENT BOX #2 -->
-								<div class="box-list">							
-									<div class="box-list-icon"><i class="fas fa-genderless"></i></div>
-									<p>
-										Other SDKs require credentials in Base64 format
-									</p>							
-								</div>
-									
-								<!-- CONTENT BOX #3 -->
-								<div class="box-list">	
-									<div class="box-list-icon"><i class="fas fa-genderless"></i></div>
-									<p>
-										But the cool kids are using <a href="https://github.com/LN-Zap/lndconnect">LNDConnect</a> to make
-										connecting to your node even easier
-									</p>				
-								</div>
-								
-							</div>
-						</div>	<!-- END TEXT BLOCK -->	
-
-
-						<!-- IMAGE BLOCK -->
-						<div class="col-md-4">
-							<div class="img-block wow fadeInUp" data-wow-delay="0.6s">
-								<img class="img-fluid content-1-img" src="images/image-04.png" alt="content-image">
-							</div>
-						</div>	
-
-						
-					</div>    <!-- End row -->
-				</div>	   <!-- End container -->
-			</section>	<!-- END CONTENT-1 -->
-
-
-
-
-			<!-- CONTENT-6
+      <!-- CONTENT-1
 			============================================= -->
-			<section id="content-6" class="bg-lightgrey pt-100 content-section division">
-				<div class="container">
-					<div class="row d-flex align-items-center">
+      <section id="content-1" class="wide-60 content-section division">
+        <div class="container">
+          <div class="row d-flex align-items-center">
+            <!-- TEXT BLOCK -->
+            <div class="col-md-6">
+              <div class="txt-block pc-30 wow fadeInUp" data-wow-delay="0.4s">
+                <!-- Section ID -->
+                <span class="section-id primary-color">Ease of Access</span>
 
+                <!-- Title -->
+                <h3 class="h3-md steelblue-color">
+                  RPC Connection info at your fingertips
+                </h3>
 
-						<!-- IMAGE BLOCK -->	
-						<div class="col-md-6">
-							<div class="content-6-img wow fadeInLeft" data-wow-delay="0.6s">
-								<img class="img-fluid" src="images/image-12a.png" alt="content-image" srcset="images/image-12.png 2x">
-							</div>	
-						</div>
+                <!-- Text -->
+                <p>
+                  What good are Lightning nodes if you don't know how to connect
+                  to them? Polar surfaces some of the most common pieces of RPC
+                  connection information, which you will need to connect from
+                  your app. You'll also have quick links to the API
+                  documentation for each node.
+                </p>
 
-								
-						<!-- TEXT BLOCK -->		
-						<div class="col-md-6">
-							<div class="txt-block pc-30 wow fadeInUp" data-wow-delay="0.4s">
+                <!-- Title -->
+                <h5 class="h5-md steelblue-color">
+                  Credentials in many formats
+                </h5>
 
-								<!-- Title -->	
-								<h5 class="h5-md steelblue-color">Visualize your entire network</h5>
+                <!-- CONTENT BOX #1 -->
+                <div class="box-list m-top-15">
+                  <div class="box-list-icon">
+                    <i class="fas fa-genderless"></i>
+                  </div>
+                  <p>
+                    The full file paths to the certificate and macaroons
+                  </p>
+                </div>
 
-								<!-- Text -->
-								<p>
-									They say a picture is worth a thousand words. Well, how many terminal commands is a 
-									sexy Lightning Network graph worth?
-								</p>
+                <!-- CONTENT BOX #2 -->
+                <div class="box-list">
+                  <div class="box-list-icon">
+                    <i class="fas fa-genderless"></i>
+                  </div>
+                  <p>
+                    Some SDKs require credentials in HEX format
+                  </p>
+                </div>
 
-								<!-- Title -->	
-								<h5 class="h5-md steelblue-color">Quickly identify channel balances</h5>
+                <!-- CONTENT BOX #2 -->
+                <div class="box-list">
+                  <div class="box-list-icon">
+                    <i class="fas fa-genderless"></i>
+                  </div>
+                  <p>
+                    Other SDKs require credentials in Base64 format
+                  </p>
+                </div>
 
-								<!-- Text -->
-								<p>
-									Save a ton of time, and key-strokes, by viewing channel balances in color. The green & blue 
-									lines shift as payments are sent from one node to another. Keep in mind, the green side is 
-									where the money started.
-								</p>
+                <!-- CONTENT BOX #3 -->
+                <div class="box-list">
+                  <div class="box-list-icon">
+                    <i class="fas fa-genderless"></i>
+                  </div>
+                  <p>
+                    But the cool kids are using
+                    <a href="https://github.com/LN-Zap/lndconnect"
+                      >LNDConnect</a
+                    >
+                    to make connecting to your node even easier
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- END TEXT BLOCK -->
 
-								<!-- Title -->	
-								<h5 class="h5-md steelblue-color">Drag-n-drop Actions</h5>
+            <!-- IMAGE BLOCK -->
+            <div class="col-md-4">
+              <div class="img-block wow fadeInUp" data-wow-delay="0.6s">
+                <img
+                  class="img-fluid content-1-img"
+                  src="images/image-04.png"
+                  alt="content-image"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END CONTENT-1 -->
 
-								<!-- Text -->
-								<p>
-									It couldn't be easier to open channels from one node to another by simply dragging and dropping.
-									Move nodes around, into any layout that you prefer. You can also drag new nodes from the sidebar
-									onto the canvas.
-								</p>
-
-							</div>	
-						</div>	<!-- END TEXT BLOCK -->		
-
-
-					</div>	  <!-- End row -->
-				</div>	   <!-- End container -->
-			</section>	<!-- END CONTENT-6 -->
-
-
-
-
-			<!-- CONTENT-7
+      <!-- CONTENT-6
 			============================================= -->
-			<section id="content-7" class="wide-60 content-section division">
-				<div class="container">
-					<div class="row d-flex align-items-center">
+      <section
+        id="content-6"
+        class="bg-lightgrey pt-100 content-section division"
+      >
+        <div class="container">
+          <div class="row d-flex align-items-center">
+            <!-- IMAGE BLOCK -->
+            <div class="col-md-6">
+              <div class="content-6-img wow fadeInLeft" data-wow-delay="0.6s">
+                <img
+                  class="img-fluid"
+                  src="images/image-12a.png"
+                  alt="content-image"
+                  srcset="images/image-12.png 2x"
+                />
+              </div>
+            </div>
 
-								
-						<!-- TEXT BLOCK -->		
-						<div class="col-md-6 col-xl-6">
-							<div class="txt-block pc-30 wow fadeInUp" data-wow-delay="0.4s">
+            <!-- TEXT BLOCK -->
+            <div class="col-md-6">
+              <div class="txt-block pc-30 wow fadeInUp" data-wow-delay="0.4s">
+                <!-- Title -->
+                <h5 class="h5-md steelblue-color">
+                  Visualize your entire network
+                </h5>
 
-								<!-- Section ID -->	
-					 			<span class="section-id primary-color">Maximum Flexibility</span>
-							
-					 			<!-- Title -->	
-								<h3 class="h3-md steelblue-color">Create as many networks as you like</h3>
+                <!-- Text -->
+                <p>
+                  They say a picture is worth a thousand words. Well, how many
+                  terminal commands is a sexy Lightning Network graph worth?
+                </p>
 
-								<!-- Text -->
-								<p>
-									Have you ever been working on your app with a local network and wanted to quickly simulate
-									a completely different scenario? Resetting your network, then bringing then state back 
-									is no walk in the park. With Polar, you can have as many network configurations as you can imagine.
-									You can even have multiple of them running at the same time.
-								</p> 
+                <!-- Title -->
+                <h5 class="h5-md steelblue-color">
+                  Quickly identify channel balances
+                </h5>
 
-							</div>	
-						</div>	<!-- END TEXT BLOCK -->		
+                <!-- Text -->
+                <p>
+                  Save a ton of time, and key-strokes, by viewing channel
+                  balances in color. The green & blue lines shift as payments
+                  are sent from one node to another. Keep in mind, the green
+                  side is where the money started.
+                </p>
 
+                <!-- Title -->
+                <h5 class="h5-md steelblue-color">Drag-n-drop Actions</h5>
 
-						<!-- IMAGE BLOCK -->	
-						<div class="col-md-6 col-xl-5 offset-xl-1">
-							<div class="content-7-img wow fadeInRight" data-wow-delay="0.6s">
-								<img class="img-fluid" src="images/image-08a.png" alt="content-image" srcset="images/image-08.png 2x">
-							</div>	
-						</div>
+                <!-- Text -->
+                <p>
+                  It couldn't be easier to open channels from one node to
+                  another by simply dragging and dropping. Move nodes around,
+                  into any layout that you prefer. You can also drag new nodes
+                  from the sidebar onto the canvas.
+                </p>
+              </div>
+            </div>
+            <!-- END TEXT BLOCK -->
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END CONTENT-6 -->
 
-
-					</div>	  <!-- End row -->
-				</div>	   <!-- End container -->
-			</section>	<!-- END CONTENT-7 -->
-
-
-
-
-			<!-- CONTENT-2
+      <!-- CONTENT-7
 			============================================= -->
-			<section id="content-2" class="grey-textured wide-60 content-section division">
-				<div class="container white-color">
-					<div class="row d-flex align-items-center">
+      <section id="content-7" class="wide-60 content-section division">
+        <div class="container">
+          <div class="row d-flex align-items-center">
+            <!-- TEXT BLOCK -->
+            <div class="col-md-6 col-xl-6">
+              <div class="txt-block pc-30 wow fadeInUp" data-wow-delay="0.4s">
+                <!-- Section ID -->
+                <span class="section-id primary-color"
+                  >Maximum Flexibility</span
+                >
 
+                <!-- Title -->
+                <h3 class="h3-md steelblue-color">
+                  Create as many networks as you like
+                </h3>
 
-						<!-- IMAGE BLOCK -->
-						<div class="col-md-6">
-							<div class="img-block wow fadeInUp" data-wow-delay="0.6s">
-								<img class="img-fluid" src="images/image-01a.png" alt="content-image" srcset="images/image-01.png 2x">
-							</div>
-						</div>
+                <!-- Text -->
+                <p>
+                  Have you ever been working on your app with a local network
+                  and wanted to quickly simulate a completely different
+                  scenario? Resetting your network, then bringing then state
+                  back is no walk in the park. With Polar, you can have as many
+                  network configurations as you can imagine. You can even have
+                  multiple of them running at the same time.
+                </p>
+              </div>
+            </div>
+            <!-- END TEXT BLOCK -->
 
+            <!-- IMAGE BLOCK -->
+            <div class="col-md-6 col-xl-5 offset-xl-1">
+              <div class="content-7-img wow fadeInRight" data-wow-delay="0.6s">
+                <img
+                  class="img-fluid"
+                  src="images/image-08a.png"
+                  alt="content-image"
+                  srcset="images/image-08.png 2x"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END CONTENT-7 -->
 
-						<!-- TEXT BLOCK -->	
-						<div class="col-md-6">
-							<div class="txt-block pc-30 wow fadeInUp" data-wow-delay="0.4s">
-
-								<!-- Section ID -->	
-					 			<span class="section-id white-color">Simplified Administration</span>
-
-								<!-- Title -->
-								<h3 class="h3-md">Manage your nodes with just a few clicks</h3>
-
-								<!-- Text -->
-								<p>
-									Many of the most common actions you would perform on Lightning are made available right
-									there in the UI. 
-								</p>
-
-								<!-- Title -->	
-								<h5 class="h5-md">What can I do?</h5>
-
-								<!-- CONTENT BOX #1 -->
-								<div class="box-list m-top-15">							
-									<div class="box-list-icon"><i class="fas fa-genderless"></i></div>
-									<p>
-										The bitcoin nodes in your network act as faucets, so you can easily deposit regtest coins
-										into any of the Lightning nodes with just a click.
-									</p>							
-								</div>
-									
-								<!-- CONTENT BOX #2 -->
-								<div class="box-list">							
-									<div class="box-list-icon"><i class="fas fa-genderless"></i></div>
-									<p>
-										Quickly open channels and pay invoices between multiple nodes
-									</p>							
-								</div>
-									
-								<!-- CONTENT BOX #2 -->
-								<div class="box-list">							
-									<div class="box-list-icon"><i class="fas fa-genderless"></i></div>
-									<p>
-										Start, stop and remove nodes from the network
-									</p>							
-								</div>
-									
-								<!-- CONTENT BOX #3 -->
-								<div class="box-list">	
-									<div class="box-list-icon"><i class="fas fa-genderless"></i></div>
-									<p>
-										For those command line ninjas, there's also a built-in terminal which gives you full
-										access to the node's CLI commands
-									</p>				
-								</div>
-								
-							</div>
-						</div>	<!-- END TEXT BLOCK -->	
-
-						
-					</div>    <!-- End row -->
-				</div>	   <!-- End container -->
-			</section>	<!-- END CONTENT-2 -->
-
-
-
-
-			<!-- SERVICES-8
+      <!-- CONTENT-2
 			============================================= -->
-			<section id="services-8" class="wide-50 services-section division">
-				<div class="container">
+      <section
+        id="content-2"
+        class="grey-textured wide-60 content-section division"
+      >
+        <div class="container white-color">
+          <div class="row d-flex align-items-center">
+            <!-- IMAGE BLOCK -->
+            <div class="col-md-6">
+              <div class="img-block wow fadeInUp" data-wow-delay="0.6s">
+                <img
+                  class="img-fluid"
+                  src="images/image-01a.png"
+                  alt="content-image"
+                  srcset="images/image-01.png 2x"
+                />
+              </div>
+            </div>
 
+            <!-- TEXT BLOCK -->
+            <div class="col-md-6">
+              <div class="txt-block pc-30 wow fadeInUp" data-wow-delay="0.4s">
+                <!-- Section ID -->
+                <span class="section-id white-color"
+                  >Simplified Administration</span
+                >
 
-					<!-- SECTION TITLE 	-->	
-					<div class="row">	
-						<div class="col-lg-10 offset-lg-1 section-title">	
+                <!-- Title -->
+                <h3 class="h3-md">Manage your nodes with just a few clicks</h3>
 
-							<!-- Title 	-->	
-							<h3 class="h3-md steelblue-color">But wait, there's more...</h3>	
+                <!-- Text -->
+                <p>
+                  Many of the most common actions you would perform on Lightning
+                  are made available right there in the UI.
+                </p>
 
-							<!-- Text -->
-							<p class="p-md">
-								Polar has a few more tricks up its sleeve to help make your Lightning development experience even more enjoyable
-							</p>
-								
-						</div>		
-					</div> 	 <!-- END SECTION TITLE -->	
+                <!-- Title -->
+                <h5 class="h5-md">What can I do?</h5>
 
+                <!-- CONTENT BOX #1 -->
+                <div class="box-list m-top-15">
+                  <div class="box-list-icon">
+                    <i class="fas fa-genderless"></i>
+                  </div>
+                  <p>
+                    The bitcoin nodes in your network act as faucets, so you can
+                    easily deposit regtest coins into any of the Lightning nodes
+                    with just a click.
+                  </p>
+                </div>
 
-			 		<div class="row">
-			 			<div class="col-lg-10 offset-lg-1">
-			 				<div class="row">
+                <!-- CONTENT BOX #2 -->
+                <div class="box-list">
+                  <div class="box-list-icon">
+                    <i class="fas fa-genderless"></i>
+                  </div>
+                  <p>
+                    Quickly open channels and pay invoices between multiple
+                    nodes
+                  </p>
+                </div>
 
+                <!-- CONTENT BOX #2 -->
+                <div class="box-list">
+                  <div class="box-list-icon">
+                    <i class="fas fa-genderless"></i>
+                  </div>
+                  <p>
+                    Start, stop and remove nodes from the network
+                  </p>
+                </div>
 
-					 			<!-- SERVICE BOX #1 -->
-								<div class="col-sm-6">
-									<div class="sbox-4 wow fadeInUp" data-wow-delay="0.4s">
-										
-										<!-- Icon -->
-										<img class="img-70" src="images/icons/cloud-computing-1.png" alt="service-icon" /> 
-											
-										<!-- Text -->
-										<div class="sbox-4-txt">
+                <!-- CONTENT BOX #3 -->
+                <div class="box-list">
+                  <div class="box-list-icon">
+                    <i class="fas fa-genderless"></i>
+                  </div>
+                  <p>
+                    For those command line ninjas, there's also a built-in
+                    terminal which gives you full access to the node's CLI
+                    commands
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- END TEXT BLOCK -->
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END CONTENT-2 -->
 
-											<h5 class="h5-sm steelblue-color">Easy Node Updates</h5>
-											<p class="grey-color">
-												When new versions of Lightning or Bitcoin node software is released, all it takes is a few clicks
-												to begin using them. Our goal is to make new versions available within 24 hours after final builds 
-												are available
-											</p>
-
-										</div>	
-
-									</div>							
-								</div>
-							
-							
-								<!-- SERVICE BOX #2 -->
-								<div class="col-sm-6">
-									<div class="sbox-4 wow fadeInUp" data-wow-delay="0.6s">
-										
-										<!-- Icon -->
-										<img class="img-70" src="images/icons/browser-5.png" alt="service-icon" /> 
-											
-										<!-- Text -->
-										<div class="sbox-4-txt">
-
-											<h5 class="h5-sm steelblue-color">Simulate Chain Splits</h5>
-											<p class="grey-color">
-												With the ability to stop individual nodes, you can simulate a chain split by stopping one of three 
-												Bitcoin nodes, then mining on the other two separately, they will be operating on different chains.
-											</p>
-
-										</div>						
-											
-									</div>							
-								</div>
-								
-								
-								<!-- SERVICE BOX #3 -->
-								<div class="col-sm-6">
-									<div class="sbox-4 wow fadeInUp" data-wow-delay="0.4s">
-										
-										<!-- Icon -->
-										<img class="img-70" src="images/icons/cloud-computing.png" alt="service-icon" /> 
-											
-										<!-- Text -->
-										<div class="sbox-4-txt">	
-
-											<h5 class="h5-sm steelblue-color">Multiple Platforms</h5>
-											<p class="grey-color">
-												Polar was built with cross-platform support in mind from the beginning. Using tools like Electron
-												and Docker, you can speed up your workflow whether you are on Mac, Windows or Linux.
-											</p>
-
-										</div>						
-									
-									</div>							
-								</div>
-
-
-								<!-- SERVICE BOX #4 -->
-								<div class="col-sm-6">
-									<div class="sbox-4 wow fadeInUp" data-wow-delay="0.6s">
-										
-										<!-- Icon -->
-										<img class="img-70" src="images/icons/worldwide-1.png" alt="service-icon" /> 
-
-										<!-- Text -->
-										<div class="sbox-4-txt">
-
-											<h5 class="h5-sm steelblue-color">Multiple Languages</h5>
-											<p class="grey-color">
-												Available for English, French, German, Spanish, Russian, Italian, Chinese Simplified, Portuguese-Brazilian, Japanese, Korean.
-												Help translate more by contributing to the <a href="https://crowdin.com/project/polar" target="_blank">Crowdin</a> project.
-											</p>
-
-										</div>	
-
-									</div>							
-								</div>	
-
-
-							</div>	
-						</div>		
-			 		</div>	   <!-- End row -->	
-
-
-			 	</div>	   <!-- End container -->		
-			</section>	<!-- END SERVICES-8 -->
-
-
-
-
-			<!-- STATISTIC-2
+      <!-- SERVICES-8
 			============================================= -->
-			<div id="statistic-2" class="bg-lightgrey statistic-section division">
-				<div class="container">
+      <section id="services-8" class="wide-50 services-section division">
+        <div class="container">
+          <!-- SECTION TITLE 	-->
+          <div class="row">
+            <div class="col-lg-10 offset-lg-1 section-title">
+              <!-- Title 	-->
+              <h3 class="h3-md steelblue-color">But wait, there's more...</h3>
 
-					<!-- SECTION TITLE -->	
-					<div class="row">	
-						<div class="col-lg-10 offset-lg-1 section-title">	
+              <!-- Text -->
+              <p class="p-md">
+                Polar has a few more tricks up its sleeve to help make your
+                Lightning development experience even more enjoyable
+              </p>
+            </div>
+          </div>
+          <!-- END SECTION TITLE -->
 
-							<!-- Text -->
-							<p class="p-md">
-								Multiple Bitcoin and Lightning nodes can be mixed and matched in a network to simulate many scenarios for testing. Here are the latest versions supported.
-							</p>
-								
-						</div>
-					</div>
-					
-					<div class="row">
+          <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+              <div class="row">
+                <!-- SERVICE BOX #1 -->
+                <div class="col-sm-6">
+                  <div class="sbox-4 wow fadeInUp" data-wow-delay="0.4s">
+                    <!-- Icon -->
+                    <img
+                      class="img-70"
+                      src="images/icons/cloud-computing-1.png"
+                      alt="service-icon"
+                    />
 
+                    <!-- Text -->
+                    <div class="sbox-4-txt">
+                      <h5 class="h5-sm steelblue-color">Easy Node Updates</h5>
+                      <p class="grey-color">
+                        When new versions of Lightning or Bitcoin node software
+                        is released, all it takes is a few clicks to begin using
+                        them. Our goal is to make new versions available within
+                        24 hours after final builds are available
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-						<!-- STATISTIC BLOCK #1 -->
-						<div class="col-sm-6 col-md-3">						
-							<div class="statistic-block icon-xs wow fadeInUp" data-wow-delay="0.4s">
+                <!-- SERVICE BOX #2 -->
+                <div class="col-sm-6">
+                  <div class="sbox-4 wow fadeInUp" data-wow-delay="0.6s">
+                    <!-- Icon -->
+                    <img
+                      class="img-70"
+                      src="images/icons/browser-5.png"
+                      alt="service-icon"
+                    />
 
-								<!-- Icon  -->
-								<img class="img-70" src="images/bw_lnlabs.png" alt="service-icon" /> 
+                    <!-- Text -->
+                    <div class="sbox-4-txt">
+                      <h5 class="h5-sm steelblue-color">
+                        Simulate Chain Splits
+                      </h5>
+                      <p class="grey-color">
+                        With the ability to stop individual nodes, you can
+                        simulate a chain split by stopping one of three Bitcoin
+                        nodes, then mining on the other two separately, they
+                        will be operating on different chains.
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-								<!-- Text -->
-								<h5 class="statistic-number steelblue-color">v0.9.1</h5>
-								<p class="txt-400">LND</p>																			
-													
-							</div>								
-						</div>
+                <!-- SERVICE BOX #3 -->
+                <div class="col-sm-6">
+                  <div class="sbox-4 wow fadeInUp" data-wow-delay="0.4s">
+                    <!-- Icon -->
+                    <img
+                      class="img-70"
+                      src="images/icons/cloud-computing.png"
+                      alt="service-icon"
+                    />
 
+                    <!-- Text -->
+                    <div class="sbox-4-txt">
+                      <h5 class="h5-sm steelblue-color">Multiple Platforms</h5>
+                      <p class="grey-color">
+                        Polar was built with cross-platform support in mind from
+                        the beginning. Using tools like Electron and Docker, you
+                        can speed up your workflow whether you are on Mac,
+                        Windows or Linux.
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-						<!-- STATISTIC BLOCK #2 -->
-						<div class="col-sm-6 col-md-3">								
-							<div class="statistic-block icon-xs wow fadeInUp" data-wow-delay="0.6s">
+                <!-- SERVICE BOX #4 -->
+                <div class="col-sm-6">
+                  <div class="sbox-4 wow fadeInUp" data-wow-delay="0.6s">
+                    <!-- Icon -->
+                    <img
+                      class="img-70"
+                      src="images/icons/worldwide-1.png"
+                      alt="service-icon"
+                    />
 
-								<!-- Icon  -->
-								<img class="img-70" src="images/bw_blockstream.png" alt="service-icon" /> 
+                    <!-- Text -->
+                    <div class="sbox-4-txt">
+                      <h5 class="h5-sm steelblue-color">Multiple Languages</h5>
+                      <p class="grey-color">
+                        Available for English, French, German, Spanish, Russian,
+                        Italian, Chinese Simplified, Portuguese-Brazilian,
+                        Japanese, Korean. Help translate more by contributing to
+                        the
+                        <a
+                          href="https://crowdin.com/project/polar"
+                          target="_blank"
+                          >Crowdin</a
+                        >
+                        project.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END SERVICES-8 -->
 
-								<!-- Text -->
-								<h5 class="statistic-number steelblue-color">v0.8.1</h5>	
-								<p class="txt-400">c-lightning</p>										
-																		
-							</div>							
-						</div>
-
-
-						<!-- STATISTIC BLOCK #2 -->
-						<div class="col-sm-6 col-md-3">								
-							<div class="statistic-block icon-xs wow fadeInUp" data-wow-delay="0.6s">
-
-								<!-- Icon  -->
-								<img class="img-70" src="images/bw_eclair.png" alt="service-icon" /> 
-
-								<!-- Text -->
-								<h5 class="statistic-number steelblue-color">v0.3.3</h5>	
-								<p class="txt-400">Eclair</p>										
-																		
-							</div>							
-						</div>
-
-
-						<!-- STATISTIC BLOCK #3 -->
-						<div class="col-sm-6 col-md-3">						
-							<div class="statistic-block icon-xs wow fadeInUp" data-wow-delay="0.8s">	
-
-								<!-- Icon  -->
-								<img class="img-70" src="images/bw_bitcoin_core.png" alt="service-icon" /> 
-
-								<!-- Text -->
-								<h5 class="statistic-number steelblue-color">v0.19.1</h5>
-								<p class="txt-400">Bitcoin Core</p>									
-
-							</div>						
-						</div>
-
-
-					</div>  <!-- End row -->
-				</div>	 <!-- End container -->		
-			</div>	 <!-- END STATISTIC-2 -->
-
-
-
-
-			<!-- TESTIMONIALS-2
+      <!-- STATISTIC-2
 			============================================= -->
-			<section id="reviews-2" class="wide-80 reviews-section division">
-				<div class="container">
+      <div id="statistic-2" class="bg-lightgrey statistic-section division">
+        <div class="container">
+          <!-- SECTION TITLE -->
+          <div class="row">
+            <div class="col-lg-10 offset-lg-1 section-title">
+              <!-- Text -->
+              <p class="p-md">
+                Multiple Bitcoin and Lightning nodes can be mixed and matched in
+                a network to simulate many scenarios for testing. Here are the
+                latest versions supported.
+              </p>
+            </div>
+          </div>
 
+          <div class="row">
+            <!-- STATISTIC BLOCK #1 -->
+            <div class="col-sm-6 col-md-3">
+              <div
+                class="statistic-block icon-xs wow fadeInUp"
+                data-wow-delay="0.4s"
+              >
+                <!-- Icon  -->
+                <img
+                  class="img-70"
+                  src="images/bw_lnlabs.png"
+                  alt="service-icon"
+                />
 
-					<!-- SECTION TITLE -->	
-					<div class="row">	
-						<div class="col-lg-10 offset-lg-1 section-title">	
+                <!-- Text -->
+                <h5 class="statistic-number steelblue-color">v0.10.2</h5>
+                <p class="txt-400">LND</p>
+              </div>
+            </div>
 
-							<!-- Title 	-->	
-							<h3 class="h3-md steelblue-color">What Bitcoiners Are Saying</h3>	
+            <!-- STATISTIC BLOCK #2 -->
+            <div class="col-sm-6 col-md-3">
+              <div
+                class="statistic-block icon-xs wow fadeInUp"
+                data-wow-delay="0.6s"
+              >
+                <!-- Icon  -->
+                <img
+                  class="img-70"
+                  src="images/bw_blockstream.png"
+                  alt="service-icon"
+                />
 
-							<!-- Text -->
-							<p class="p-md">
-								Polar has received some great feedback from the community. Here's what some Lightning developers and
-								enthusiasts have to say about it...
-							</p>
-								
-						</div>
-					</div>
-				
-					
-					<!-- TESTIMONIALS CONTENT -->
-					<div class="row">
-						<div class="col-md-12 reviews-grid">
-							<div class="masonry-wrap grid-loaded">
+                <!-- Text -->
+                <h5 class="statistic-number steelblue-color">v0.8.2</h5>
+                <p class="txt-400">c-lightning</p>
+              </div>
+            </div>
 
-								<!-- TESTIMONIAL -->
-								<div class="review-2">
-									<div class="review-txt">
+            <!-- STATISTIC BLOCK #2 -->
+            <div class="col-sm-6 col-md-3">
+              <div
+                class="statistic-block icon-xs wow fadeInUp"
+                data-wow-delay="0.6s"
+              >
+                <!-- Icon  -->
+                <img
+                  class="img-70"
+                  src="images/bw_eclair.png"
+                  alt="service-icon"
+                />
 
-										<!-- Testimonial Author -->
-										<div class="author-data clearfix">
-										
-											<!-- Author Avatar -->
-											<div class="testimonial-avatar">
-												<img src="https://pbs.twimg.com/profile_images/1114329403134230528/V4By18gS_bigger.png" alt="testimonial-avatar">
-											</div>
+                <!-- Text -->
+                <h5 class="statistic-number steelblue-color">v0.3.3</h5>
+                <p class="txt-400">Eclair</p>
+              </div>
+            </div>
 
-											<!-- Author Data -->
-											<div class="review-author">
+            <!-- STATISTIC BLOCK #3 -->
+            <div class="col-sm-6 col-md-3">
+              <div
+                class="statistic-block icon-xs wow fadeInUp"
+                data-wow-delay="0.8s"
+              >
+                <!-- Icon  -->
+                <img
+                  class="img-70"
+                  src="images/bw_bitcoin_core.png"
+                  alt="service-icon"
+                />
 
-												<h5 class="h5-xs">Will O'Beirne</h5>
-												<a target="_blank" href="https://twitter.com/wbobeirne/status/1193967484128370694">@wbobeirne</a>
+                <!-- Text -->
+                <h5 class="statistic-number steelblue-color">v0.20.0</h5>
+                <p class="txt-400">Bitcoin Core</p>
+              </div>
+            </div>
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </div>
+      <!-- END STATISTIC-2 -->
 
-											</div>
-
-										</div>	<!-- End Testimonial Author -->	
-																
-										<!-- Testimonial Text -->
-										<p>
-											Easily the biggest development for Lightning creators yet. If you're looking to build lightning apps or already doing so, Polar is a must have.				   
-										</p>									
-																
-									</div>						
-								</div>	<!--END  TESTIMONIAL -->
-														
-
-								<!-- TESTIMONIAL -->
-								<div class="review-2">
-									<div class="review-txt">
-
-										<!-- Testimonial Author -->
-										<div class="author-data clearfix">
-										
-											<!-- Author Avatar -->
-											<div class="testimonial-avatar">
-												<img src="https://pbs.twimg.com/profile_images/971421270343643136/uRSTcKFQ_bigger.jpg" alt="testimonial-avatar">
-											</div>
-
-											<!-- Author Data -->
-											<div class="review-author">
-
-												<h5 class="h5-xs">Carla Kirk-Cohen</h5>
-												<a target="_blank" href="https://twitter.com/actuallyCarlaKC/status/1194934707663855616">@actuallyCarlaKC</a>
-
-											</div>
-
-										</div>	<!-- End Testimonial Author -->	
-																
-										<!-- Testimonial Text -->
-										<p>
-											@ChaincodeLabs ressie @jamaljsr doing the MOST for LN developers everywhere 👏 
-										</p>									
-										<p>
-											Tools which make it easier to build on Lightning play such an important role in development. I’ve already deleted a few tiresome setup scripts thanks to Polar!				   
-										</p>									
-																
-									</div>						
-								</div>	<!--END  TESTIMONIAL -->
-														
-
-								<!-- TESTIMONIAL -->
-								<div class="review-2">
-									<div class="review-txt">
-
-										<!-- Testimonial Author -->
-										<div class="author-data clearfix">
-										
-											<!-- Author Avatar -->
-											<div class="testimonial-avatar">
-												<img src="https://pbs.twimg.com/profile_images/1149887149183000577/f1UWeILj_bigger.jpg" alt="testimonial-avatar">
-											</div>
-
-											<!-- Author Data -->
-											<div class="review-author">
-
-												<h5 class="h5-xs">Michael Goldstein</h5>
-												<a target="_blank" href="https://twitter.com/bitstein/status/1194017543595409409">@bitstein</a>
-
-											</div>
-
-										</div>	<!-- End Testimonial Author -->	
-																
-										<!-- Testimonial Text -->
-										<p>
-											I've been playing with this a little bit this afternoon. This is incredibly useful!
-										</p>
-										<p>
-											Even if you aren't a developer, this is a great way to dip your toes into the Lightning Network.				   
-										</p>									
-																
-									</div>						
-								</div>	<!--END  TESTIMONIAL -->
-														
-
-								<!-- TESTIMONIAL -->
-								<div class="review-2">
-									<div class="review-txt">
-
-										<!-- Testimonial Author -->
-										<div class="author-data clearfix">
-										
-											<!-- Author Avatar -->
-											<div class="testimonial-avatar">
-												<img src="https://pbs.twimg.com/profile_images/1116560136976261120/MivZW-Ks_bigger.jpg" alt="testimonial-avatar">
-											</div>
-
-											<!-- Author Data -->
-											<div class="review-author">
-
-												<h5 class="h5-xs">Marty Bent</h5>
-												<a target="_blank" href="https://twitter.com/MartyBent/status/1199408250732470272">@MartyBent</a>
-
-											</div>
-
-										</div>	<!-- End Testimonial Author -->	
-																
-										<!-- Testimonial Text -->
-										<p>
-											@jamaljsr built Polar, a tool that devs building on the Lightning Network can use to quickly build and test ideas. 
-											Quicker testing and iterating leads to better, more useful products. Useful products are good. Number go up.				   
-										</p>									
-																
-									</div>						
-								</div>	<!--END  TESTIMONIAL -->
-														
-
-								<!-- TESTIMONIAL -->
-								<div class="review-2">
-									<div class="review-txt">
-
-										<!-- Testimonial Author -->
-										<div class="author-data clearfix">
-										
-											<!-- Author Avatar -->
-											<div class="testimonial-avatar">
-												<img src="https://pbs.twimg.com/profile_images/1008128612380229632/kufWtEDz_bigger.jpg" alt="testimonial-avatar">
-											</div>
-
-											<!-- Author Data -->
-											<div class="review-author">
-
-												<h5 class="h5-xs">Alex Bosworth</h5>
-												<a target="_blank" href="https://twitter.com/alexbosworth/status/1191857708808294401">@alexbosworth</a>
-
-											</div>
-
-										</div>	<!-- End Testimonial Author -->	
-																
-										<!-- Testimonial Text -->
-										<p>
-											Pretty cool tool for deploying LND and RegTest nodes if you haven't seen it: https://github.com/jamaljsr/polar
-										</p>									
-										<p>
-											I personally spend a lot of time spinning up mini networks of RegTest nodes backing up LNDs in varied configurations in order to play out various scenarios for testing purposes.															   															   
-										</p>									
-																
-									</div>						
-								</div>	<!--END  TESTIMONIAL -->
-														
-
-								<!-- TESTIMONIAL -->
-								<div class="review-2">
-									<div class="review-txt">
-
-										<!-- Testimonial Author -->
-										<div class="author-data clearfix">
-										
-											<!-- Author Avatar -->
-											<div class="testimonial-avatar">
-												<img src="https://pbs.twimg.com/profile_images/1117790890850967558/NY3DcZht_bigger.png" alt="testimonial-avatar">
-											</div>
-
-											<!-- Author Data -->
-											<div class="review-author">
-
-												<h5 class="h5-xs">Satsie</h5>
-												<a target="_blank" href="https://twitter.com/StacieWaleyko/status/1216128058324856839">@StacieWaleyko</a>
-
-											</div>
-
-										</div>	<!-- End Testimonial Author -->	
-																
-										<!-- Testimonial Text -->
-										<p>
-											For developers looking to create comprehensive test environments, i was really impressed with Polar by 
-											@jamaljsr (https://github.com/jamaljsr/polar link includes a short video). Also from a technical 
-											standpoint it’s fantastic - 100% code cov, international support out of the gate, etc.				   
-										</p>									
-																
-									</div>						
-								</div>	<!--END  TESTIMONIAL -->
-														
-
-								<!-- TESTIMONIAL -->
-								<div class="review-2">
-									<div class="review-txt">
-
-										<!-- Testimonial Author -->
-										<div class="author-data clearfix">
-										
-											<!-- Author Avatar -->
-											<div class="testimonial-avatar">
-												<img src="https://pbs.twimg.com/profile_images/1093024199860502528/2B89K-tS_bigger.jpg" alt="testimonial-avatar">
-											</div>
-
-											<!-- Author Data -->
-											<div class="review-author">
-
-												<h5 class="h5-xs">Evan Kaloudis</h5>
-												<a target="_blank" href="https://twitter.com/evankaloudis/status/1216861835405729792">@evankaloudis</a>
-
-											</div>
-
-										</div>	<!-- End Testimonial Author -->	
-																
-										<!-- Testimonial Text -->
-										<p>
-											Interested in building apps on lightning? Check out @jamaljsr's Polar. No more command line headaches, 
-											just point and click and you have a virtual network of nodes in minutes. Been using it to iron out 
-											the upcoming Zeus release. I absolutely love it. 				   
-										</p>									
-																
-									</div>						
-								</div>	<!--END  TESTIMONIAL -->
-														
-
-								<!-- TESTIMONIAL -->
-								<div class="review-2">
-									<div class="review-txt">
-
-										<!-- Testimonial Author -->
-										<div class="author-data clearfix">
-										
-											<!-- Author Avatar -->
-											<div class="testimonial-avatar">
-												<img src="https://pbs.twimg.com/profile_images/1205675240828919810/gedYpN9f_bigger.jpg" alt="testimonial-avatar">
-											</div>
-
-											<!-- Author Data -->
-											<div class="review-author">
-
-												<h5 class="h5-xs">Francisco Calderón ⚡ </h5>
-												<a target="_blank" href="https://twitter.com/negrunch/status/1202720706976452611">@negrunch</a>
-
-											</div>
-
-										</div>	<!-- End Testimonial Author -->	
-																
-										<!-- Testimonial Text -->
-										<p>
-											I just tried polar and I can say It's awesome, it saves a lot of time in configuration at the moment of start a new #LightningNetwork project.
-										</p>									
-										<p>
-											great work!														   														   
-										</p>									
-																
-									</div>						
-								</div>	<!--END  TESTIMONIAL -->
-														
-
-								<!-- TESTIMONIAL -->
-								<div class="review-2">
-									<div class="review-txt">
-
-										<!-- Testimonial Author -->
-										<div class="author-data clearfix">
-										
-											<!-- Author Avatar -->
-											<div class="testimonial-avatar">
-												<img src="https://pbs.twimg.com/profile_images/1219044581049819141/-QSe85yF_bigger.jpg" alt="testimonial-avatar">
-											</div>
-
-											<!-- Author Data -->
-											<div class="review-author">
-
-												<h5 class="h5-xs">Ivan 🔑</h5>
-												<a target="_blank" href="https://twitter.com/ivanacostarubio/status/1218606797679972353">@ivanacostarubio</a>
-
-											</div>
-
-										</div>	<!-- End Testimonial Author -->	
-																
-										<!-- Testimonial Text -->
-										<p>
-											Polar by @jamaljsr is a game changer for lightning developers.    
-											Just tried it and made my life better. Saved a lot of time. 
-										</p>									
-										<p>
-											Highly recommended.															   
-										</p>									
-																
-									</div>						
-								</div>	<!--END  TESTIMONIAL -->
-														
-							
-							</div>
-						</div>									
-					</div>	<!-- END TESTIMONIALS CONTENT --> 
-							
-						
-				</div>	   <!-- End container -->
-			</section>	 <!-- END TESTIMONIALS-2 -->
-
-
-
-
-			<!-- FAQs-2
+      <!-- TESTIMONIALS-2
 			============================================= -->
-			<section id="faqs-2" class="bg-lightgrey wide-100 faqs-section division">				
-				<div class="container">
+      <section id="reviews-2" class="wide-80 reviews-section division">
+        <div class="container">
+          <!-- SECTION TITLE -->
+          <div class="row">
+            <div class="col-lg-10 offset-lg-1 section-title">
+              <!-- Title 	-->
+              <h3 class="h3-md steelblue-color">What Bitcoiners Are Saying</h3>
 
+              <!-- Text -->
+              <p class="p-md">
+                Polar has received some great feedback from the community.
+                Here's what some Lightning developers and enthusiasts have to
+                say about it...
+              </p>
+            </div>
+          </div>
 
-					<!-- SECTION TITLE -->	
-					<div class="row">	
-						<div class="col-lg-10 offset-lg-1 section-title">	
+          <!-- TESTIMONIALS CONTENT -->
+          <div class="row">
+            <div class="col-md-12 reviews-grid">
+              <div class="masonry-wrap grid-loaded">
+                <!-- TESTIMONIAL -->
+                <div class="review-2">
+                  <div class="review-txt">
+                    <!-- Testimonial Author -->
+                    <div class="author-data clearfix">
+                      <!-- Author Avatar -->
+                      <div class="testimonial-avatar">
+                        <img
+                          src="images/twitter/wbobeirne.png"
+                          alt="testimonial-avatar"
+                        />
+                      </div>
 
-							<!-- Title 	-->	
-							<h3 class="h3-md steelblue-color">Frequently Asked Questions</h3>	
+                      <!-- Author Data -->
+                      <div class="review-author">
+                        <h5 class="h5-xs">Will O'Beirne</h5>
+                        <a
+                          target="_blank"
+                          href="https://twitter.com/wbobeirne/status/1193967484128370694"
+                          >@wbobeirne</a
+                        >
+                      </div>
+                    </div>
+                    <!-- End Testimonial Author -->
 
-							<!-- Text -->
-							<p class="p-md">
-								Answers to commonly asked questions, which will likely lead to them being asked a bit less frequently. Interesting...
-							</p>
-								
-						</div>
-					</div>
+                    <!-- Testimonial Text -->
+                    <p>
+                      Easily the biggest development for Lightning creators yet.
+                      If you're looking to build lightning apps or already doing
+                      so, Polar is a must have.
+                    </p>
+                  </div>
+                </div>
+                <!--END  TESTIMONIAL -->
 
+                <!-- TESTIMONIAL -->
+                <div class="review-2">
+                  <div class="review-txt">
+                    <!-- Testimonial Author -->
+                    <div class="author-data clearfix">
+                      <!-- Author Avatar -->
+                      <div class="testimonial-avatar">
+                        <img
+                          src="images/twitter/actuallyCarlaKC.jpg"
+                          alt="testimonial-avatar"
+                        />
+                      </div>
 
-					<div class="row">
-						
+                      <!-- Author Data -->
+                      <div class="review-author">
+                        <h5 class="h5-xs">Carla Kirk-Cohen</h5>
+                        <a
+                          target="_blank"
+                          href="https://twitter.com/actuallyCarlaKC/status/1194934707663855616"
+                          >@actuallyCarlaKC</a
+                        >
+                      </div>
+                    </div>
+                    <!-- End Testimonial Author -->
 
-						<!-- QUESTIONS HOLDER -->
-						<div class="col-lg-6">
-							<div class="questions-holder">
+                    <!-- Testimonial Text -->
+                    <p>
+                      @ChaincodeLabs ressie @jamaljsr doing the MOST for LN
+                      developers everywhere 👏
+                    </p>
+                    <p>
+                      Tools which make it easier to build on Lightning play such
+                      an important role in development. I’ve already deleted a
+                      few tiresome setup scripts thanks to Polar!
+                    </p>
+                  </div>
+                </div>
+                <!--END  TESTIMONIAL -->
 
+                <!-- TESTIMONIAL -->
+                <div class="review-2">
+                  <div class="review-txt">
+                    <!-- Testimonial Author -->
+                    <div class="author-data clearfix">
+                      <!-- Author Avatar -->
+                      <div class="testimonial-avatar">
+                        <img
+                          src="images/twitter/bitstein.jpg"
+                          alt="testimonial-avatar"
+                        />
+                      </div>
 
-								<!-- QUESTION #1 -->
-								<div class="question wow fadeInUp" data-wow-delay="0.4s">
+                      <!-- Author Data -->
+                      <div class="review-author">
+                        <h5 class="h5-xs">Michael Goldstein</h5>
+                        <a
+                          target="_blank"
+                          href="https://twitter.com/bitstein/status/1194017543595409409"
+                          >@bitstein</a
+                        >
+                      </div>
+                    </div>
+                    <!-- End Testimonial Author -->
 
-									<!-- Question -->
-									<h5 class="h5-xs steelblue-color">How much does it cost?</h5>
+                    <!-- Testimonial Text -->
+                    <p>
+                      I've been playing with this a little bit this afternoon.
+                      This is incredibly useful!
+                    </p>
+                    <p>
+                      Even if you aren't a developer, this is a great way to dip
+                      your toes into the Lightning Network.
+                    </p>
+                  </div>
+                </div>
+                <!--END  TESTIMONIAL -->
 
-									<!-- Answer -->
-									<p>
-										Polar is open source and 100% free. Sorry, but you're going to have to spend your
-										stacked sats somewhere else.
-									</p>
+                <!-- TESTIMONIAL -->
+                <div class="review-2">
+                  <div class="review-txt">
+                    <!-- Testimonial Author -->
+                    <div class="author-data clearfix">
+                      <!-- Author Avatar -->
+                      <div class="testimonial-avatar">
+                        <img
+                          src="images/twitter/MartyBent.jpg"
+                          alt="testimonial-avatar"
+                        />
+                      </div>
 
-								</div>
+                      <!-- Author Data -->
+                      <div class="review-author">
+                        <h5 class="h5-xs">Marty Bent</h5>
+                        <a
+                          target="_blank"
+                          href="https://twitter.com/MartyBent/status/1199408250732470272"
+                          >@MartyBent</a
+                        >
+                      </div>
+                    </div>
+                    <!-- End Testimonial Author -->
 
-										
-								<!-- QUESTION #3 -->
-								<div class="question wow fadeInUp" data-wow-delay="0.8s">
+                    <!-- Testimonial Text -->
+                    <p>
+                      @jamaljsr built Polar, a tool that devs building on the
+                      Lightning Network can use to quickly build and test ideas.
+                      Quicker testing and iterating leads to better, more useful
+                      products. Useful products are good. Number go up.
+                    </p>
+                  </div>
+                </div>
+                <!--END  TESTIMONIAL -->
 
-									<!-- Question -->
-									<h5 class="h5-xs steelblue-color">What information do you collect?</h5>
+                <!-- TESTIMONIAL -->
+                <div class="review-2">
+                  <div class="review-txt">
+                    <!-- Testimonial Author -->
+                    <div class="author-data clearfix">
+                      <!-- Author Avatar -->
+                      <div class="testimonial-avatar">
+                        <img
+                          src="images/twitter/alexbosworth.jpg"
+                          alt="testimonial-avatar"
+                        />
+                      </div>
 
-									<!-- Answer -->
-									<p>
-										We do not collect any usage or analytics information when you view this website or use
-										Polar on your computer. While it would be really helpful to understand how you are using
-										the app, your privacy is far more important.
-									</p>									
+                      <!-- Author Data -->
+                      <div class="review-author">
+                        <h5 class="h5-xs">Alex Bosworth</h5>
+                        <a
+                          target="_blank"
+                          href="https://twitter.com/alexbosworth/status/1191857708808294401"
+                          >@alexbosworth</a
+                        >
+                      </div>
+                    </div>
+                    <!-- End Testimonial Author -->
 
-								</div>	
+                    <!-- Testimonial Text -->
+                    <p>
+                      Pretty cool tool for deploying LND and RegTest nodes if
+                      you haven't seen it: https://github.com/jamaljsr/polar
+                    </p>
+                    <p>
+                      I personally spend a lot of time spinning up mini networks
+                      of RegTest nodes backing up LNDs in varied configurations
+                      in order to play out various scenarios for testing
+                      purposes.
+                    </p>
+                  </div>
+                </div>
+                <!--END  TESTIMONIAL -->
 
+                <!-- TESTIMONIAL -->
+                <div class="review-2">
+                  <div class="review-txt">
+                    <!-- Testimonial Author -->
+                    <div class="author-data clearfix">
+                      <!-- Author Avatar -->
+                      <div class="testimonial-avatar">
+                        <img
+                          src="images/twitter/satsie_.png"
+                          alt="testimonial-avatar"
+                        />
+                      </div>
 
-								<!-- QUESTION #4 -->
-								<div class="question wow fadeInUp" data-wow-delay="0.4s">
+                      <!-- Author Data -->
+                      <div class="review-author">
+                        <h5 class="h5-xs">Stacie</h5>
+                        <a
+                          target="_blank"
+                          href="https://twitter.com/satsie_/status/1216128058324856839"
+                          >@satsie_</a
+                        >
+                      </div>
+                    </div>
+                    <!-- End Testimonial Author -->
 
-									<!-- Question -->
-									<h5 class="h5-xs steelblue-color">What are the system requirements?</h5>
+                    <!-- Testimonial Text -->
+                    <p>
+                      For developers looking to create comprehensive test
+                      environments, i was really impressed with Polar by
+                      @jamaljsr (https://github.com/jamaljsr/polar link includes
+                      a short video). Also from a technical standpoint it’s
+                      fantastic - 100% code cov, international support out of
+                      the gate, etc.
+                    </p>
+                  </div>
+                </div>
+                <!--END  TESTIMONIAL -->
 
+                <!-- TESTIMONIAL -->
+                <div class="review-2">
+                  <div class="review-txt">
+                    <!-- Testimonial Author -->
+                    <div class="author-data clearfix">
+                      <!-- Author Avatar -->
+                      <div class="testimonial-avatar">
+                        <img
+                          src="images/twitter/evankaloudis.jpg"
+                          alt="testimonial-avatar"
+                        />
+                      </div>
 
-									<!-- Answer -->
-									<ul class="content-list mb-35">
-										<li>
-											Polar is actively tested on Mac OS Catalina, Windows 10 and Linux (Ubuntu &amp; Arch). While other platforms
-											are not being tested regularly, it should run where ever Electron and Docker are supported. 
-										</li>
-										<li>
-											<strong>Docker</strong> and <strong>Docker Compose</strong> are required to run the network nodes.
-											On Mac and Windows, you can just install <a target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>. 
-											On Linux, you need to install <a target="_blank" href="https://docs.docker.com/install/#server">Docker Server</a> and 
-											<a target="_blank" href="https://docs.docker.com/compose/install/">Docker Compose</a>
-										</li>
+                      <!-- Author Data -->
+                      <div class="review-author">
+                        <h5 class="h5-xs">Evan Kaloudis</h5>
+                        <a
+                          target="_blank"
+                          href="https://twitter.com/evankaloudis/status/1216861835405729792"
+                          >@evankaloudis</a
+                        >
+                      </div>
+                    </div>
+                    <!-- End Testimonial Author -->
 
-									</ul>
+                    <!-- Testimonial Text -->
+                    <p>
+                      Interested in building apps on lightning? Check out
+                      @jamaljsr's Polar. No more command line headaches, just
+                      point and click and you have a virtual network of nodes in
+                      minutes. Been using it to iron out the upcoming Zeus
+                      release. I absolutely love it.
+                    </p>
+                  </div>
+                </div>
+                <!--END  TESTIMONIAL -->
 
-								</div>	
+                <!-- TESTIMONIAL -->
+                <div class="review-2">
+                  <div class="review-txt">
+                    <!-- Testimonial Author -->
+                    <div class="author-data clearfix">
+                      <!-- Author Avatar -->
+                      <div class="testimonial-avatar">
+                        <img
+                          src="images/twitter/negrunch.jpg"
+                          alt="testimonial-avatar"
+                        />
+                      </div>
 
+                      <!-- Author Data -->
+                      <div class="review-author">
+                        <h5 class="h5-xs">Francisco Calderón ⚡</h5>
+                        <a
+                          target="_blank"
+                          href="https://twitter.com/negrunch/status/1202720706976452611"
+                          >@negrunch</a
+                        >
+                      </div>
+                    </div>
+                    <!-- End Testimonial Author -->
 
-							</div>
-						</div>	<!-- END QUESTIONS HOLDER -->
+                    <!-- Testimonial Text -->
+                    <p>
+                      I just tried polar and I can say It's awesome, it saves a
+                      lot of time in configuration at the moment of start a new
+                      #LightningNetwork project.
+                    </p>
+                    <p>
+                      great work!
+                    </p>
+                  </div>
+                </div>
+                <!--END  TESTIMONIAL -->
 
+                <!-- TESTIMONIAL -->
+                <div class="review-2">
+                  <div class="review-txt">
+                    <!-- Testimonial Author -->
+                    <div class="author-data clearfix">
+                      <!-- Author Avatar -->
+                      <div class="testimonial-avatar">
+                        <img
+                          src="images/twitter/ivanacostarubio.jpg"
+                          alt="testimonial-avatar"
+                        />
+                      </div>
 
-						<!-- QUESTIONS HOLDER -->
-						<div class="col-lg-6">
-							<div class="questions-holder ind-30">
+                      <!-- Author Data -->
+                      <div class="review-author">
+                        <h5 class="h5-xs">Ivan 🔑</h5>
+                        <a
+                          target="_blank"
+                          href="https://twitter.com/ivanacostarubio/status/1218606797679972353"
+                          >@ivanacostarubio</a
+                        >
+                      </div>
+                    </div>
+                    <!-- End Testimonial Author -->
 
+                    <!-- Testimonial Text -->
+                    <p>
+                      Polar by @jamaljsr is a game changer for lightning
+                      developers. Just tried it and made my life better. Saved a
+                      lot of time.
+                    </p>
+                    <p>
+                      Highly recommended.
+                    </p>
+                  </div>
+                </div>
+                <!--END  TESTIMONIAL -->
+              </div>
+            </div>
+          </div>
+          <!-- END TESTIMONIALS CONTENT -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END TESTIMONIALS-2 -->
 
-								<!-- QUESTION #2 -->					
-								<div class="question wow fadeInUp" data-wow-delay="0.6s">
-
-									<!-- Question -->
-									<h5 class="h5-xs steelblue-color">Can I use it on mainnet or testnet?</h5>
-
-									<!-- Answer -->
-									<p>
-										Unfortunately, Polar was built to improve the experience of developers building applications
-										for Lightning and Bitcoin. To obtain the immediate feedback loop necessary to be productive,
-										you'll need to be able to mine blocks as fast as possible. Waiting 10 minutes for
-										your channel to open just won't cut it.
-									</p>
-
-								</div>
-
-							
-								<!-- QUESTION #5 -->
-								<div class="question wow fadeInUp" data-wow-delay="0.6s">
-
-									<!-- Question -->
-									<h5 class="h5-xs steelblue-color">Which Lightning and Bitcoin nodes are supported?</h5>
-
-									<!-- Answer -->
-									<p>
-										The goal is to support the node implementations most commonly used by application developers
-										building on Lightning. We will attempt to support the latest 3 versions of each implementation 
-										to allow developers to continue to test their apps on older versions.
-									</p>
-
-								</div>
-
-
-								<!-- QUESTION #6 -->
-								<div class="question wow fadeInUp" data-wow-delay="0.8s">
-
-									<!-- Question -->
-									<h5 class="h5-xs steelblue-color">Can I contribute to the project?</h5>
-
-									<!-- Answer -->
-									<ul class="content-list mb-35">
-										<li>
-											If you use Polar to develop on Lightning, then any feedback you have would be greatly appreciated. 
-										</li>
-										<li>
-											If you develop apps on Lightning and do not use Polar, then we'd love to know why it doesn't work for you.
-										</li>
-										<li>
-											If you know Typescript, React, Electron or Docker, then Pull Requests are a great way to give back. 
-										</li>
-									</ul>
-
-								</div>	
-
-
-							</div>
-						</div>	<!-- END  QUESTIONS HOLDER -->
-
-
-					</div>	<!-- End row -->		
-
-
-				</div>	   <!-- End container -->		
-			</section>	<!-- END FAQs-2 -->
-
-			
-
-
-			<!-- CALL TO ACTION-1
+      <!-- FAQs-2
 			============================================= -->
-			<section id="cta-1" class="blue-textured cta-section division">
-				<div class="container white-color">
-					<div class="row d-flex align-items-center">
-					
+      <section id="faqs-2" class="bg-lightgrey wide-100 faqs-section division">
+        <div class="container">
+          <!-- SECTION TITLE -->
+          <div class="row">
+            <div class="col-lg-10 offset-lg-1 section-title">
+              <!-- Title 	-->
+              <h3 class="h3-md steelblue-color">Frequently Asked Questions</h3>
 
-						<!-- CALL TO ACTION TEXT -->
-						<div class="col-lg-7 col-xl-6">
-							<div class="cta-txt">
+              <!-- Text -->
+              <p class="p-md">
+                Answers to commonly asked questions, which will likely lead to
+                them being asked a bit less frequently. Interesting...
+              </p>
+            </div>
+          </div>
 
-								<!-- Title -->	
-								<h4 class="h4-xl">Still have a question?</h4>
+          <div class="row">
+            <!-- QUESTIONS HOLDER -->
+            <div class="col-lg-6">
+              <div class="questions-holder">
+                <!-- QUESTION #1 -->
+                <div class="question wow fadeInUp" data-wow-delay="0.4s">
+                  <!-- Question -->
+                  <h5 class="h5-xs steelblue-color">How much does it cost?</h5>
 
-								<!-- Text -->
-								<p class="p-md">
-									Please head on over to the project's GitHub repo to let us know what's on your mind. 
-								</p>
+                  <!-- Answer -->
+                  <p>
+                    Polar is open source and 100% free. Sorry, but you're going
+                    to have to spend your stacked sats somewhere else.
+                  </p>
+                </div>
 
-							</div>
-						</div>
+                <!-- QUESTION #3 -->
+                <div class="question wow fadeInUp" data-wow-delay="0.8s">
+                  <!-- Question -->
+                  <h5 class="h5-xs steelblue-color">
+                    What information do you collect?
+                  </h5>
 
+                  <!-- Answer -->
+                  <p>
+                    We do not collect any usage or analytics information when
+                    you view this website or use Polar on your computer. While
+                    it would be really helpful to understand how you are using
+                    the app, your privacy is far more important.
+                  </p>
+                </div>
 
-						<!-- CALL TO ACTION BUTTON -->
-						<div class="col-lg-3 col-xl-3 offset-lg-2 offset-xl-3">
-							<div class="cta-btn text-right">
-								<a href="https://github.com/jamaljsr/polar/issues" class="btn btn-primary-color tra-hover">
-									<i class="fab fa-github"></i>
-									Open an Issue
-								</a>
-							</div>
-						</div>	
+                <!-- QUESTION #4 -->
+                <div class="question wow fadeInUp" data-wow-delay="0.4s">
+                  <!-- Question -->
+                  <h5 class="h5-xs steelblue-color">
+                    What are the system requirements?
+                  </h5>
 
+                  <!-- Answer -->
+                  <ul class="content-list mb-35">
+                    <li>
+                      Polar is actively tested on Mac OS Catalina, Windows 10
+                      and Linux (Ubuntu &amp; Arch). While other platforms are
+                      not being tested regularly, it should run where ever
+                      Electron and Docker are supported.
+                    </li>
+                    <li>
+                      <strong>Docker</strong> and
+                      <strong>Docker Compose</strong> are required to run the
+                      network nodes. On Mac and Windows, you can just install
+                      <a
+                        target="_blank"
+                        href="https://www.docker.com/products/docker-desktop"
+                        >Docker Desktop</a
+                      >. On Linux, you need to install
+                      <a
+                        target="_blank"
+                        href="https://docs.docker.com/install/#server"
+                        >Docker Server</a
+                      >
+                      and
+                      <a
+                        target="_blank"
+                        href="https://docs.docker.com/compose/install/"
+                        >Docker Compose</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- END QUESTIONS HOLDER -->
 
-					</div>	 <!-- End row -->
-				</div>	   <!-- End container -->	
-			</section>	<!-- END CALL TO ACTION-1 -->
+            <!-- QUESTIONS HOLDER -->
+            <div class="col-lg-6">
+              <div class="questions-holder ind-30">
+                <!-- QUESTION #2 -->
+                <div class="question wow fadeInUp" data-wow-delay="0.6s">
+                  <!-- Question -->
+                  <h5 class="h5-xs steelblue-color">
+                    Can I use it on mainnet or testnet?
+                  </h5>
 
+                  <!-- Answer -->
+                  <p>
+                    Unfortunately, Polar was built to improve the experience of
+                    developers building applications for Lightning and Bitcoin.
+                    To obtain the immediate feedback loop necessary to be
+                    productive, you'll need to be able to mine blocks as fast as
+                    possible. Waiting 10 minutes for your channel to open just
+                    won't cut it.
+                  </p>
+                </div>
 
+                <!-- QUESTION #5 -->
+                <div class="question wow fadeInUp" data-wow-delay="0.6s">
+                  <!-- Question -->
+                  <h5 class="h5-xs steelblue-color">
+                    Which Lightning and Bitcoin nodes are supported?
+                  </h5>
 
-			
-			<!-- FOOTER-4
+                  <!-- Answer -->
+                  <p>
+                    The goal is to support the node implementations most
+                    commonly used by application developers building on
+                    Lightning. We will attempt to support the latest 3 versions
+                    of each implementation to allow developers to continue to
+                    test their apps on older versions.
+                  </p>
+                </div>
+
+                <!-- QUESTION #6 -->
+                <div class="question wow fadeInUp" data-wow-delay="0.8s">
+                  <!-- Question -->
+                  <h5 class="h5-xs steelblue-color">
+                    Can I contribute to the project?
+                  </h5>
+
+                  <!-- Answer -->
+                  <ul class="content-list mb-35">
+                    <li>
+                      If you use Polar to develop on Lightning, then any
+                      feedback you have would be greatly appreciated.
+                    </li>
+                    <li>
+                      If you develop apps on Lightning and do not use Polar,
+                      then we'd love to know why it doesn't work for you.
+                    </li>
+                    <li>
+                      If you know Typescript, React, Electron or Docker, then
+                      Pull Requests are a great way to give back.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- END  QUESTIONS HOLDER -->
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END FAQs-2 -->
+
+      <!-- CALL TO ACTION-1
 			============================================= -->
-			<footer id="footer-4" class="wide-40 footer division">
-				<div class="container">
+      <section id="cta-1" class="blue-textured cta-section division">
+        <div class="container white-color">
+          <div class="row d-flex align-items-center">
+            <!-- CALL TO ACTION TEXT -->
+            <div class="col-lg-7 col-xl-6">
+              <div class="cta-txt">
+                <!-- Title -->
+                <h4 class="h4-xl">Still have a question?</h4>
 
+                <!-- Text -->
+                <p class="p-md">
+                  Please head on over to the project's GitHub repo to let us
+                  know what's on your mind.
+                </p>
+              </div>
+            </div>
 
-					<!-- FOOTER CONTENT -->
-					<div class="row">
+            <!-- CALL TO ACTION BUTTON -->
+            <div class="col-lg-3 col-xl-3 offset-lg-2 offset-xl-3">
+              <div class="cta-btn text-right">
+                <a
+                  href="https://github.com/jamaljsr/polar/issues"
+                  class="btn btn-primary-color tra-hover"
+                >
+                  <i class="fab fa-github"></i>
+                  Open an Issue
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END CALL TO ACTION-1 -->
 
+      <!-- FOOTER-4
+			============================================= -->
+      <footer id="footer-4" class="wide-40 footer division">
+        <div class="container">
+          <!-- FOOTER CONTENT -->
+          <div class="row">
+            <!-- FOOTER INFO -->
+            <div class="col-md-4 col-lg-4 col-xl-4">
+              <div class="footer-info mb-40">
+                <!-- Footer Logo -->
+                <!-- For Retina Ready displays take a image with double the amount of pixels that your image will be displayed (e.g 350 x 70  pixels) -->
+                <img
+                  src="images/logo.png"
+                  width="120"
+                  height="30"
+                  alt="footer-logo"
+                />
 
-						<!-- FOOTER INFO -->
-						<div class="col-md-4 col-lg-4 col-xl-4">
-							<div class="footer-info mb-40">
+                <!-- Email -->
+                <p class="foo-email">
+                  <i class="fas fa-envelope"></i>
+                  <a href="mailto:contact@lightningpolar.com"
+                    >contact@lightningpolar.com</a
+                  >
+                </p>
 
-								<!-- Footer Logo -->
-								<!-- For Retina Ready displays take a image with double the amount of pixels that your image will be displayed (e.g 350 x 70  pixels) -->
-								<img src="images/logo.png" width="120" height="30" alt="footer-logo">
+                <!-- Social Icons -->
+                <div class="footer-socials-links mt-20">
+                  <ul class="foo-socials text-center clearfix">
+                    <li>
+                      <a
+                        href="https://github.com/jamaljsr/polar"
+                        class="ico-github"
+                        ><i class="fab fa-github"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://twitter.com/jamaljsr" class="ico-twitter"
+                        ><i class="fab fa-twitter"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- END FOOTER INFO -->
 
-								<!-- Email -->
-								<p class="foo-email">
-									<i class="fas fa-envelope"></i>
-									<a href="mailto:contact@lightningpolar.com">contact@lightningpolar.com</a>
-								</p>
+            <!-- FOOTER PRODUCTS LINKS -->
+            <div class="col-md-1 col-lg-2 col-xl-2 offset-lg-1 offset-xl-2">
+              <div class="footer-links mb-40"></div>
+            </div>
 
-								<!-- Social Icons -->
-								<div class="footer-socials-links mt-20">
-									<ul class="foo-socials text-center clearfix">
+            <!-- FOOTER COMPANY LINKS -->
+            <div class="col-md-3 col-lg-2 col-xl-2">
+              <div class="footer-links mb-40">
+                <!-- Title -->
+                <h5 class="h5-sm">Navigation</h5>
 
-										<li><a href="https://github.com/jamaljsr/polar" class="ico-github"><i class="fab fa-github"></i></a></li>
-										<li><a href="https://twitter.com/jamaljsr" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>	
+                <!-- Footer Links -->
+                <ul class="clearfix">
+                  <li><a href="#hero-2">Home</a></li>
+                  <li><a href="#services-1">Benefits</a></li>
+                  <li><a href="#content-1">Features</a></li>
+                  <li><a href="#reviews-2">Reviews</a></li>
+                  <li><a href="#faqs-2">FAQs</a></li>
+                </ul>
+              </div>
+            </div>
 
-									</ul>									
-								</div>	
-							
-							</div>	
-						</div>	<!-- END FOOTER INFO -->		
+            <!-- FOOTER -->
+            <div class="col-md-4 col-lg-3 col-xl-2">
+              <div class="footer-links mb-20">
+                <!-- Title -->
+                <h5 class="h5-sm">Get The App</h5>
 
+                <a class="btn btn-black tra-black-hover dl-apple" href="#">
+                  <i class="fab fa-apple"></i>
+                  Mac
+                </a>
 
-						<!-- FOOTER PRODUCTS LINKS -->
-						<div class="col-md-1 col-lg-2 col-xl-2 offset-lg-1 offset-xl-2">
-							<div class="footer-links mb-40">
-							</div>
-						</div>
+                <a class="btn btn-black tra-black-hover dl-linux" href="#">
+                  <i class="fab fa-linux"></i>
+                  Linux
+                </a>
 
+                <a class="btn btn-black tra-black-hover dl-windows" href="#">
+                  <i class="fab fa-windows"></i>
+                  Windows
+                </a>
 
-						<!-- FOOTER COMPANY LINKS -->
-						<div class="col-md-3 col-lg-2 col-xl-2">
-							<div class="footer-links mb-40">
-							
-								<!-- Title -->
-								<h5 class="h5-sm">Navigation</h5>
-
-								<!-- Footer Links -->
-								<ul class="clearfix">
-									<li><a href="#hero-2">Home</a></li>
-									<li><a href="#services-1">Benefits</a></li>
-									<li><a href="#content-1">Features</a></li>
-									<li><a href="#reviews-2">Reviews</a></li>
-									<li><a href="#faqs-2">FAQs</a></li>
-								</ul>
-
-							</div>
-						</div>
-
-
-						<!-- FOOTER -->
-						<div class="col-md-4 col-lg-3 col-xl-2">
-							<div class="footer-links mb-20">
-
-								<!-- Title -->
-								<h5 class="h5-sm">Get The App</h5>
-
-								<a class="btn btn-black tra-black-hover dl-apple" href="#">
-									<i class="fab fa-apple"></i>
-									Mac
-								</a>												
-
-								<a class="btn btn-black tra-black-hover dl-linux" href="#">
-									<i class="fab fa-linux"></i>
-									Linux
-								</a>												
-
-								<a class="btn btn-black tra-black-hover dl-windows" href="#">
-									<i class="fab fa-windows"></i>
-									Windows
-								</a>												
-
-								<!-- Aamazon Market 
+                <!-- Aamazon Market 
 								<a href="#" class="store">
 									<img class="amazon-original" src="images/store_badges/amazon.png"" alt="amazon-logo" />
 								</a>  -->
-																					
-								<!-- Windows Market  
+
+                <!-- Windows Market  
 								<a href="#" class="store">
 									<img class="windows-original" src="images/store_badges/windows.png" alt="windows-logo" />
 								</a> -->
-														
-							</div>
-						</div>	<!-- END FOOTER NEWSLETTER FORM -->
+              </div>
+            </div>
+            <!-- END FOOTER NEWSLETTER FORM -->
+          </div>
+          <!-- END FOOTER CONTENT -->
 
+          <!-- FOOTER COPYRIGHT -->
+          <div class="bottom-footer">
+            <div class="row">
+              <div class="col-md-12">
+                <p class="footer-copyright">
+                  &copy; <span>2020</span> <span>Polar</span>. All Rights
+                  Reserved
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End container -->
+      </footer>
+      <!-- END FOOTER-4 -->
+    </div>
+    <!-- END PAGE CONTENT -->
 
-					</div>	  <!-- END FOOTER CONTENT -->
+    <!-- EXTERNAL SCRIPTS
+		============================================= -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/jquery.easing.js"></script>
+    <script src="js/jquery.appear.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.scrollto.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/hero-form.js"></script>
+    <script src="js/register-form.js"></script>
+    <script src="js/contact-form.js"></script>
+    <script src="js/quick-form.js"></script>
+    <script src="js/comment-form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/wow.js"></script>
 
+    <!-- Custom Script -->
+    <script src="js/custom.js?v1.0.0"></script>
 
-					<!-- FOOTER COPYRIGHT -->
-					<div class="bottom-footer">
-						<div class="row">
-							<div class="col-md-12">
-								<p class="footer-copyright">&copy; <span>2020</span> <span>Polar</span>. All Rights Reserved</p>
-							</div>
-						</div>
-					</div>
+    <script>
+      new WOW().init();
+    </script>
 
-
-				</div>	   <!-- End container -->										
-			</footer>	<!-- END FOOTER-4 -->	
-
-
-
-
-		</div>	<!-- END PAGE CONTENT -->
-
-
-
-
-		<!-- EXTERNAL SCRIPTS
-		============================================= -->	
-		<script src="js/jquery-3.3.1.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>	
-		<script src="js/modernizr.custom.js"></script>
-		<script src="js/jquery.easing.js"></script>
-		<script src="js/jquery.appear.js"></script>
-		<script src="js/jquery.stellar.min.js"></script>	
-		<script src="js/jquery.scrollto.js"></script>
-		<script src="js/owl.carousel.min.js"></script>
-		<script src="js/jquery.magnific-popup.min.js"></script>	
-		<script src="js/imagesloaded.pkgd.min.js"></script>
-		<script src="js/isotope.pkgd.min.js"></script>
-		<script src="js/hero-form.js"></script>
-		<script src="js/register-form.js"></script>
-		<script src="js/contact-form.js"></script>
-		<script src="js/quick-form.js"></script>
-		<script src="js/comment-form.js"></script>
-		<script src="js/jquery.validate.min.js"></script>
-		<script src="js/jquery.ajaxchimp.min.js"></script>	
-		<script src="js/wow.js"></script>	
-	
-		<!-- Custom Script -->		
-		<script src="js/custom.js?v1.0.0"></script>
-
-		<script>
-			new WOW().init();
-		</script>	
-
-		<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-		<!-- [if lt IE 9]>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!-- [if lt IE 9]>
 			<script src="js/html5shiv.js" type="text/javascript"></script>
 			<script src="js/respond.min.js" type="text/javascript"></script>
 		<![endif] -->
-
-
-
-	</body>
-
-
-
-</html>	
+  </body>
+</html>
