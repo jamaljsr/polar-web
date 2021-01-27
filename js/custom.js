@@ -1,20 +1,20 @@
 // JavaScript Document
 
-$(window).on("load", function () {
-  "use strict";
+$(window).on('load', function () {
+  'use strict';
 
   /*----------------------------------------------------*/
   /*	Preloader
 		/*----------------------------------------------------*/
 
-  $("#loader").delay(100).fadeOut();
-  $("#loader-wrapper").delay(100).fadeOut("fast");
+  $('#loader').delay(100).fadeOut();
+  $('#loader-wrapper').delay(100).fadeOut('fast');
 
   $(window).stellar({});
 });
 
-$(window).on("scroll", function () {
-  "use strict";
+$(window).on('scroll', function () {
+  'use strict';
 
   /*----------------------------------------------------*/
   /*	Navigtion Menu Scroll
@@ -23,35 +23,35 @@ $(window).on("scroll", function () {
   var b = $(window).scrollTop();
 
   if (b > 72) {
-    $(".navbar").addClass("scroll");
+    $('.navbar').addClass('scroll');
   } else {
-    $(".navbar").removeClass("scroll");
+    $('.navbar').removeClass('scroll');
   }
 });
 
 /*----------------------------------------------------*/
 /*	Download links
 	/*----------------------------------------------------*/
-var version = "1.0.1";
+var version = '1.2.0';
 
 function getOS() {
   var userAgent = window.navigator.userAgent,
     platform = window.navigator.platform,
-    macPlatforms = ["Macintosh", "MacIntel", "MacPPC", "Mac68K"],
-    windowsPlatforms = ["Win32", "Win64", "Windows", "WinCE"],
-    iosPlatforms = ["iPhone", "iPad", "iPod"],
+    macPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+    windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+    iosPlatforms = ['iPhone', 'iPad', 'iPod'],
     os = null;
 
   if (macPlatforms.indexOf(platform) !== -1) {
-    os = "Mac";
+    os = 'Mac';
   } else if (iosPlatforms.indexOf(platform) !== -1) {
-    os = "iOS";
+    os = 'iOS';
   } else if (windowsPlatforms.indexOf(platform) !== -1) {
-    os = "Windows";
+    os = 'Windows';
   } else if (/Android/.test(userAgent)) {
-    os = "Android";
+    os = 'Android';
   } else if (!os && /Linux/.test(platform)) {
-    os = "Linux";
+    os = 'Linux';
   }
 
   return os;
@@ -64,27 +64,27 @@ function updateDownloadLinks() {
     linux: `${baseUrl}/polar-linux-x86_64-v${version}.AppImage`,
     windows: `${baseUrl}/polar-win-v${version}.exe`,
   };
-  let primaryUrl = "https://github.com/jamaljsr/polar/releases";
+  let primaryUrl = 'https://github.com/jamaljsr/polar/releases';
   let alt = 1;
   const detectedOS = getOS();
   Object.keys(fileUrls).forEach((os) => {
-    $(`a.dl-${os}`).prop("href", fileUrls[os]);
+    $(`a.dl-${os}`).prop('href', fileUrls[os]);
     let osName = os[0].toUpperCase() + os.substring(1);
-    if (osName === "Apple") osName = "Mac";
+    if (osName === 'Apple') osName = 'Mac';
     if (detectedOS === osName) {
       primaryUrl = fileUrls[os];
-      $("#hero-dl-icon").prop("class", `fab fa-${os}`);
-      $("#hero-dl-text").text(`Download for ${osName}`);
+      $('#hero-dl-icon').prop('class', `fab fa-${os}`);
+      $('#hero-dl-text').text(`Download for ${osName}`);
     } else {
-      $(`.dl-alt${alt}`).text(osName).prop("href", fileUrls[os]);
+      $(`.dl-alt${alt}`).text(osName).prop('href', fileUrls[os]);
       alt++;
     }
   });
-  $(`a.dl-primary`).prop("href", primaryUrl);
+  $(`a.dl-primary`).prop('href', primaryUrl);
 }
 
 $(document).ready(function () {
-  "use strict";
+  'use strict';
 
   updateDownloadLinks();
 
@@ -94,22 +94,22 @@ $(document).ready(function () {
 
   $(
     '.header a[href^="#"], .page a.btn[href^="#"], .page a.internal-link[href^="#"]'
-  ).on("click", function (e) {
+  ).on('click', function (e) {
     e.preventDefault();
 
     var target = this.hash,
       $target = jQuery(target);
 
-    $("html, body")
+    $('html, body')
       .stop()
       .animate(
         {
           scrollTop: $target.offset().top - 60, // - 200px (nav-height)
         },
-        "slow",
-        "easeInSine",
+        'slow',
+        'easeInSine',
         function () {
-          window.location.hash = "1" + target;
+          window.location.hash = '1' + target;
         }
       );
   });
@@ -121,26 +121,26 @@ $(document).ready(function () {
   $.scrollUp = function (options) {
     // Defaults
     var defaults = {
-      scrollName: "scrollUp", // Element ID
+      scrollName: 'scrollUp', // Element ID
       topDistance: 600, // Distance from top before showing element (px)
       topSpeed: 800, // Speed back to top (ms)
-      animation: "fade", // Fade, slide, none
+      animation: 'fade', // Fade, slide, none
       animationInSpeed: 200, // Animation in speed (ms)
       animationOutSpeed: 200, // Animation out speed (ms)
-      scrollText: "", // Text for element
+      scrollText: '', // Text for element
       scrollImg: false, // Set true to use image
       activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
     };
 
     var o = $.extend({}, defaults, options),
-      scrollId = "#" + o.scrollName;
+      scrollId = '#' + o.scrollName;
 
     // Create element
-    $("<a/>", {
+    $('<a/>', {
       id: o.scrollName,
-      href: "#top",
+      href: '#top',
       title: o.scrollText,
-    }).appendTo("body");
+    }).appendTo('body');
 
     // If not using an image display text
     if (!o.scrollImg) {
@@ -149,34 +149,34 @@ $(document).ready(function () {
 
     // Minium CSS to make the magic happen
     $(scrollId).css({
-      display: "none",
-      position: "fixed",
-      "z-index": "2147483647",
+      display: 'none',
+      position: 'fixed',
+      'z-index': '2147483647',
     });
 
     // Active point overlay
     if (o.activeOverlay) {
-      $("body").append("<div id='" + o.scrollName + "-active'></div>");
-      $(scrollId + "-active").css({
-        position: "absolute",
-        top: o.topDistance + "px",
-        width: "100%",
-        "border-top": "1px dotted " + o.activeOverlay,
-        "z-index": "2147483647",
+      $('body').append("<div id='" + o.scrollName + "-active'></div>");
+      $(scrollId + '-active').css({
+        position: 'absolute',
+        top: o.topDistance + 'px',
+        width: '100%',
+        'border-top': '1px dotted ' + o.activeOverlay,
+        'z-index': '2147483647',
       });
     }
 
     // Scroll function
-    $(window).on("scroll", function () {
+    $(window).on('scroll', function () {
       switch (o.animation) {
-        case "fade":
+        case 'fade':
           $(
             $(window).scrollTop() > o.topDistance
               ? $(scrollId).fadeIn(o.animationInSpeed)
               : $(scrollId).fadeOut(o.animationOutSpeed)
           );
           break;
-        case "slide":
+        case 'slide':
           $(
             $(window).scrollTop() > o.topDistance
               ? $(scrollId).slideDown(o.animationInSpeed)
@@ -193,8 +193,8 @@ $(document).ready(function () {
     });
 
     // To the top
-    $(scrollId).on("click", function (event) {
-      $("html, body").animate({ scrollTop: 0 }, o.topSpeed);
+    $(scrollId).on('click', function (event) {
+      $('html, body').animate({ scrollTop: 0 }, o.topSpeed);
       event.preventDefault();
     });
   };
@@ -205,15 +205,15 @@ $(document).ready(function () {
   /*	Video Link #2 Lightbox
 		/*----------------------------------------------------*/
 
-  $(".video-popup2").magnificPopup({
-    mainClass: "video-modal",
+  $('.video-popup2').magnificPopup({
+    mainClass: 'video-modal',
     closeOnBgClick: false,
-    type: "iframe",
+    type: 'iframe',
     iframe: {
       patterns: {
         youtube: {
-          index: "youtube.com",
-          src: "https://www.youtube.com/embed/mb37durvPns?autoplay=1",
+          index: 'youtube.com',
+          src: 'https://www.youtube.com/embed/mb37durvPns?autoplay=1',
         },
       },
     },
@@ -223,18 +223,18 @@ $(document).ready(function () {
   /*	Statistic Counter
 		/*----------------------------------------------------*/
 
-  $(".count-element").each(function () {
+  $('.count-element').each(function () {
     $(this).appear(
       function () {
         $(this)
-          .prop("Counter", 0)
+          .prop('Counter', 0)
           .animate(
             {
               Counter: $(this).text(),
             },
             {
               duration: 4000,
-              easing: "swing",
+              easing: 'swing',
               step: function (now) {
                 $(this).text(Math.ceil(now));
               },
@@ -249,7 +249,7 @@ $(document).ready(function () {
   /*	Testimonials Rotator
 		/*----------------------------------------------------*/
 
-  var owl = $(".reviews-holder");
+  var owl = $('.reviews-holder');
   owl.owlCarousel({
     items: 3,
     loop: true,
@@ -281,13 +281,13 @@ $(document).ready(function () {
   /*	Reviews Grid
 		/*----------------------------------------------------*/
 
-  $(".grid-loaded").imagesLoaded(function () {
-    var $grid = $(".masonry-wrap").isotope({
-      itemSelector: ".review-2",
+  $('.grid-loaded').imagesLoaded(function () {
+    var $grid = $('.masonry-wrap').isotope({
+      itemSelector: '.review-2',
       percentPosition: true,
-      transitionDuration: "0.7s",
+      transitionDuration: '0.7s',
       masonry: {
-        columnWidth: ".review-2",
+        columnWidth: '.review-2',
       },
     });
   });
@@ -296,7 +296,7 @@ $(document).ready(function () {
   /*	Brands Logo Rotator
 		/*----------------------------------------------------*/
 
-  var owl = $(".brands-carousel");
+  var owl = $('.brands-carousel');
   owl.owlCarousel({
     items: 6,
     loop: true,
@@ -331,7 +331,7 @@ $(document).ready(function () {
   /*	Hero Form Validation
 		/*----------------------------------------------------*/
 
-  $(".hero-form").validate({
+  $('.hero-form').validate({
     rules: {
       name: {
         required: true,
@@ -353,18 +353,18 @@ $(document).ready(function () {
     },
     messages: {
       name: {
-        required: "Please enter no more than (1) characters",
+        required: 'Please enter no more than (1) characters',
       },
       email: {
-        required: "We need your email address to contact you",
-        email: "Your email address must be in the format of name@domain.com",
+        required: 'We need your email address to contact you',
+        email: 'Your email address must be in the format of name@domain.com',
       },
       phone: {
-        required: "Please enter only digits",
-        digits: "Please enter a valid number",
+        required: 'Please enter only digits',
+        digits: 'Please enter a valid number',
       },
       subject: {
-        required: "Please enter no more than (1) characters",
+        required: 'Please enter no more than (1) characters',
       },
     },
   });
@@ -373,7 +373,7 @@ $(document).ready(function () {
   /*	Register Form Validation
 		/*----------------------------------------------------*/
 
-  $(".register-form").validate({
+  $('.register-form').validate({
     rules: {
       name: {
         required: true,
@@ -387,11 +387,11 @@ $(document).ready(function () {
     },
     messages: {
       name: {
-        required: "Please enter no more than (1) characters",
+        required: 'Please enter no more than (1) characters',
       },
       email: {
-        required: "We need your email address to contact you",
-        email: "Your email address must be in the format of name@domain.com",
+        required: 'We need your email address to contact you',
+        email: 'Your email address must be in the format of name@domain.com',
       },
     },
   });
@@ -400,7 +400,7 @@ $(document).ready(function () {
   /*	Contact Form Validation
 		/*----------------------------------------------------*/
 
-  $(".contact-form").validate({
+  $('.contact-form').validate({
     rules: {
       name: {
         required: true,
@@ -418,14 +418,14 @@ $(document).ready(function () {
     },
     messages: {
       name: {
-        required: "Please enter no more than (1) characters",
+        required: 'Please enter no more than (1) characters',
       },
       email: {
-        required: "We need your email address to contact you",
-        email: "Your email address must be in the format of name@domain.com",
+        required: 'We need your email address to contact you',
+        email: 'Your email address must be in the format of name@domain.com',
       },
       message: {
-        required: "Please enter no more than (2) characters",
+        required: 'Please enter no more than (2) characters',
       },
     },
   });
@@ -434,7 +434,7 @@ $(document).ready(function () {
   /*	Comment Form Validation
 		/*----------------------------------------------------*/
 
-  $(".comment-form").validate({
+  $('.comment-form').validate({
     rules: {
       name: {
         required: true,
@@ -452,14 +452,14 @@ $(document).ready(function () {
     },
     messages: {
       name: {
-        required: "Please enter no more than (1) characters",
+        required: 'Please enter no more than (1) characters',
       },
       email: {
-        required: "We need your email address to contact you",
-        email: "Your email address must be in the format of name@domain.com",
+        required: 'We need your email address to contact you',
+        email: 'Your email address must be in the format of name@domain.com',
       },
       message: {
-        required: "Please enter no more than (2) characters",
+        required: 'Please enter no more than (2) characters',
       },
     },
   });
@@ -468,28 +468,28 @@ $(document).ready(function () {
   /*	Sticky Bottom Quick
 		/*----------------------------------------------------*/
 
-  $(".nb-form").hover(function () {
-    $(this).toggleClass("open");
+  $('.nb-form').hover(function () {
+    $(this).toggleClass('open');
   });
 
   /*----------------------------------------------------*/
   /*	Newsletter Subscribe Form
 		/*----------------------------------------------------*/
 
-  $(".newsletter-form").ajaxChimp({
-    language: "cm",
+  $('.newsletter-form').ajaxChimp({
+    language: 'cm',
     url:
-      "http://dsathemes.us3.list-manage.com/subscribe/post?u=af1a6c0b23340d7b339c085b4&id=344a494a6e",
+      'http://dsathemes.us3.list-manage.com/subscribe/post?u=af1a6c0b23340d7b339c085b4&id=344a494a6e',
     //http://xxx.xxx.list-manage.com/subscribe/post?u=xxx&id=xxx
   });
 
   $.ajaxChimp.translations.cm = {
-    submit: "Submitting...",
-    0: "We have sent you a confirmation email",
-    1: "Please enter your email address",
-    2: "An email address must contain a single @",
-    3: "The domain portion of the email address is invalid (the portion after the @: )",
-    4: "The username portion of the email address is invalid (the portion before the @: )",
-    5: "This email address looks fake or invalid. Please enter a real email address",
+    submit: 'Submitting...',
+    0: 'We have sent you a confirmation email',
+    1: 'Please enter your email address',
+    2: 'An email address must contain a single @',
+    3: 'The domain portion of the email address is invalid (the portion after the @: )',
+    4: 'The username portion of the email address is invalid (the portion before the @: )',
+    5: 'This email address looks fake or invalid. Please enter a real email address',
   };
 });
