@@ -32,7 +32,7 @@ $(window).on('scroll', function () {
 /*----------------------------------------------------*/
 /*	Download links
 	/*----------------------------------------------------*/
-var version = '1.2.0';
+var version = '1.3.0';
 
 function getOS() {
   var userAgent = window.navigator.userAgent,
@@ -478,8 +478,7 @@ $(document).ready(function () {
 
   $('.newsletter-form').ajaxChimp({
     language: 'cm',
-    url:
-      'http://dsathemes.us3.list-manage.com/subscribe/post?u=af1a6c0b23340d7b339c085b4&id=344a494a6e',
+    url: 'http://dsathemes.us3.list-manage.com/subscribe/post?u=af1a6c0b23340d7b339c085b4&id=344a494a6e',
     //http://xxx.xxx.list-manage.com/subscribe/post?u=xxx&id=xxx
   });
 
