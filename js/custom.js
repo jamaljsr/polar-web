@@ -60,9 +60,9 @@ function getOS() {
 function updateDownloadLinks() {
   const baseUrl = `https://github.com/jamaljsr/polar/releases/download/v${version}`;
   const fileUrls = {
-    apple: `${baseUrl}/polar-mac-v${version}.dmg`,
+    apple: `${baseUrl}/polar-mac-x64-v${version}.dmg`,
     linux: `${baseUrl}/polar-linux-x86_64-v${version}.AppImage`,
-    windows: `${baseUrl}/polar-win-v${version}.exe`,
+    windows: `${baseUrl}/polar-win-x64-v${version}.exe`,
   };
   let primaryUrl = 'https://github.com/jamaljsr/polar/releases';
   let alt = 1;
