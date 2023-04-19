@@ -32,7 +32,7 @@ $(window).on('scroll', function () {
 /*----------------------------------------------------*/
 /*	Download links
 	/*----------------------------------------------------*/
-var version = '1.4.0';
+var version = '1.4.1';
 
 function getOS() {
   var userAgent = window.navigator.userAgent,
