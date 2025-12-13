@@ -100,6 +100,11 @@ $(document).ready(function () {
     var target = this.hash,
       $target = jQuery(target);
 
+    if (!$target.length) return;
+
+    var easing =
+      jQuery.easing && jQuery.easing.easeInSine ? 'easeInSine' : 'swing';
+
     $('html, body')
       .stop()
       .animate(
@@ -107,9 +112,13 @@ $(document).ready(function () {
           scrollTop: $target.offset().top - 60, // - 200px (nav-height)
         },
         'slow',
-        'easeInSine',
+        easing,
         function () {
-          window.location.hash = '1' + target;
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', target);
+          } else {
+            window.location.hash = target;
+          }
         }
       );
   });
