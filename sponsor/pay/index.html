@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="jamaljsr" />
+    <meta
+      name="description"
+      content="Complete your Polar donation using Lightning or on-chain Bitcoin."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Complete your Polar donation</title>
+
+    <link
+      rel="shortcut icon"
+      href="../../images/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700,900"
+      rel="stylesheet"
+    />
+
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link href="../../css/flaticon.css" rel="stylesheet" />
+    <link href="../../css/animate.css" rel="stylesheet" />
+    <link href="../../css/main.css" rel="stylesheet" />
+    <link href="../../css/responsive.css" rel="stylesheet" />
+  </head>
+
+  <body class="payment-page">
+    <div id="page" class="page">
+      <header id="header" class="header">
+        <nav
+          class="navbar fixed-top navbar-expand-md navbar-light bg-tra hover-menu sponsor-nav"
+        >
+          <div class="container">
+            <a href="../../" class="navbar-brand logo-black">
+              <img
+                src="../../images/logo.png"
+                width="120"
+                height="30"
+                alt="Polar logo"
+              />
+            </a>
+
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-bar-icon"><i class="fas fa-bars"></i></span>
+            </button>
+
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+              <ul class="navbar-nav ml-auto"></ul>
+
+              <span class="navbar-text white-color">
+                <a
+                  href="/sponsor/"
+                  class="btn btn-primary-color tra-black-hover"
+                  >Back</a
+                >
+              </span>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <section id="payment-hero" class="hero-section">
+        <div class="bg-fixed bg-lightgrey hero-2-txt division payment-hero-bg">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="hero-txt">
+                  <h1 class="h2-sm steelblue-color">Complete your donation</h1>
+                  <p class="p-md">
+                    Please keep this page open until payment is confirmed.
+                  </p>
+                  <div
+                    id="payment-status"
+                    class="payment-alert"
+                    role="status"
+                    aria-live="polite"
+                    hidden
+                  >
+                    <span
+                      id="payment-status-icon"
+                      class="payment-alert-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span
+                      id="payment-status-text"
+                      class="payment-alert-text"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="payment-body" class="wide-60 division">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+              <div id="payment-fatal" class="payment-fatal" hidden>
+                <div class="payment-fatal-card">
+                  <div class="payment-fatal-badge" aria-hidden="true">
+                    <span class="payment-fatal-badge-dots"></span>
+                    <span class="payment-fatal-badge-circle">
+                      <i class="fas fa-exclamation"></i>
+                    </span>
+                  </div>
+                  <h4 id="payment-fatal-title" class="h4-sm">
+                    Invalid payment link
+                  </h4>
+                  <p id="payment-fatal-body" class="p-md mb-0">
+                    This payment link is missing or no longer valid.
+                  </p>
+                  <div class="mt-30">
+                    <a
+                      class="btn btn-primary-color tra-black-hover"
+                      href="/sponsor/"
+                      >Back to Sponsors</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="payment-card">
+                <div class="payment-card-header">
+                  <div>
+                    <h4 class="h4-sm mb-1">Payment details</h4>
+                    <p class="mb-0">
+                      Choose a method and pay using your wallet.
+                    </p>
+                  </div>
+                  <div class="payment-meta">
+                    <div>
+                      <span class="meta-label">Amount</span>
+                      <div id="amount-text" class="meta-value">—</div>
+                    </div>
+                    <div>
+                      <span class="meta-label">Tier</span>
+                      <div id="tier-text" class="meta-value">—</div>
+                    </div>
+                    <div>
+                      <span class="meta-label">Expires</span>
+                      <div id="expires-text" class="meta-value">—</div>
+                    </div>
+                  </div>
+                </div>
+
+                <ul
+                  class="nav nav-pills payment-tabs"
+                  id="railTabs"
+                  role="tablist"
+                >
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      id="lightning-tab"
+                      data-toggle="pill"
+                      href="#lightning"
+                      role="tab"
+                      aria-controls="lightning"
+                      aria-selected="true"
+                      >Lightning</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="onchain-tab"
+                      data-toggle="pill"
+                      href="#onchain"
+                      role="tab"
+                      aria-controls="onchain"
+                      aria-selected="false"
+                      >Bitcoin</a
+                    >
+                  </li>
+                </ul>
+
+                <div
+                  class="tab-content payment-tab-content"
+                  id="railTabsContent"
+                >
+                  <div
+                    class="tab-pane fade show active"
+                    id="lightning"
+                    role="tabpanel"
+                    aria-labelledby="lightning-tab"
+                  >
+                    <div class="row align-items-start">
+                      <div class="col-md-5">
+                        <div class="qr-card">
+                          <div id="ln-qr" class="qr"></div>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="payment-field">
+                          <label>Lightning invoice (BOLT11)</label>
+                          <div class="input-group">
+                            <input
+                              id="ln-invoice"
+                              type="text"
+                              class="form-control"
+                              readonly
+                            />
+                            <div class="input-group-append">
+                              <button
+                                id="ln-copy"
+                                class="btn btn-outline-secondary copy-btn"
+                                type="button"
+                                aria-label="Copy"
+                                title="Copy"
+                              >
+                                <i class="fas fa-copy" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          id="ln-expired-actions"
+                          class="payment-actions"
+                          hidden
+                        >
+                          <button
+                            id="ln-refresh"
+                            class="btn btn-primary-color tra-black-hover"
+                            type="button"
+                            disabled
+                          >
+                            Generate new invoice
+                          </button>
+                          <small class="text-muted d-block mt-2">
+                            If the countdown reaches zero, generate a new
+                            invoice before paying.
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="tab-pane fade"
+                    id="onchain"
+                    role="tabpanel"
+                    aria-labelledby="onchain-tab"
+                  >
+                    <div class="row align-items-start">
+                      <div class="col-md-5">
+                        <div class="qr-card">
+                          <div id="btc-qr" class="qr"></div>
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="payment-field">
+                          <label>Bitcoin address</label>
+                          <div class="input-group">
+                            <input
+                              id="btc-address"
+                              type="text"
+                              class="form-control"
+                              readonly
+                            />
+                            <div class="input-group-append">
+                              <button
+                                id="btc-copy"
+                                class="btn btn-outline-secondary copy-btn"
+                                type="button"
+                                aria-label="Copy"
+                                title="Copy"
+                              >
+                                <i class="fas fa-copy" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="text-muted mb-0">
+                          We’ll automatically confirm once a payment is
+                          detected.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="payment-success" class="payment-success" hidden>
+                  <div class="success-icon success-badge" aria-hidden="true">
+                    <span class="success-badge-dots"></span>
+                    <span class="success-badge-circle">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </div>
+                  <h4 class="h4-sm mb-1">Payment received — thank you!</h4>
+                  <p class="mb-0">
+                    Your donation will appear on the sponsors list after manual
+                    review.
+                  </p>
+                  <div class="mt-40">
+                    <a
+                      class="btn btn-primary-color tra-black-hover"
+                      href="/sponsor/"
+                      >Back to sponsors</a
+                    >
+                  </div>
+                </div>
+
+                <div id="payment-error" class="payment-error" hidden></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER-4 (borrowed from homepage)
+			============================================= -->
+      <footer id="footer-4" class="wide-40 footer division">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-lg-4 col-xl-4">
+              <div class="footer-info mb-40">
+                <img
+                  src="../../images/logo.png"
+                  width="120"
+                  height="30"
+                  alt="footer-logo"
+                />
+
+                <p class="foo-email">
+                  <i class="fas fa-envelope"></i>
+                  <a href="mailto:contact@lightningpolar.com"
+                    >contact@lightningpolar.com</a
+                  >
+                </p>
+
+                <div class="footer-socials-links mt-20">
+                  <ul class="foo-socials text-center clearfix">
+                    <li>
+                      <a
+                        href="https://github.com/jamaljsr/polar"
+                        class="ico-github"
+                        ><i class="fab fa-github"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://twitter.com/jamaljsr" class="ico-twitter"
+                        ><i class="fab fa-twitter"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-1 col-lg-2 col-xl-2 offset-lg-1 offset-xl-2">
+              <div class="footer-links mb-40"></div>
+            </div>
+
+            <div class="col-md-3 col-lg-2 col-xl-2">
+              <div class="footer-links mb-40">
+                <h5 class="h5-sm">Navigation</h5>
+                <ul class="clearfix">
+                  <li><a href="/#hero-2">Home</a></li>
+                  <li><a href="/#services-1">Benefits</a></li>
+                  <li><a href="/#content-1">Features</a></li>
+                  <li><a href="/#reviews-2">Reviews</a></li>
+                  <li><a href="/sponsor/">Sponsor</a></li>
+                  <li><a href="/#faqs-2">FAQs</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-lg-3 col-xl-2">
+              <div class="footer-links mb-20">
+                <h5 class="h5-sm">Get The App</h5>
+
+                <a class="btn btn-black tra-black-hover dl-apple" href="#">
+                  <i class="fab fa-apple"></i>
+                  Mac
+                </a>
+
+                <a class="btn btn-black tra-black-hover dl-linux" href="#">
+                  <i class="fab fa-linux"></i>
+                  Linux
+                </a>
+
+                <a class="btn btn-black tra-black-hover dl-windows" href="#">
+                  <i class="fab fa-windows"></i>
+                  Windows
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-footer">
+            <div class="row">
+              <div class="col-md-12">
+                <p class="footer-copyright">
+                  &copy; <span id="current-year">2024</span> <span>Polar</span>.
+                  All Rights Reserved
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/qrcode.min.js"></script>
+
+    <!-- Custom Script -->
+    <script src="../../js/downloads.js?v3.3.0"></script>
+    <script>
+      (async () => {
+        const statusEl = document.getElementById('payment-status');
+        const statusIconEl = document.getElementById('payment-status-icon');
+        const statusTextEl = document.getElementById('payment-status-text');
+        const errorEl = document.getElementById('payment-error');
+        const successEl = document.getElementById('payment-success');
+        const bodyEl = document.getElementById('payment-body');
+        const paymentCard = document.querySelector('.payment-card');
+        const fatalEl = document.getElementById('payment-fatal');
+        const fatalTitleEl = document.getElementById('payment-fatal-title');
+        const fatalBodyEl = document.getElementById('payment-fatal-body');
+
+        const amountText = document.getElementById('amount-text');
+        const tierText = document.getElementById('tier-text');
+        const expiresText = document.getElementById('expires-text');
+
+        const lnInvoiceEl = document.getElementById('ln-invoice');
+        const lnCopyBtn = document.getElementById('ln-copy');
+        const lnExpiredActions = document.getElementById('ln-expired-actions');
+        const lnRefreshBtn = document.getElementById('ln-refresh');
+        const lnQrEl = document.getElementById('ln-qr');
+
+        const btcAddressEl = document.getElementById('btc-address');
+        const btcCopyBtn = document.getElementById('btc-copy');
+        const btcQrEl = document.getElementById('btc-qr');
+
+        const params = new URLSearchParams(window.location.search);
+        const intentId = params.get('intent');
+        const apiParam = params.get('api');
+        const isLocalHost =
+          window.location.hostname === 'localhost' ||
+          window.location.hostname === '127.0.0.1';
+        const apiBase =
+          apiParam ||
+          (isLocalHost
+            ? 'http://localhost:8787'
+            : 'https://api.lightningpolar.com');
+
+        let pollTimer = null;
+        let countdownTimer = null;
+        let expiresAt = null;
+        let isPaid = false;
+        let isFatal = false;
+
+        const STATUS_ICONS = {
+          waiting: 'fa-spinner fa-spin',
+          warning: 'fa-exclamation-triangle',
+          error: 'fa-times-circle',
+          paid: 'fa-check-circle',
+        };
+
+        class ApiError extends Error {
+          status;
+          code;
+          constructor(status, code, message) {
+            super(message);
+            this.status = status;
+            this.code = code;
+          }
+        }
+
+        const setStatus = (text, kind = 'waiting') => {
+          if (!statusEl) return;
+          const message = String(text || '');
+          if (!message) {
+            statusEl.hidden = true;
+            statusEl.className = 'payment-alert';
+            if (statusTextEl) statusTextEl.textContent = '';
+            if (statusIconEl) statusIconEl.innerHTML = '';
+            return;
+          }
+
+          statusEl.hidden = false;
+          statusEl.className = `payment-alert is-${kind}`;
+
+          if (statusTextEl) statusTextEl.textContent = message;
+          if (statusIconEl) {
+            const icon = STATUS_ICONS[kind] || STATUS_ICONS.waiting;
+            statusIconEl.innerHTML = `<i class="fas ${icon}"></i>`;
+          }
+        };
+
+        const formatSats = (n) =>
+          Number(n).toLocaleString('en-US', { maximumFractionDigits: 0 });
+
+        const setError = (text) => {
+          errorEl.hidden = false;
+          errorEl.textContent = text;
+        };
+
+        const clearError = () => {
+          errorEl.hidden = true;
+          errorEl.textContent = '';
+        };
+
+        const stopPolling = () => {
+          if (pollTimer) clearInterval(pollTimer);
+          pollTimer = null;
+          if (countdownTimer) clearInterval(countdownTimer);
+          countdownTimer = null;
+        };
+
+        const showFatal = (title, body) => {
+          isFatal = true;
+          setStatus('');
+          clearError();
+          stopPolling();
+          if (paymentCard) paymentCard.hidden = true;
+          if (fatalTitleEl) fatalTitleEl.textContent = String(title || '');
+          if (fatalBodyEl) fatalBodyEl.textContent = String(body || '');
+          if (fatalEl) fatalEl.hidden = false;
+        };
+
+        if (!intentId) {
+          showFatal(
+            'Missing payment link',
+            'This payment link is incomplete. Please return to the Sponsors page and start a new donation.'
+          );
+          return;
+        }
+
+        const copyToClipboard = async (value) => {
+          try {
+            await navigator.clipboard.writeText(value);
+            return true;
+          } catch (_) {
+            window.prompt('Copy value:', value);
+            return false;
+          }
+        };
+
+        const showCopySuccess = (btn) => {
+          if (!btn) return;
+          const previous = btn.dataset.copyHtml || btn.innerHTML;
+          btn.dataset.copyHtml = previous;
+
+          // reset any prior timer
+          if (btn.dataset.copyTimer) {
+            clearTimeout(Number(btn.dataset.copyTimer));
+            btn.dataset.copyTimer = '';
+          }
+
+          btn.classList.add('copy-success');
+          btn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i>';
+          btn.setAttribute('aria-label', 'Copied');
+
+          // animate back to COPY after 5s
+          const timer = window.setTimeout(() => {
+            btn.classList.remove('copy-success');
+            // small delay so the transition is visible when swapping content
+            window.setTimeout(() => {
+              btn.innerHTML =
+                btn.dataset.copyHtml ||
+                '<i class="fas fa-copy" aria-hidden="true"></i>';
+              btn.setAttribute('aria-label', 'Copy');
+            }, 160);
+            btn.dataset.copyTimer = '';
+          }, 5000);
+          btn.dataset.copyTimer = String(timer);
+        };
+
+        const renderQr = (el, text) => {
+          if (!el || !text) return;
+          el.innerHTML = '';
+          // eslint-disable-next-line no-undef
+          new QRCode(el, {
+            text,
+            width: 330,
+            height: 330,
+            correctLevel: QRCode.CorrectLevel.M,
+          });
+        };
+
+        const startCountdown = () => {
+          if (!expiresAt) return;
+          if (countdownTimer) clearInterval(countdownTimer);
+
+          const tick = () => {
+            const ms = expiresAt - Date.now();
+            if (ms <= 0) {
+              expiresText.textContent = 'Expired';
+              if (lnExpiredActions) lnExpiredActions.hidden = false;
+              lnRefreshBtn.disabled = isPaid;
+              setStatus('Expired — generate a new invoice', 'warning');
+              return;
+            }
+            const totalSec = Math.floor(ms / 1000);
+            const min = Math.floor(totalSec / 60);
+            const sec = totalSec % 60;
+            expiresText.textContent = `${min}:${String(sec).padStart(2, '0')}`;
+            if (lnExpiredActions) lnExpiredActions.hidden = true;
+            lnRefreshBtn.disabled = true;
+          };
+
+          tick();
+          countdownTimer = setInterval(tick, 1000);
+        };
+
+        const showSuccess = () => {
+          isPaid = true;
+          // Hide the alert on paid to avoid redundancy with the success panel.
+          setStatus('');
+          successEl.hidden = false;
+          if (paymentCard) paymentCard.classList.add('is-success');
+          bodyEl.querySelector('.payment-tabs').style.display = 'none';
+          bodyEl.querySelector('.payment-tab-content').style.display = 'none';
+          lnRefreshBtn.disabled = true;
+          if (pollTimer) clearInterval(pollTimer);
+          if (countdownTimer) clearInterval(countdownTimer);
+        };
+
+        const fetchIntent = async () => {
+          const res = await fetch(
+            `${apiBase}/sponsor/intents/${encodeURIComponent(intentId)}`,
+            {
+              method: 'GET',
+            }
+          );
+          if (!res.ok) {
+            const data = await res.json().catch(() => null);
+            const code = data?.error?.code || null;
+            const msg =
+              data?.error?.message || 'Unable to load payment intent.';
+            throw new ApiError(res.status, code, msg);
+          }
+          return await res.json();
+        };
+
+        const refreshLightning = async () => {
+          lnRefreshBtn.disabled = true;
+          clearError();
+          try {
+            const res = await fetch(
+              `${apiBase}/sponsor/intents/${encodeURIComponent(
+                intentId
+              )}/refresh-lightning`,
+              { method: 'POST' }
+            );
+            if (!res.ok) {
+              const data = await res.json().catch(() => null);
+              throw new Error(
+                data?.error?.message || 'Unable to refresh invoice.'
+              );
+            }
+            await sync();
+          } catch (err) {
+            lnRefreshBtn.disabled = false;
+            setError(err instanceof Error ? err.message : String(err));
+          }
+        };
+
+        const sync = async () => {
+          if (isFatal) return;
+          try {
+            const data = await fetchIntent();
+            clearError();
+
+            amountText.textContent = `${formatSats(data.amountSat)} sats`;
+            const cap = (s) =>
+              String(s)
+                .split('-')
+                .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+                .join(' ');
+            tierText.textContent = data.tier ? cap(data.tier) : '-';
+
+            const lnInvoice = data.lightning?.invoice || '';
+            const lnExpires = data.lightning?.expiresAt || null;
+            expiresAt = typeof lnExpires === 'number' ? lnExpires : null;
+
+            lnInvoiceEl.value = lnInvoice;
+            renderQr(lnQrEl, lnInvoice);
+
+            const address = data.onchain?.address || '';
+            btcAddressEl.value = address;
+            renderQr(btcQrEl, address);
+
+            if (expiresAt) startCountdown();
+
+            if (data.status === 'paid') {
+              showSuccess();
+            } else {
+              setStatus('Waiting for payment…', 'waiting');
+            }
+          } catch (err) {
+            if (err instanceof ApiError && err.status === 404) {
+              showFatal(
+                'Payment not found',
+                'This payment link is invalid or has expired. Please return to the Sponsors page and start a new donation.'
+              );
+              return;
+            }
+            setStatus('Reconnecting…', 'warning');
+            setError(err instanceof Error ? err.message : String(err));
+          }
+        };
+
+        lnCopyBtn.addEventListener('click', async () => {
+          const ok = await copyToClipboard(lnInvoiceEl.value);
+          if (ok) showCopySuccess(lnCopyBtn);
+        });
+        btcCopyBtn.addEventListener('click', async () => {
+          const ok = await copyToClipboard(btcAddressEl.value);
+          if (ok) showCopySuccess(btcCopyBtn);
+        });
+        lnRefreshBtn.addEventListener('click', refreshLightning);
+
+        // initial load + polling
+        await sync();
+        if (!isFatal) pollTimer = setInterval(sync, 3000);
+      })();
+    </script>
+    <script>
+      (function () {
+        var el = document.getElementById('current-year');
+        if (el) el.textContent = String(new Date().getFullYear());
+      })();
+    </script>
+  </body>
+</html>

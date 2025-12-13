@@ -7,7 +7,7 @@
   "author": "jamaljsr",
   "license": "MIT",
   "scripts": {
-    "dev": "http-server ."
+    "dev": "http-server -c-1."
   },
   "devDependencies": {
     "http-server": "^0.12.1"

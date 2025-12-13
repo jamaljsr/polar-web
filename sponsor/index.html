@@ -6,7 +6,7 @@
     <meta name="author" content="jamaljsr" />
     <meta
       name="description"
-      content="Sponsor Polar to help builders ship Lightning apps faster. Choose a tier, add your handle, and pay with BTCPayServer."
+      content="Sponsor Polar to help builders ship Lightning apps faster. Choose a tier, add your handle (optional), and donate with Lightning or Bitcoin."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -116,8 +116,8 @@
                   Polar stays fast and free thanks to the contributions from the
                   community. Thank you for helping builders ship Lightning apps
                   faster. If you’d like to join them, add your handle and we’ll
-                  direct you to BTCPayServer for a quick, Lightning-first
-                  donation.
+                  direct you to a quick, built-in payment page for a Lightning
+                  or on-chain donation.
                 </p>
                 <ul class="hero-benefits">
                   <li>Every sponsor appears on the wall by tier</li>
@@ -222,10 +222,10 @@
             <div class="col-lg-5 offset-lg-1">
               <div class="contribute-card">
                 <div class="contribute-card-header">
-                  <h4 class="h4-sm mb-2">Payment Details</h4>
+                  <h4 class="h4-sm mb-2">One-time Payment</h4>
                   <p class="mb-0">
-                    You'll be redirected to our payment page to complete payment
-                    with Lightning or Bitcoin.
+                    You'll be redirected to our payment page to obtain a
+                    Lightning invoice or Bitcoin address.
                   </p>
                 </div>
 
@@ -246,52 +246,68 @@
                 </div>
 
                 <div class="form-group">
-                  <label>Platform</label>
-                  <div class="btn-group platform-toggle" role="group">
-                    <button
-                      type="button"
-                      class="btn btn-outline-secondary active"
-                      data-platform="github"
-                    >
-                      GitHub
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-outline-secondary"
-                      data-platform="twitter"
-                    >
-                      Twitter / X
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-outline-secondary"
-                      data-platform="nostr"
-                    >
-                      Nostr
-                    </button>
+                  <div class="custom-control custom-switch recognition-toggle">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="recognition-enabled"
+                    />
+                    <label
+                      class="custom-control-label"
+                      for="recognition-enabled"
+                      >Add me to the Sponsors list
+                    </label>
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="username">Username / Handle (optional)</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="platform-prefix"
-                        >@</span
+                <div id="recognition-fields" class="recognition-fields" hidden>
+                  <div class="form-group">
+                    <label>Platform</label>
+                    <div class="btn-group platform-toggle" role="group">
+                      <button
+                        type="button"
+                        class="btn btn-outline-secondary active"
+                        data-platform="github"
                       >
+                        GitHub
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-outline-secondary"
+                        data-platform="twitter"
+                      >
+                        Twitter / X
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-outline-secondary"
+                        data-platform="nostr"
+                      >
+                        Nostr
+                      </button>
                     </div>
-                    <input
-                      id="username"
-                      type="text"
-                      class="form-control"
-                      placeholder="@username"
-                      aria-describedby="platform-prefix"
-                    />
                   </div>
-                  <small class="form-text text-muted">
-                    We only show this on the website. No accounts or logins
-                    needed.
-                  </small>
+
+                  <div class="form-group">
+                    <label for="username">Handle</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="platform-prefix"
+                          >@</span
+                        >
+                      </div>
+                      <input
+                        id="username"
+                        type="text"
+                        class="form-control"
+                        placeholder="username"
+                        aria-describedby="platform-prefix"
+                      />
+                    </div>
+                    <small class="form-text text-muted">
+                      Shown publicly on the sponsor wall.
+                    </small>
+                  </div>
                 </div>
 
                 <div class="contribute-actions">
@@ -299,16 +315,17 @@
                     id="pay-button"
                     class="btn btn-primary-color tra-black-hover btn-wide"
                     href="#"
-                    >Pay with Bitcoin / Lightning</a
-                  >
-                  <a id="anonymous-donate" class="text-muted" href="#"
-                    >Donate anonymously</a
+                    >Donate</a
                   >
                 </div>
+                <p id="donation-error" class="text-danger mt-2 mb-0" hidden></p>
 
                 <p class="form-note mb-0 grey-color">
                   After confirming payment, we'll add you to the matching tier
                   on this page and highlight top sponsors on the homepage.
+                </p>
+
+                <p class="form-note mt-10 grey-color">
                   Prefer fiat? Use the
                   <a
                     href="https://github.com/sponsors/jamaljsr"
@@ -403,23 +420,35 @@
         };
 
         const platformPlaceholders = {
-          github: '@username',
-          twitter: '@handle',
+          github: 'username',
+          twitter: 'handle',
           nostr: 'npub1...',
         };
 
-        const btcpayBase = 'https://your-btcpay.voltage.cloud/checkout';
         const tierCards = document.querySelectorAll('.tier-card');
         const amountInput = document.getElementById('sats-amount');
         const platformButtons = document.querySelectorAll('[data-platform]');
         const platformPrefix = document.getElementById('platform-prefix');
         const usernameInput = document.getElementById('username');
         const payButton = document.getElementById('pay-button');
-        const anonymousLink = document.getElementById('anonymous-donate');
+        const recognitionToggle = document.getElementById(
+          'recognition-enabled'
+        );
+        const recognitionFields = document.getElementById('recognition-fields');
+        const donationError = document.getElementById('donation-error');
         const contributorsList = document.getElementById('contributors-list');
 
         let selectedTier = 'supporter';
         let selectedPlatform = 'github';
+        const apiParam = new URLSearchParams(window.location.search).get('api');
+        const isLocalHost =
+          window.location.hostname === 'localhost' ||
+          window.location.hostname === '127.0.0.1';
+        const apiBase =
+          apiParam ||
+          (isLocalHost
+            ? 'http://localhost:8787'
+            : 'https://api.lightningpolar.com');
 
         const contributors = [
           {
@@ -709,20 +738,138 @@
           usernameInput.placeholder = platformPlaceholders[platform];
         };
 
-        const buildBtcpayUrl = (includeIdentity = true) => {
-          const amount = updateTierFromAmount();
-          const params = new URLSearchParams({
-            tier: selectedTier,
-            amount: amount.toString(),
-          });
+        const showError = (message) => {
+          if (!donationError) return;
+          donationError.hidden = !message;
+          donationError.textContent = message || '';
+        };
 
+        const createIntent = async (includeIdentity = true) => {
+          const amountSat = updateTierFromAmount();
           const username = usernameInput.value.trim();
+
+          const payload = { amountSat };
           if (includeIdentity && username) {
-            params.set('username', username);
-            params.set('platform', selectedPlatform);
+            payload.platform = selectedPlatform;
+            payload.username = username;
           }
 
-          return `${btcpayBase}?${params.toString()}`;
+          const res = await fetch(`${apiBase}/sponsor/intents`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+
+          const data = await res.json().catch(() => null);
+          if (!res.ok) {
+            throw new Error(data?.error?.message || 'Unable to start payment.');
+          }
+
+          if (!data?.intentId) {
+            throw new Error('Unexpected response from server.');
+          }
+
+          return data.intentId;
+        };
+
+        const fetchSponsors = async () => {
+          const res = await fetch(`${apiBase}/sponsors`, { method: 'GET' });
+          if (!res.ok) return [];
+          const data = await res.json().catch(() => null);
+          return Array.isArray(data?.sponsors) ? data.sponsors : [];
+        };
+
+        const safeUrl = (value) => {
+          try {
+            const u = new URL(value);
+            return u.protocol === 'https:' ? u.toString() : null;
+          } catch {
+            return null;
+          }
+        };
+
+        const labelFromProfile = (profileUrl) => {
+          try {
+            const u = new URL(profileUrl);
+            const last =
+              u.pathname.split('/').filter(Boolean).pop() || u.hostname;
+            return last.length > 22 ? `${last.slice(0, 22)}…` : last;
+          } catch {
+            return 'Sponsor';
+          }
+        };
+
+        const renderSponsorTier = (
+          gridEl,
+          sponsors,
+          tier,
+          isChampion = false
+        ) => {
+          if (!gridEl) return;
+          gridEl.innerHTML = '';
+
+          const tierSponsors = sponsors.filter((s) => s?.tier === tier);
+          if (!tierSponsors.length) {
+            const col = document.createElement('div');
+            col.className = 'col-lg-8';
+            col.innerHTML = `
+              <div class="sponsor-empty">
+                <div class="sponsor-empty-icon" aria-hidden="true">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="sponsor-empty-body">
+                  <div class="sponsor-name">No sponsors yet</div>
+                  <p class="sponsor-note mb-2">
+                    Be the first sponsor and help fund Polar’s roadmap.
+                  </p>
+                  <a class="btn btn-primary-color tra-black-hover btn-sm" href="#sponsor-flow">
+                    Become a sponsor
+                  </a>
+                </div>
+              </div>
+            `;
+            gridEl.appendChild(col);
+            return;
+          }
+
+          tierSponsors.forEach((s) => {
+            const profileUrl = safeUrl(s.profileUrl);
+            const imageUrl = safeUrl(s.imageUrl);
+            if (!profileUrl || !imageUrl) return;
+
+            const col = document.createElement('div');
+            col.className = 'col-12 col-md-6 col-lg-4 mb-20';
+
+            const tile = document.createElement('a');
+            tile.className = `sponsor-tile${isChampion ? ' champion' : ''}`;
+            tile.href = profileUrl;
+            tile.target = '_blank';
+            tile.rel = 'noopener noreferrer';
+
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = 'Sponsor logo';
+            img.loading = 'lazy';
+            img.referrerPolicy = 'no-referrer';
+
+            const meta = document.createElement('div');
+            const name = document.createElement('div');
+            name.className = 'sponsor-name';
+            name.textContent = labelFromProfile(profileUrl);
+
+            const note = document.createElement('div');
+            note.className = 'sponsor-note';
+            note.textContent = isChampion ? 'Champion' : 'Sponsor';
+
+            meta.appendChild(name);
+            meta.appendChild(note);
+
+            tile.appendChild(img);
+            tile.appendChild(meta);
+
+            col.appendChild(tile);
+            gridEl.appendChild(col);
+          });
         };
 
         const renderContributors = () => {
@@ -794,20 +941,65 @@
 
         amountInput.addEventListener('input', updateTierFromAmount);
 
+        const updateRecognitionUI = () => {
+          const enabled = Boolean(recognitionToggle?.checked);
+          if (recognitionFields) recognitionFields.hidden = !enabled;
+          if (!enabled && usernameInput) usernameInput.value = '';
+        };
+
+        recognitionToggle?.addEventListener('change', updateRecognitionUI);
+
         payButton.addEventListener('click', (event) => {
           event.preventDefault();
-          window.location.href = buildBtcpayUrl(true);
-        });
+          showError('');
+          payButton.classList.add('disabled');
+          payButton.setAttribute('aria-disabled', 'true');
 
-        anonymousLink.addEventListener('click', (event) => {
-          event.preventDefault();
-          window.location.href = buildBtcpayUrl(false);
+          createIntent(Boolean(recognitionToggle?.checked))
+            .then((intentId) => {
+              window.location.href = `/sponsor/pay/?intent=${encodeURIComponent(
+                intentId
+              )}`;
+            })
+            .catch((err) => {
+              showError(err instanceof Error ? err.message : String(err));
+              payButton.classList.remove('disabled');
+              payButton.removeAttribute('aria-disabled');
+            });
         });
 
         // Initialize defaults
         setTier(selectedTier);
         setPlatform(selectedPlatform);
+        updateRecognitionUI();
         renderContributors();
+
+        // Render sponsor wall from API (paid + published only)
+        const championsGrid = document.getElementById('champions-grid');
+        const sponsorsGrid = document.getElementById('sponsors-grid');
+        const backersGrid = document.getElementById('backers-grid');
+        const supportersGrid = document.getElementById('supporters-grid');
+
+        // Default UI while loading (and if API is unavailable)
+        renderSponsorTier(championsGrid, [], 'champion', true);
+        renderSponsorTier(sponsorsGrid, [], 'sponsor', false);
+        renderSponsorTier(backersGrid, [], 'backer', false);
+        renderSponsorTier(supportersGrid, [], 'supporter', false);
+
+        fetchSponsors()
+          .then((sponsors) => {
+            renderSponsorTier(championsGrid, sponsors, 'champion', true);
+            renderSponsorTier(sponsorsGrid, sponsors, 'sponsor', false);
+            renderSponsorTier(backersGrid, sponsors, 'backer', false);
+            renderSponsorTier(supportersGrid, sponsors, 'supporter', false);
+          })
+          .catch(() => {
+            // If the API is unavailable, still show the empty placeholders.
+            renderSponsorTier(championsGrid, [], 'champion', true);
+            renderSponsorTier(sponsorsGrid, [], 'sponsor', false);
+            renderSponsorTier(backersGrid, [], 'backer', false);
+            renderSponsorTier(supportersGrid, [], 'supporter', false);
+          });
       })();
     </script>
   </body>
