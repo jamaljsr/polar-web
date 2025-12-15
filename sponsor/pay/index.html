@@ -551,11 +551,26 @@
 
         if (!intentId) {
           showFatal(
-            'Missing payment link',
+            'Invalid payment link',
             'This payment link is incomplete. Please return to the Sponsors page and start a new donation.'
           );
           return;
         }
+
+        // Kick off recognition URL derivation in the background (may take a few seconds for nostr).
+        // We intentionally don't await this; the user will be on this page while paying.
+        (async () => {
+          try {
+            await fetch(
+              `${apiBase}/sponsor/intents/${encodeURIComponent(
+                intentId
+              )}/derive-urls`,
+              { method: 'POST' }
+            );
+          } catch (_) {
+            // ignore
+          }
+        })();
 
         const copyToClipboard = async (value) => {
           try {

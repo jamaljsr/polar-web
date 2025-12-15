@@ -106,7 +106,7 @@
       <!-- END HEADER -->
 
       <!-- HERO -->
-      <section id="sponsor-hero" class="bg-lightgrey hero-section">
+      <section id="sponsor-hero" class="bg-lightgrey">
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-6">
@@ -119,18 +119,20 @@
                   direct you to a quick, built-in payment page for a Lightning
                   or on-chain donation.
                 </p>
-                <ul class="hero-benefits">
-                  <li>Every sponsor appears on the wall by tier</li>
-                  <li>
-                    Accepts Bitcoin, Lightning, and USD via GitHub Sponsors
-                  </li>
-                  <li>GitHub, Twitter, or Nostr handles supported</li>
-                  <li>Code contributions always welcome on GitHub</li>
-                </ul>
+                <div class="hero-benefits-wrap">
+                  <ul class="hero-benefits">
+                    <li>Every sponsor appears on the wall by tier</li>
+                    <li>
+                      Accepts Bitcoin, Lightning, and USD via GitHub Sponsors
+                    </li>
+                    <li>GitHub, Twitter, or Nostr handles for recognition</li>
+                    <li>Code contributors recognized for their work</li>
+                  </ul>
+                </div>
                 <a
                   class="btn btn-primary-color tra-black-hover"
                   href="#sponsor-flow"
-                  >Choose a tier</a
+                  >Donate</a
                 >
                 <a
                   class="btn btn-outline-secondary d-inline-block ml-2"
@@ -359,11 +361,13 @@
 
           <div class="sponsor-level">
             <div class="sponsor-level-header">
-              <h4 class="h4-sm mb-1">Current sponsors</h4>
-              <p class="mb-0">New sponsors will appear here.</p>
+              <h4 class="h4-sm mb-1">Sponsors</h4>
+              <p id="sponsors-subtitle" class="mb-0">
+                New sponsors will appear here.
+              </p>
             </div>
             <div class="sponsor-level-body">
-              <div class="row">
+              <div id="sponsors-empty" class="row">
                 <div class="col-lg-8">
                   <div class="sponsor-empty">
                     <div class="sponsor-empty-icon" aria-hidden="true">
@@ -381,6 +385,56 @@
                       >
                     </div>
                   </div>
+                </div>
+              </div>
+
+              <div class="sponsor-tiers">
+                <div
+                  id="champions-section"
+                  class="sponsor-tier tier-champion"
+                  hidden
+                >
+                  <div class="sponsor-tier-header">
+                    <div class="sponsor-tier-pill">Champions</div>
+                    <div class="sponsor-tier-accent" aria-hidden="true"></div>
+                  </div>
+                  <div id="champions-grid" class="sponsor-grid"></div>
+                </div>
+
+                <div
+                  id="sponsors-section"
+                  class="sponsor-tier tier-sponsor"
+                  hidden
+                >
+                  <div class="sponsor-tier-header">
+                    <div class="sponsor-tier-pill">Sponsors</div>
+                    <div class="sponsor-tier-accent" aria-hidden="true"></div>
+                  </div>
+                  <div id="sponsors-grid" class="sponsor-grid"></div>
+                </div>
+
+                <div
+                  id="backers-section"
+                  class="sponsor-tier tier-backer"
+                  hidden
+                >
+                  <div class="sponsor-tier-header">
+                    <div class="sponsor-tier-pill">Backers</div>
+                    <div class="sponsor-tier-accent" aria-hidden="true"></div>
+                  </div>
+                  <div id="backers-grid" class="sponsor-grid"></div>
+                </div>
+
+                <div
+                  id="supporters-section"
+                  class="sponsor-tier tier-supporter"
+                  hidden
+                >
+                  <div class="sponsor-tier-header">
+                    <div class="sponsor-tier-pill">Supporters</div>
+                    <div class="sponsor-tier-accent" aria-hidden="true"></div>
+                  </div>
+                  <div id="supporters-grid" class="sponsor-grid"></div>
                 </div>
               </div>
             </div>
@@ -441,14 +495,15 @@
         let selectedTier = 'supporter';
         let selectedPlatform = 'github';
         const apiParam = new URLSearchParams(window.location.search).get('api');
-        const isLocalHost =
-          window.location.hostname === 'localhost' ||
-          window.location.hostname === '127.0.0.1';
+        const apiPort = '8787';
+        const host = window.location.hostname;
+        const isProdSite =
+          host === 'lightningpolar.com' || host.endsWith('.lightningpolar.com');
         const apiBase =
           apiParam ||
-          (isLocalHost
-            ? 'http://localhost:8787'
-            : 'https://api.lightningpolar.com');
+          (isProdSite
+            ? 'https://api.lightningpolar.com'
+            : `${window.location.protocol}//${host}:${apiPort}`);
 
         const contributors = [
           {
@@ -799,6 +854,23 @@
           }
         };
 
+        const displayNameForSponsor = (sponsor) => {
+          const username =
+            sponsor && typeof sponsor.username === 'string'
+              ? sponsor.username.trim()
+              : '';
+          if (username) {
+            return username.length > 22
+              ? `${username.slice(0, 22)}…`
+              : username;
+          }
+
+          const profileUrl = sponsor?.profileUrl;
+          return typeof profileUrl === 'string'
+            ? labelFromProfile(profileUrl)
+            : 'Sponsor';
+        };
+
         const renderSponsorTier = (
           gridEl,
           sponsors,
@@ -809,66 +881,42 @@
           gridEl.innerHTML = '';
 
           const tierSponsors = sponsors.filter((s) => s?.tier === tier);
-          if (!tierSponsors.length) {
-            const col = document.createElement('div');
-            col.className = 'col-lg-8';
-            col.innerHTML = `
-              <div class="sponsor-empty">
-                <div class="sponsor-empty-icon" aria-hidden="true">
-                  <i class="fas fa-star"></i>
-                </div>
-                <div class="sponsor-empty-body">
-                  <div class="sponsor-name">No sponsors yet</div>
-                  <p class="sponsor-note mb-2">
-                    Be the first sponsor and help fund Polar’s roadmap.
-                  </p>
-                  <a class="btn btn-primary-color tra-black-hover btn-sm" href="#sponsor-flow">
-                    Become a sponsor
-                  </a>
-                </div>
-              </div>
-            `;
-            gridEl.appendChild(col);
-            return;
-          }
+          if (!tierSponsors.length) return;
 
           tierSponsors.forEach((s) => {
             const profileUrl = safeUrl(s.profileUrl);
             const imageUrl = safeUrl(s.imageUrl);
             if (!profileUrl || !imageUrl) return;
 
-            const col = document.createElement('div');
-            col.className = 'col-12 col-md-6 col-lg-4 mb-20';
-
             const tile = document.createElement('a');
-            tile.className = `sponsor-tile${isChampion ? ' champion' : ''}`;
+            tile.className = `sponsor-tile tier-${tier}`;
             tile.href = profileUrl;
             tile.target = '_blank';
             tile.rel = 'noopener noreferrer';
 
             const img = document.createElement('img');
             img.src = imageUrl;
-            img.alt = 'Sponsor logo';
+            img.alt = `${displayNameForSponsor(s)} avatar`;
             img.loading = 'lazy';
             img.referrerPolicy = 'no-referrer';
 
-            const meta = document.createElement('div');
-            const name = document.createElement('div');
-            name.className = 'sponsor-name';
-            name.textContent = labelFromProfile(profileUrl);
+            const avatar = document.createElement('div');
+            avatar.className = 'sponsor-avatar';
 
-            const note = document.createElement('div');
-            note.className = 'sponsor-note';
-            note.textContent = isChampion ? 'Champion' : 'Sponsor';
+            const avatarInner = document.createElement('div');
+            avatarInner.className = 'sponsor-avatar-inner';
+            avatarInner.appendChild(img);
+            avatar.appendChild(avatarInner);
 
-            meta.appendChild(name);
-            meta.appendChild(note);
+            const namePill = document.createElement('div');
+            namePill.className = 'sponsor-name-pill';
+            namePill.textContent = displayNameForSponsor(s);
 
-            tile.appendChild(img);
-            tile.appendChild(meta);
+            avatar.appendChild(namePill);
 
-            col.appendChild(tile);
-            gridEl.appendChild(col);
+            tile.appendChild(avatar);
+
+            gridEl.appendChild(tile);
           });
         };
 
@@ -980,25 +1028,75 @@
         const backersGrid = document.getElementById('backers-grid');
         const supportersGrid = document.getElementById('supporters-grid');
 
+        const sponsorsSubtitle = document.getElementById('sponsors-subtitle');
+
+        const sponsorsEmpty = document.getElementById('sponsors-empty');
+        const championsSection = document.getElementById('champions-section');
+        const sponsorsSection = document.getElementById('sponsors-section');
+        const backersSection = document.getElementById('backers-section');
+        const supportersSection = document.getElementById('supporters-section');
+
+        const hideAllTiers = () => {
+          if (championsSection) championsSection.hidden = true;
+          if (sponsorsSection) sponsorsSection.hidden = true;
+          if (backersSection) backersSection.hidden = true;
+          if (supportersSection) supportersSection.hidden = true;
+
+          if (championsGrid) championsGrid.innerHTML = '';
+          if (sponsorsGrid) sponsorsGrid.innerHTML = '';
+          if (backersGrid) backersGrid.innerHTML = '';
+          if (supportersGrid) supportersGrid.innerHTML = '';
+        };
+
+        const showSponsorWall = (sponsors) => {
+          const list = Array.isArray(sponsors) ? sponsors : [];
+          if (!list.length) {
+            if (sponsorsSubtitle) {
+              sponsorsSubtitle.textContent = 'New sponsors will appear here.';
+            }
+            if (sponsorsEmpty) sponsorsEmpty.hidden = false;
+            hideAllTiers();
+            return;
+          }
+
+          if (sponsorsSubtitle) {
+            sponsorsSubtitle.textContent =
+              'From all of us in the Polar community, thank you for supporting its ongoing development. Your generosity keeps the project moving forward and helps the whole Lightning community build.';
+          }
+
+          if (sponsorsEmpty) sponsorsEmpty.hidden = true;
+
+          const champions = list.filter((s) => s?.tier === 'champion');
+          const sponsorsTier = list.filter((s) => s?.tier === 'sponsor');
+          const backers = list.filter((s) => s?.tier === 'backer');
+          const supporters = list.filter((s) => s?.tier === 'supporter');
+
+          if (championsSection)
+            championsSection.hidden = champions.length === 0;
+          if (sponsorsSection)
+            sponsorsSection.hidden = sponsorsTier.length === 0;
+          if (backersSection) backersSection.hidden = backers.length === 0;
+          if (supportersSection)
+            supportersSection.hidden = supporters.length === 0;
+
+          renderSponsorTier(championsGrid, list, 'champion', true);
+          renderSponsorTier(sponsorsGrid, list, 'sponsor', false);
+          renderSponsorTier(backersGrid, list, 'backer', false);
+          renderSponsorTier(supportersGrid, list, 'supporter', false);
+        };
+
         // Default UI while loading (and if API is unavailable)
-        renderSponsorTier(championsGrid, [], 'champion', true);
-        renderSponsorTier(sponsorsGrid, [], 'sponsor', false);
-        renderSponsorTier(backersGrid, [], 'backer', false);
-        renderSponsorTier(supportersGrid, [], 'supporter', false);
+        if (sponsorsEmpty) sponsorsEmpty.hidden = false;
+        hideAllTiers();
 
         fetchSponsors()
           .then((sponsors) => {
-            renderSponsorTier(championsGrid, sponsors, 'champion', true);
-            renderSponsorTier(sponsorsGrid, sponsors, 'sponsor', false);
-            renderSponsorTier(backersGrid, sponsors, 'backer', false);
-            renderSponsorTier(supportersGrid, sponsors, 'supporter', false);
+            showSponsorWall(sponsors);
           })
           .catch(() => {
-            // If the API is unavailable, still show the empty placeholders.
-            renderSponsorTier(championsGrid, [], 'champion', true);
-            renderSponsorTier(sponsorsGrid, [], 'sponsor', false);
-            renderSponsorTier(backersGrid, [], 'backer', false);
-            renderSponsorTier(supportersGrid, [], 'supporter', false);
+            // If the API is unavailable, still show the empty state.
+            if (sponsorsEmpty) sponsorsEmpty.hidden = false;
+            hideAllTiers();
           });
       })();
     </script>
