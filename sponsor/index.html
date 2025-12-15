@@ -231,12 +231,9 @@
                   </p>
                 </div>
 
-                <div class="form-group">
-                  <label for="sats-amount">Amount (sats)</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">⚡</span>
-                    </div>
+                <div class="form-group amount-group">
+                  <label for="sats-amount">Amount</label>
+                  <div class="input-group input-group-lg">
                     <input
                       id="sats-amount"
                       type="text"
@@ -244,10 +241,13 @@
                       class="form-control"
                       value="100,000"
                     />
+                    <div class="input-group-append">
+                      <span class="input-group-text">sats</span>
+                    </div>
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group recognition-group">
                   <div class="custom-control custom-switch recognition-toggle">
                     <input
                       type="checkbox"
@@ -742,36 +742,86 @@
           },
         ];
 
+        const setPayButtonEnabled = (enabled) => {
+          if (!payButton) return;
+          const isEnabled = Boolean(enabled);
+          payButton.classList.toggle('disabled', !isEnabled);
+          if (isEnabled) {
+            payButton.removeAttribute('aria-disabled');
+          } else {
+            payButton.setAttribute('aria-disabled', 'true');
+          }
+        };
+
         const formatAmount = (value) =>
           Number(value).toLocaleString('en-US', { maximumFractionDigits: 0 });
 
-        const normalizeAmount = () => {
-          const raw = parseInt(
-            String(amountInput.value).replace(/,/g, '').trim(),
-            10
-          );
-          const sanitized = Number.isFinite(raw) && raw > 1000 ? raw : 1000;
-          amountInput.value = formatAmount(sanitized);
-          return sanitized;
+        const parseAmountSat = (rawValue) => {
+          const raw = String(rawValue ?? '').trim();
+          const cleaned = raw.replace(/[,\s]/g, '');
+
+          if (!cleaned) {
+            return { ok: false, error: 'Enter an amount in sats.' };
+          }
+          if (!/^\d+$/.test(cleaned)) {
+            return { ok: false, error: 'Amount must be a whole number.' };
+          }
+
+          const amountSat = Number(cleaned);
+          if (!Number.isSafeInteger(amountSat)) {
+            return { ok: false, error: 'Amount is too large.' };
+          }
+          if (amountSat <= 0) {
+            return { ok: false, error: 'Amount must be at least 1,000 sats.' };
+          }
+          if (amountSat < 1000) {
+            return {
+              ok: false,
+              error: 'Amount must be at least 1,000 sats.',
+            };
+          }
+
+          return { ok: true, amountSat };
         };
 
-        const updateTierFromAmount = () => {
-          const currentAmount = normalizeAmount();
+        const clearTierSelection = () => {
+          selectedTier = null;
+          tierCards.forEach((card) => card.classList.remove('active'));
+        };
+
+        const matchTierForAmount = (amountSat) => {
+          if (amountSat < tierMinimums.supporter) return null;
           const tiers = Object.keys(tierMinimums);
           let matchedTier = tiers[0];
-
           tiers.forEach((tier) => {
-            if (currentAmount >= tierMinimums[tier]) {
-              matchedTier = tier;
-            }
+            if (amountSat >= tierMinimums[tier]) matchedTier = tier;
           });
+          return matchedTier;
+        };
 
-          selectedTier = matchedTier;
-          tierCards.forEach((card) =>
-            card.classList.toggle('active', card.dataset.tier === matchedTier)
-          );
+        const updateTierFromAmountOnBlur = () => {
+          const parsed = parseAmountSat(amountInput?.value);
+          if (!parsed.ok) {
+            showError(parsed.error);
+            setPayButtonEnabled(false);
+            return null;
+          }
 
-          return currentAmount;
+          showError('');
+          setPayButtonEnabled(true);
+
+          const matchedTier = matchTierForAmount(parsed.amountSat);
+          if (!matchedTier) {
+            clearTierSelection();
+          } else {
+            selectedTier = matchedTier;
+            tierCards.forEach((card) =>
+              card.classList.toggle('active', card.dataset.tier === matchedTier)
+            );
+          }
+
+          amountInput.value = formatAmount(parsed.amountSat);
+          return parsed.amountSat;
         };
 
         const setTier = (tier) => {
@@ -782,6 +832,9 @@
           tierCards.forEach((card) =>
             card.classList.toggle('active', card.dataset.tier === tier)
           );
+
+          showError('');
+          setPayButtonEnabled(true);
         };
 
         const setPlatform = (platform) => {
@@ -800,7 +853,26 @@
         };
 
         const createIntent = async (includeIdentity = true) => {
-          const amountSat = updateTierFromAmount();
+          const parsed = parseAmountSat(amountInput?.value);
+          if (!parsed.ok) {
+            showError(parsed.error);
+            setPayButtonEnabled(false);
+            throw new Error(parsed.error);
+          }
+          const amountSat = parsed.amountSat;
+          const matchedTier = matchTierForAmount(amountSat);
+          if (!matchedTier) {
+            clearTierSelection();
+          } else {
+            selectedTier = matchedTier;
+            tierCards.forEach((card) =>
+              card.classList.toggle('active', card.dataset.tier === matchedTier)
+            );
+          }
+          amountInput.value = formatAmount(amountSat);
+          showError('');
+          setPayButtonEnabled(true);
+
           const username = usernameInput.value.trim();
 
           const payload = { amountSat };
@@ -987,7 +1059,20 @@
           );
         });
 
-        amountInput.addEventListener('input', updateTierFromAmount);
+        amountInput.addEventListener('focus', () => {
+          showError('');
+          setPayButtonEnabled(true);
+          amountInput.value = String(amountInput.value).replace(/,/g, '');
+        });
+
+        amountInput.addEventListener('blur', () => {
+          updateTierFromAmountOnBlur();
+        });
+
+        amountInput.addEventListener('input', () => {
+          showError('');
+          setPayButtonEnabled(true);
+        });
 
         const updateRecognitionUI = () => {
           const enabled = Boolean(recognitionToggle?.checked);
@@ -1000,8 +1085,15 @@
         payButton.addEventListener('click', (event) => {
           event.preventDefault();
           showError('');
-          payButton.classList.add('disabled');
-          payButton.setAttribute('aria-disabled', 'true');
+
+          // Block donation if the amount is invalid (even if the user never blurs).
+          const parsed = parseAmountSat(amountInput?.value);
+          if (!parsed.ok) {
+            showError(parsed.error);
+            return;
+          }
+
+          setPayButtonEnabled(false);
 
           createIntent(Boolean(recognitionToggle?.checked))
             .then((intentId) => {
@@ -1011,13 +1103,12 @@
             })
             .catch((err) => {
               showError(err instanceof Error ? err.message : String(err));
-              payButton.classList.remove('disabled');
-              payButton.removeAttribute('aria-disabled');
+              setPayButtonEnabled(true);
             });
         });
 
         // Initialize defaults
-        setTier(selectedTier);
+        setTier('supporter');
         setPlatform(selectedPlatform);
         updateRecognitionUI();
         renderContributors();

@@ -6732,6 +6732,33 @@ nav a#pull {
   margin-top: 4px;
 }
 
+/* Sponsor form helper text (e.g. "Shown publicly on the sponsor wall.") */
+.sponsor-page .contribute-card .form-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Highlight the primary amount input on all screen sizes */
+.sponsor-page .contribute-card .input-group #sats-amount.form-control {
+  border-color: rgba(255, 86, 7, 0.35);
+  box-shadow: 0 10px 22px rgba(24, 35, 89, 0.08);
+}
+
+.sponsor-page
+  .contribute-card
+  .input-group
+  #sats-amount
+  + .input-group-append
+  .input-group-text {
+  background: rgba(255, 86, 7, 0.06);
+  border-color: rgba(255, 86, 7, 0.28);
+}
+
+.sponsor-page .contribute-card .input-group #sats-amount.form-control:focus {
+  border-color: rgba(255, 86, 7, 0.7);
+  box-shadow: 0 0 0 0.2rem rgba(255, 86, 7, 0.14);
+}
+
 .sponsor-lists {
   background: #f9fafc;
 }
@@ -6812,9 +6839,58 @@ nav a#pull {
     font-size: 16px;
   }
 
+  .sponsor-page .contribute-card .form-text {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
   .sponsor-page .contribute-card .form-control,
   .sponsor-page .contribute-card .input-group-text {
     font-size: 16px;
+  }
+
+  /* Make the sats amount input easier to use on mobile */
+  .sponsor-page .contribute-card .input-group #sats-amount.form-control {
+    font-size: 20px;
+    height: auto;
+    min-height: 54px;
+    line-height: 1.2;
+    padding: 0.9rem 1.1rem;
+    border-color: rgba(255, 86, 7, 0.35);
+    box-shadow: 0 10px 22px rgba(24, 35, 89, 0.08);
+  }
+
+  .sponsor-page
+    .contribute-card
+    .input-group
+    #sats-amount
+    + .input-group-append
+    .input-group-text {
+    font-size: 20px;
+    height: auto;
+    min-height: 54px;
+    line-height: 1.2;
+    padding: 0.9rem 1.1rem;
+    background: rgba(255, 86, 7, 0.06);
+    border-color: rgba(255, 86, 7, 0.28);
+  }
+
+  .sponsor-page .contribute-card .input-group #sats-amount.form-control:focus {
+    border-color: rgba(255, 86, 7, 0.7);
+    box-shadow: 0 0 0 0.2rem rgba(255, 86, 7, 0.14);
+  }
+
+  /* Add a bit more breathing room between amount, toggle, and donate on mobile */
+  .sponsor-page .contribute-card .form-group.amount-group {
+    margin-bottom: 18px;
+  }
+
+  .sponsor-page .contribute-card .form-group.recognition-group {
+    margin-bottom: 18px;
+  }
+
+  .sponsor-page .contribute-card .contribute-actions {
+    margin-top: 10px;
   }
 
   .sponsor-page .recognition-toggle .custom-control-label {
@@ -7619,7 +7695,7 @@ nav a#pull {
 .sponsor-page .sponsor-tiers {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 22px;
+  gap: 50px;
   margin-top: 18px;
 }
 
