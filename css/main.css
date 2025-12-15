@@ -6803,6 +6803,11 @@ nav a#pull {
     align-items: flex-start;
   }
 
+  .sponsor-page .sponsor-tier-pill {
+    font-size: 1.15rem;
+    padding: 8px 12px;
+  }
+
   .sponsor-page .contribute-card label {
     font-size: 16px;
   }
@@ -7624,13 +7629,6 @@ nav a#pull {
   }
 }
 
-.sponsor-page .sponsor-tier {
-  padding: 16px 14px 28px;
-  /* border: 1px solid rgba(68, 73, 100, 0.1);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.75); */
-}
-
 .sponsor-page .sponsor-grid {
   display: flex;
   flex-wrap: wrap;
@@ -7704,6 +7702,7 @@ nav a#pull {
 .sponsor-page .sponsor-tile:hover .sponsor-avatar,
 .sponsor-page .sponsor-tile:focus-visible .sponsor-avatar {
   transform: scale(1.015);
+  filter: drop-shadow(0 14px 22px rgba(17, 24, 39, 0.16));
 }
 
 .sponsor-page .sponsor-avatar {
@@ -7715,7 +7714,8 @@ nav a#pull {
   padding: var(--ring);
   box-sizing: border-box;
   display: block;
-  transition: transform 180ms ease;
+  filter: drop-shadow(0 0 0 rgba(17, 24, 39, 0));
+  transition: transform 180ms ease, filter 220ms ease;
 }
 
 .sponsor-page .sponsor-avatar::before {
@@ -7790,6 +7790,18 @@ nav a#pull {
   text-overflow: ellipsis;
   white-space: nowrap;
   pointer-events: none;
+  /* Default (collapse) speed */
+  transition: max-width 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+
+.sponsor-page .sponsor-tile:hover .sponsor-name-pill,
+.sponsor-page .sponsor-tile:focus-visible .sponsor-name-pill {
+  max-width: min(280px, 70vw);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 26px rgba(29, 67, 123, 0.14);
+  /* Hover (expand) speed */
+  transition: max-width 1500ms ease, box-shadow 220ms ease,
+    background 220ms ease;
 }
 
 .sponsor-page .sponsor-note {
@@ -7825,8 +7837,40 @@ nav a#pull {
   --avatar: 102px;
 }
 
+@media (max-width: 767px) {
+  .sponsor-page .sponsor-tier-pill {
+    font-size: 1.35rem;
+    padding: 9px 14px;
+  }
+
+  .sponsor-page .sponsor-name-pill {
+    font-size: 1.1rem;
+    padding: 8px 13px;
+    bottom: -14px;
+    max-width: min(320px, 78vw);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .sponsor-page .sponsor-tier-pill {
+    font-size: 1.6rem;
+    padding: 11px 16px;
+  }
+
+  .sponsor-page .sponsor-name-pill {
+    font-size: 1.2rem;
+    padding: 9px 14px;
+    bottom: -15px;
+    max-width: min(340px, 86vw);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sponsor-page .sponsor-tile {
+    transition: none;
+  }
+
+  .sponsor-page .sponsor-name-pill {
     transition: none;
   }
 
