@@ -46,7 +46,7 @@
     <div id="page" class="page">
       <header id="header" class="header">
         <nav
-          class="navbar fixed-top navbar-expand-md navbar-light bg-tra hover-menu sponsor-nav"
+          class="navbar fixed-top navbar-expand-md navbar-light bg-tra hover-menu donate-nav"
         >
           <div class="container">
             <a href="../../" class="navbar-brand logo-black">
@@ -74,9 +74,7 @@
               <ul class="navbar-nav ml-auto"></ul>
 
               <span class="navbar-text white-color">
-                <a
-                  href="/sponsor/"
-                  class="btn btn-primary-color tra-black-hover"
+                <a href="/donate/" class="btn btn-primary-color tra-black-hover"
                   >Back</a
                 >
               </span>
@@ -140,8 +138,8 @@
                   <div class="mt-30">
                     <a
                       class="btn btn-primary-color tra-black-hover"
-                      href="/sponsor/"
-                      >Back to Sponsors</a
+                      href="/donate/"
+                      >Back to Donate</a
                     >
                   </div>
                 </div>
@@ -327,14 +325,14 @@
                   </div>
                   <h4 class="h4-sm mb-1">Payment received — thank you!</h4>
                   <p class="mb-0">
-                    Your donation will appear on the sponsors list after manual
-                    review.
+                    If you chose to be recognized, your profile will appear in
+                    the Supporters list after review.
                   </p>
                   <div class="mt-40">
                     <a
                       class="btn btn-primary-color tra-black-hover"
-                      href="/sponsor/"
-                      >Back to sponsors</a
+                      href="/donate/"
+                      >Back to donate</a
                     >
                   </div>
                 </div>
@@ -398,7 +396,7 @@
                   <li><a href="/#services-1">Benefits</a></li>
                   <li><a href="/#content-1">Features</a></li>
                   <li><a href="/#reviews-2">Reviews</a></li>
-                  <li><a href="/sponsor/">Sponsor</a></li>
+                  <li><a href="/donate/">Donate</a></li>
                   <li><a href="/#faqs-2">FAQs</a></li>
                 </ul>
               </div>
@@ -474,7 +472,7 @@
         const btcQrEl = document.getElementById('btc-qr');
 
         const params = new URLSearchParams(window.location.search);
-        const intentId = params.get('intent');
+        const donationId = params.get('donation');
         const apiParam = params.get('api');
         const isLocalHost =
           window.location.hostname === 'localhost' ||
@@ -560,10 +558,24 @@
           if (fatalEl) fatalEl.hidden = false;
         };
 
-        if (!intentId) {
+        const tierDisplayName = (tier) => {
+          const value = String(tier || '').trim();
+          if (!value) return '-';
+          if (value === 'critical_mass') return 'Critical Mass';
+          if (value === 'ion_drivers') return 'Ion Drivers';
+          if (value === 'bolts') return 'Bolts';
+          if (value === 'sparks') return 'Sparks';
+          return value
+            .split(/[_-]/g)
+            .filter(Boolean)
+            .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+            .join(' ');
+        };
+
+        if (!donationId) {
           showFatal(
             'Invalid payment link',
-            'This payment link is incomplete. Please return to the Sponsors page and start a new donation.'
+            'This payment link is incomplete. Please return to the Donate page and start a new donation.'
           );
           return;
         }
@@ -573,8 +585,8 @@
         (async () => {
           try {
             await fetch(
-              `${apiBase}/sponsor/intents/${encodeURIComponent(
-                intentId
+              `${apiBase}/donations/${encodeURIComponent(
+                donationId
               )}/derive-urls`,
               { method: 'POST' }
             );
@@ -673,9 +685,9 @@
           if (countdownTimer) clearInterval(countdownTimer);
         };
 
-        const fetchIntent = async () => {
+        const fetchDonation = async () => {
           const res = await fetch(
-            `${apiBase}/sponsor/intents/${encodeURIComponent(intentId)}`,
+            `${apiBase}/donations/${encodeURIComponent(donationId)}`,
             {
               method: 'GET',
             }
@@ -683,8 +695,7 @@
           if (!res.ok) {
             const data = await res.json().catch(() => null);
             const code = data?.error?.code || null;
-            const msg =
-              data?.error?.message || 'Unable to load payment intent.';
+            const msg = data?.error?.message || 'Unable to load donation.';
             throw new ApiError(res.status, code, msg);
           }
           return await res.json();
@@ -695,8 +706,8 @@
           clearError();
           try {
             const res = await fetch(
-              `${apiBase}/sponsor/intents/${encodeURIComponent(
-                intentId
+              `${apiBase}/donations/${encodeURIComponent(
+                donationId
               )}/refresh-lightning`,
               { method: 'POST' }
             );
@@ -716,16 +727,11 @@
         const sync = async () => {
           if (isFatal) return;
           try {
-            const data = await fetchIntent();
+            const data = await fetchDonation();
             clearError();
 
             amountText.textContent = `${formatSats(data.amountSat)} sats`;
-            const cap = (s) =>
-              String(s)
-                .split('-')
-                .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
-                .join(' ');
-            tierText.textContent = data.tier ? cap(data.tier) : '-';
+            tierText.textContent = tierDisplayName(data.tier);
 
             const lnInvoice = data.lightning?.invoice || '';
             const lnExpires = data.lightning?.expiresAt || null;
@@ -749,7 +755,7 @@
             if (err instanceof ApiError && err.status === 404) {
               showFatal(
                 'Payment not found',
-                'This payment link is invalid or has expired. Please return to the Sponsors page and start a new donation.'
+                'This payment link is invalid or has expired. Please return to the Donate page and start a new donation.'
               );
               return;
             }

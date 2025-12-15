@@ -6558,34 +6558,34 @@ nav a#pull {
 }
 
 /* ==========================================================================
-   SPONSOR PAGE
+   DONATE PAGE
   ========================================================================== */
 
-#sponsor-hero {
+#donate-hero {
   padding-top: 150px;
   padding-bottom: 110px;
 }
 
-#sponsor-hero .hero-section,
-#sponsor-hero .hero-txt {
+#donate-hero .hero-section,
+#donate-hero .hero-txt {
   overflow: visible;
 }
 
-#sponsor-hero .hero-benefits {
+#donate-hero .hero-benefits {
   list-style: none;
   padding-left: 0;
   margin-top: 20px;
   margin-bottom: 18px;
 }
 
-#sponsor-hero .hero-benefits li {
+#donate-hero .hero-benefits li {
   position: relative;
   padding-left: 26px;
   margin-bottom: 10px;
   text-align: left;
 }
 
-#sponsor-hero .hero-benefits li:before {
+#donate-hero .hero-benefits li:before {
   content: '✓';
   position: absolute;
   left: 0;
@@ -6594,7 +6594,7 @@ nav a#pull {
   font-weight: 700;
 }
 
-.sponsor-hero-card {
+.donate-hero-card {
   background: #fff;
   border: 1px solid #e5e8ef;
   border-radius: 14px;
@@ -6602,7 +6602,7 @@ nav a#pull {
   box-shadow: 0 10px 30px rgba(24, 35, 89, 0.08);
 }
 
-.sponsor-hero-label {
+.donate-hero-label {
   display: inline-block;
   background: rgba(255, 86, 7, 0.08);
   color: #ff5607;
@@ -6613,13 +6613,13 @@ nav a#pull {
   border-radius: 999px;
 }
 
-.sponsor-hero-meta {
+.donate-hero-meta {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 16px;
 }
 
-.sponsor-hero-meta .meta-label {
+.donate-hero-meta .meta-label {
   display: block;
   text-transform: uppercase;
   color: #6f7a8b;
@@ -6732,19 +6732,19 @@ nav a#pull {
   margin-top: 4px;
 }
 
-/* Sponsor form helper text (e.g. "Shown publicly on the sponsor wall.") */
-.sponsor-page .contribute-card .form-text {
+/* Donation form helper text (e.g. "Shown publicly in the Supporters list.") */
+.donate-page .contribute-card .form-text {
   font-size: 0.95rem;
   line-height: 1.4;
 }
 
 /* Highlight the primary amount input on all screen sizes */
-.sponsor-page .contribute-card .input-group #sats-amount.form-control {
+.donate-page .contribute-card .input-group #sats-amount.form-control {
   border-color: rgba(255, 86, 7, 0.35);
   box-shadow: 0 10px 22px rgba(24, 35, 89, 0.08);
 }
 
-.sponsor-page
+.donate-page
   .contribute-card
   .input-group
   #sats-amount
@@ -6754,32 +6754,32 @@ nav a#pull {
   border-color: rgba(255, 86, 7, 0.28);
 }
 
-.sponsor-page .contribute-card .input-group #sats-amount.form-control:focus {
+.donate-page .contribute-card .input-group #sats-amount.form-control:focus {
   border-color: rgba(255, 86, 7, 0.7);
   box-shadow: 0 0 0 0.2rem rgba(255, 86, 7, 0.14);
 }
 
-.sponsor-lists {
+.supporters-lists {
   background: #f9fafc;
 }
 
-.sponsor-level {
+.supporter-level {
   margin-bottom: 50px;
 }
 
-.sponsor-level-header h4 {
+.supporter-level-header h4 {
   color: #222;
 }
 
-.sponsor-level-header p {
+.supporter-level-header p {
   color: #6f7a8b;
 }
 
-.sponsor-level-body {
+.supporter-level-body {
   margin-top: 14px;
 }
 
-.sponsor-tile {
+.supporter-tile {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -6791,7 +6791,7 @@ nav a#pull {
   height: 100%;
 }
 
-.sponsor-empty {
+.supporter-empty {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -6802,7 +6802,7 @@ nav a#pull {
   box-shadow: 0 10px 22px rgba(24, 35, 89, 0.06);
 }
 
-.sponsor-empty-icon {
+.supporter-empty-icon {
   width: 54px;
   height: 54px;
   flex: 0 0 54px;
@@ -6815,42 +6815,42 @@ nav a#pull {
   color: #ff5607;
 }
 
-.sponsor-empty-icon i {
+.supporter-empty-icon i {
   font-size: 18px;
   line-height: 1;
 }
 
-.sponsor-empty-body {
+.supporter-empty-body {
   min-width: 0;
 }
 
 @media (max-width: 575.98px) {
-  .sponsor-empty {
+  .supporter-empty {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .sponsor-page .sponsor-tier-pill {
+  .donate-page .supporter-tier-pill {
     font-size: 1.15rem;
     padding: 8px 12px;
   }
 
-  .sponsor-page .contribute-card label {
+  .donate-page .contribute-card label {
     font-size: 16px;
   }
 
-  .sponsor-page .contribute-card .form-text {
+  .donate-page .contribute-card .form-text {
     font-size: 16px;
     line-height: 1.45;
   }
 
-  .sponsor-page .contribute-card .form-control,
-  .sponsor-page .contribute-card .input-group-text {
+  .donate-page .contribute-card .form-control,
+  .donate-page .contribute-card .input-group-text {
     font-size: 16px;
   }
 
   /* Make the sats amount input easier to use on mobile */
-  .sponsor-page .contribute-card .input-group #sats-amount.form-control {
+  .donate-page .contribute-card .input-group #sats-amount.form-control {
     font-size: 20px;
     height: auto;
     min-height: 54px;
@@ -6860,7 +6860,7 @@ nav a#pull {
     box-shadow: 0 10px 22px rgba(24, 35, 89, 0.08);
   }
 
-  .sponsor-page
+  .donate-page
     .contribute-card
     .input-group
     #sats-amount
@@ -6875,39 +6875,37 @@ nav a#pull {
     border-color: rgba(255, 86, 7, 0.28);
   }
 
-  .sponsor-page .contribute-card .input-group #sats-amount.form-control:focus {
+  .donate-page .contribute-card .input-group #sats-amount.form-control:focus {
     border-color: rgba(255, 86, 7, 0.7);
     box-shadow: 0 0 0 0.2rem rgba(255, 86, 7, 0.14);
   }
 
   /* Add a bit more breathing room between amount, toggle, and donate on mobile */
-  .sponsor-page .contribute-card .form-group.amount-group {
+  .donate-page .contribute-card .form-group.amount-group {
     margin-bottom: 18px;
   }
 
-  .sponsor-page .contribute-card .form-group.recognition-group {
+  .donate-page .contribute-card .form-group.recognition-group {
     margin-bottom: 18px;
   }
 
-  .sponsor-page .contribute-card .contribute-actions {
+  .donate-page .contribute-card .contribute-actions {
     margin-top: 10px;
   }
 
-  .sponsor-page .recognition-toggle .custom-control-label {
+  .donate-page .recognition-toggle .custom-control-label {
     font-size: 16px;
   }
 
-  .sponsor-page .recognition-toggle.custom-switch {
+  .donate-page .recognition-toggle.custom-switch {
     padding-left: 14px;
   }
 
-  .sponsor-page .recognition-toggle.custom-switch .custom-control-label {
+  .donate-page .recognition-toggle.custom-switch .custom-control-label {
     padding-left: 46px;
   }
 
-  .sponsor-page
-    .recognition-toggle.custom-switch
-    .custom-control-label::before {
+  .donate-page .recognition-toggle.custom-switch .custom-control-label::before {
     left: 0;
     top: 3px;
     width: 34px;
@@ -6915,7 +6913,7 @@ nav a#pull {
     border-radius: 999px;
   }
 
-  .sponsor-page .recognition-toggle.custom-switch .custom-control-label::after {
+  .donate-page .recognition-toggle.custom-switch .custom-control-label::after {
     left: 2px;
     top: 5px;
     width: 14px;
@@ -6923,7 +6921,7 @@ nav a#pull {
     border-radius: 999px;
   }
 
-  .sponsor-page
+  .donate-page
     .recognition-toggle.custom-switch
     .custom-control-input:checked
     ~ .custom-control-label::after {
@@ -6931,15 +6929,15 @@ nav a#pull {
     transform: none;
   }
 
-  .sponsor-page .form-note {
+  .donate-page .form-note {
     font-size: 16px;
   }
 
-  .sponsor-page .sponsor-empty .sponsor-name {
+  .donate-page .supporter-empty .supporter-name {
     font-size: 16px;
   }
 
-  .sponsor-page .sponsor-empty .sponsor-note {
+  .donate-page .supporter-empty .supporter-note {
     font-size: 16px;
   }
 }
@@ -7004,16 +7002,16 @@ nav a#pull {
   font-size: 0.95rem;
 }
 
-.sponsor-tile.champion {
+.supporter-tile.tier-critical_mass {
   border-color: #ff5607;
   box-shadow: 0 14px 30px rgba(255, 86, 7, 0.14);
 }
 
-.sponsor-tile img {
+.supporter-tile img {
   width: 96px;
   height: auto;
 }
-.sponsor-icon {
+.supporter-icon {
   width: 96px;
   height: 96px;
   border-radius: 50%;
@@ -7025,55 +7023,55 @@ nav a#pull {
   color: #4f5a6f;
   font-size: 40px;
 }
-.sponsor-icon i {
+.supporter-icon i {
   line-height: 1;
 }
 
-.sponsor-name {
+.supporter-name {
   font-weight: 700;
   color: #222;
   margin-bottom: 4px;
 }
 
-.sponsor-note {
+.supporter-note {
   color: #556179;
   font-size: 0.95rem;
 }
 
 @media (max-width: 767px) {
-  #sponsor-hero {
+  #donate-hero {
     padding-top: 100px;
     padding-bottom: 60px;
   }
 
-  #sponsor-hero .hero-txt {
+  #donate-hero .hero-txt {
     text-align: center;
   }
 
-  #sponsor-hero .hero-txt .btn {
+  #donate-hero .hero-txt .btn {
     width: 100%;
     margin-right: 0;
   }
 
-  #sponsor-hero .hero-txt .btn + .btn {
+  #donate-hero .hero-txt .btn + .btn {
     margin-top: 10px;
   }
 
-  #sponsor-hero .hero-benefits-wrap {
+  #donate-hero .hero-benefits-wrap {
     display: flex;
     justify-content: center;
   }
 
-  #sponsor-hero .hero-benefits {
+  #donate-hero .hero-benefits {
     margin-top: 12px;
     margin-bottom: 12px;
   }
 
-  #sponsor-hero .hero-benefits li {
+  #donate-hero .hero-benefits li {
     margin-bottom: 6px;
   }
 
-  .sponsor-hero-card {
+  .donate-hero-card {
     margin-top: 24px;
   }
 
@@ -7233,7 +7231,7 @@ nav a#pull {
   border-color: #fff;
 }
 
-.sponsor-page #page {
+.donate-page #page {
   overflow: visible;
 }
 
@@ -7676,23 +7674,23 @@ nav a#pull {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  SPONSOR PAGE (Sponsor Wall)                                                */
+/*  DONATE PAGE (Supporters)                                                   */
 /* -------------------------------------------------------------------------- */
 
-.sponsor-page .sponsor-tier .row {
+.donate-page .supporter-tier .row {
   justify-content: center;
 }
 
-.sponsor-page #sponsor-lists.wide-80 {
+.donate-page #supporters-lists.wide-80 {
   padding-top: 70px;
   padding-bottom: 60px;
 }
 
-.sponsor-page .sponsor-level + .sponsor-level {
+.donate-page .supporter-level + .supporter-level {
   margin-top: 50px;
 }
 
-.sponsor-page .sponsor-tiers {
+.donate-page .supporter-tiers {
   display: grid;
   grid-template-columns: 1fr;
   gap: 50px;
@@ -7700,12 +7698,12 @@ nav a#pull {
 }
 
 @media (min-width: 768px) {
-  .sponsor-page .sponsor-tiers {
+  .donate-page .supporter-tiers {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-.sponsor-page .sponsor-grid {
+.donate-page .supporter-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
@@ -7713,18 +7711,18 @@ nav a#pull {
   justify-content: flex-start;
 }
 
-.sponsor-page .tier-champion .sponsor-grid {
+.donate-page .tier-critical_mass .supporter-grid {
   justify-content: flex-start;
 }
 
-.sponsor-page .sponsor-tier-header {
+.donate-page .supporter-tier-header {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 12px;
 }
 
-.sponsor-page .sponsor-tier-pill {
+.donate-page .supporter-tier-pill {
   font-weight: 600;
   font-size: 0.95rem;
   color: #444964;
@@ -7733,7 +7731,7 @@ nav a#pull {
   white-space: nowrap;
 }
 
-.sponsor-page .sponsor-tier-accent {
+.donate-page .supporter-tier-accent {
   height: 3px;
   flex: 1;
   border-radius: 999px;
@@ -7746,7 +7744,7 @@ nav a#pull {
   );
 }
 
-.sponsor-page .sponsor-tile {
+.donate-page .supporter-tile {
   --tier-a: #444964;
   --tier-b: #1d437b;
   --avatar: 78px;
@@ -7769,19 +7767,19 @@ nav a#pull {
   transition: transform 180ms ease;
 }
 
-.sponsor-page .sponsor-tile:hover,
-.sponsor-page .sponsor-tile:focus-visible {
+.donate-page .supporter-tile:hover,
+.donate-page .supporter-tile:focus-visible {
   transform: translateY(-2px);
   text-decoration: none;
 }
 
-.sponsor-page .sponsor-tile:hover .sponsor-avatar,
-.sponsor-page .sponsor-tile:focus-visible .sponsor-avatar {
+.donate-page .supporter-tile:hover .supporter-avatar,
+.donate-page .supporter-tile:focus-visible .supporter-avatar {
   transform: scale(1.015);
   filter: drop-shadow(0 14px 22px rgba(17, 24, 39, 0.16));
 }
 
-.sponsor-page .sponsor-avatar {
+.donate-page .supporter-avatar {
   width: var(--avatar);
   height: var(--avatar);
   border-radius: 9999px;
@@ -7794,7 +7792,7 @@ nav a#pull {
   transition: transform 180ms ease, filter 220ms ease;
 }
 
-.sponsor-page .sponsor-avatar::before {
+.donate-page .supporter-avatar::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -7810,7 +7808,7 @@ nav a#pull {
   will-change: transform;
 }
 
-.sponsor-page .sponsor-avatar-inner {
+.donate-page .supporter-avatar-inner {
   position: relative;
   z-index: 1;
   width: 100%;
@@ -7824,7 +7822,7 @@ nav a#pull {
   justify-content: center;
 }
 
-.sponsor-page .sponsor-avatar-inner img {
+.donate-page .supporter-avatar-inner img {
   width: 100%;
   height: 100%;
   border-radius: inherit;
@@ -7835,18 +7833,18 @@ nav a#pull {
   box-shadow: none !important;
 }
 
-@keyframes sponsorRingSpin {
+@keyframes supporterRingSpin {
   to {
     transform: rotate(360deg);
   }
 }
 
-.sponsor-page .sponsor-tile:hover .sponsor-avatar::before,
-.sponsor-page .sponsor-tile:focus-visible .sponsor-avatar::before {
-  animation: sponsorRingSpin 1.2s linear infinite;
+.donate-page .supporter-tile:hover .supporter-avatar::before,
+.donate-page .supporter-tile:focus-visible .supporter-avatar::before {
+  animation: supporterRingSpin 1.2s linear infinite;
 }
 
-.sponsor-page .sponsor-name-pill {
+.donate-page .supporter-name-pill {
   position: absolute;
   left: 50%;
   bottom: -12px;
@@ -7870,8 +7868,8 @@ nav a#pull {
   transition: max-width 220ms ease, box-shadow 220ms ease, background 220ms ease;
 }
 
-.sponsor-page .sponsor-tile:hover .sponsor-name-pill,
-.sponsor-page .sponsor-tile:focus-visible .sponsor-name-pill {
+.donate-page .supporter-tile:hover .supporter-name-pill,
+.donate-page .supporter-tile:focus-visible .supporter-name-pill {
   max-width: min(280px, 70vw);
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 10px 26px rgba(29, 67, 123, 0.14);
@@ -7880,33 +7878,33 @@ nav a#pull {
     background 220ms ease;
 }
 
-.sponsor-page .sponsor-note {
+.donate-page .supporter-note {
   font-size: 0.85rem;
   opacity: 0.75;
 }
 
-.sponsor-page .tier-champion {
+.donate-page .tier-critical_mass {
   --tier-a: #ffd1a1;
   --tier-b: #ff9f43;
   --tier-c: #ff6949;
   --avatar: 174px;
 }
 
-.sponsor-page .tier-sponsor {
+.donate-page .tier-ion_drivers {
   --tier-a: #ff6949;
   --tier-b: #86c8fd;
   --tier-c: #5496ff;
   --avatar: 150px;
 }
 
-.sponsor-page .tier-backer {
+.donate-page .tier-bolts {
   --tier-a: #1d437b;
   --tier-b: #8b5cf6;
   --tier-c: #86c8fd;
   --avatar: 126px;
 }
 
-.sponsor-page .tier-supporter {
+.donate-page .tier-sparks {
   --tier-a: #26b587;
   --tier-b: #5ed16f;
   --tier-c: #86c8fd;
@@ -7914,12 +7912,12 @@ nav a#pull {
 }
 
 @media (max-width: 767px) {
-  .sponsor-page .sponsor-tier-pill {
+  .donate-page .supporter-tier-pill {
     font-size: 1.35rem;
     padding: 9px 14px;
   }
 
-  .sponsor-page .sponsor-name-pill {
+  .donate-page .supporter-name-pill {
     font-size: 1.1rem;
     padding: 8px 13px;
     bottom: -14px;
@@ -7928,12 +7926,12 @@ nav a#pull {
 }
 
 @media (max-width: 575.98px) {
-  .sponsor-page .sponsor-tier-pill {
+  .donate-page .supporter-tier-pill {
     font-size: 1.6rem;
     padding: 11px 16px;
   }
 
-  .sponsor-page .sponsor-name-pill {
+  .donate-page .supporter-name-pill {
     font-size: 1.2rem;
     padding: 9px 14px;
     bottom: -15px;
@@ -7942,16 +7940,16 @@ nav a#pull {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sponsor-page .sponsor-tile {
+  .donate-page .supporter-tile {
     transition: none;
   }
 
-  .sponsor-page .sponsor-name-pill {
+  .donate-page .supporter-name-pill {
     transition: none;
   }
 
-  .sponsor-page .sponsor-tile:hover .sponsor-avatar::before,
-  .sponsor-page .sponsor-tile:focus-visible .sponsor-avatar::before {
+  .donate-page .supporter-tile:hover .supporter-avatar::before,
+  .donate-page .supporter-tile:focus-visible .supporter-avatar::before {
     animation: none;
   }
 }
