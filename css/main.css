@@ -1063,6 +1063,7 @@ ul.content-list li:last-child {
   );
   /* Mask out the center so only the "border ring" shows */
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0.9;
@@ -7447,8 +7448,44 @@ nav a#pull {
 }
 
 .payment-alert.is-waiting {
-  border-color: #d7dde7;
+  /* Always-on animated ring (same visual language as the navbar Donate CTA) */
+  --tier-a: #ff6949;
+  --tier-b: #86c8fd;
+  --tier-c: #5496ff;
+  --donate-ring-angle: 0deg;
+  position: relative;
+  isolation: isolate;
+  border-color: transparent;
   background: rgba(255, 255, 255, 0.92);
+}
+
+.payment-alert.is-waiting::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--donate-ring-angle),
+    var(--tier-a),
+    var(--tier-b),
+    var(--tier-c),
+    var(--tier-a)
+  );
+  /* Mask out the center so only the "border ring" shows */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.95;
+  z-index: -1;
+  pointer-events: none;
+  will-change: --donate-ring-angle;
+  animation: donateRingSpin 1.2s linear infinite;
+}
+
+.payment-alert.is-waiting .payment-alert-icon {
+  display: none;
 }
 
 .payment-alert.is-warning {
@@ -7565,6 +7602,12 @@ nav a#pull {
   color: #1e8e3e;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .payment-alert.is-waiting::before {
+    animation: none;
+  }
+}
+
 .payment-card {
   background: #fff;
   border: 1px solid #e5e8ef;
@@ -7632,6 +7675,59 @@ nav a#pull {
   background: #ff5607;
   color: #fff;
   box-shadow: 0 10px 20px rgba(255, 86, 7, 0.18);
+}
+
+.payment-tabs.is-disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.payment-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #eef1f7;
+  border-radius: 10px;
+  color: transparent !important;
+}
+
+.payment-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.72),
+    transparent
+  );
+  animation: payment-skeleton 1.15s ease-in-out infinite;
+}
+
+@keyframes payment-skeleton {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .payment-skeleton::after {
+    animation: none;
+  }
+}
+
+.payment-meta .meta-value.payment-skeleton {
+  display: inline-block;
+  min-height: 18px;
+  min-width: 92px;
+}
+
+.qr.payment-skeleton {
+  width: 100%;
+  max-width: 330px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  min-width: 0;
 }
 
 .payment-page .input-group .form-control,

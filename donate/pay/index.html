@@ -472,6 +472,8 @@
         const btcCopyBtn = document.getElementById('btc-copy');
         const btcQrEl = document.getElementById('btc-qr');
 
+        const tabsEl = document.getElementById('railTabs');
+
         const params = new URLSearchParams(window.location.search);
         const donationId = params.get('donation');
         const apiParam = params.get('api');
@@ -489,9 +491,10 @@
         let expiresAt = null;
         let isPaid = false;
         let isFatal = false;
+        let hasLoadedOnce = false;
 
         const STATUS_ICONS = {
-          waiting: 'fa-spinner fa-spin',
+          waiting: null,
           warning: 'fa-exclamation-triangle',
           error: 'fa-times-circle',
           paid: 'fa-check-circle',
@@ -523,9 +526,49 @@
 
           if (statusTextEl) statusTextEl.textContent = message;
           if (statusIconEl) {
-            const icon = STATUS_ICONS[kind] || STATUS_ICONS.waiting;
-            statusIconEl.innerHTML = `<i class="fas ${icon}"></i>`;
+            const icon = STATUS_ICONS[kind];
+            statusIconEl.innerHTML = icon ? `<i class="fas ${icon}"></i>` : '';
           }
+        };
+
+        const setLoading = (isLoading) => {
+          if (paymentCard)
+            paymentCard.classList.toggle('is-loading', isLoading);
+
+          const skeletonTargets = [
+            amountText,
+            tierText,
+            expiresText,
+            lnQrEl,
+            btcQrEl,
+          ];
+          skeletonTargets.forEach((el) => {
+            if (!el) return;
+            el.classList.toggle('payment-skeleton', isLoading);
+            if (
+              isLoading &&
+              (el === amountText || el === tierText || el === expiresText)
+            ) {
+              el.textContent = '\u00A0';
+            }
+          });
+
+          if (tabsEl) tabsEl.classList.toggle('is-disabled', isLoading);
+
+          if (lnInvoiceEl) {
+            lnInvoiceEl.value = isLoading ? '' : lnInvoiceEl.value;
+            lnInvoiceEl.placeholder = isLoading ? 'Loading…' : '';
+            lnInvoiceEl.disabled = isLoading;
+          }
+          if (btcAddressEl) {
+            btcAddressEl.value = isLoading ? '' : btcAddressEl.value;
+            btcAddressEl.placeholder = isLoading ? 'Loading…' : '';
+            btcAddressEl.disabled = isLoading;
+          }
+
+          if (lnCopyBtn) lnCopyBtn.disabled = isLoading;
+          if (btcCopyBtn) btcCopyBtn.disabled = isLoading;
+          if (lnRefreshBtn) lnRefreshBtn.disabled = isLoading || isPaid;
         };
 
         const formatSats = (n) =>
@@ -553,6 +596,7 @@
           setStatus('');
           clearError();
           stopPolling();
+          setLoading(false);
           if (paymentCard) paymentCard.hidden = true;
           if (fatalTitleEl) fatalTitleEl.textContent = String(title || '');
           if (fatalBodyEl) fatalBodyEl.textContent = String(body || '');
@@ -728,9 +772,18 @@
 
         const sync = async () => {
           if (isFatal) return;
+          if (!hasLoadedOnce) {
+            setLoading(true);
+            setStatus('Loading donation…', 'waiting');
+          }
           try {
             const data = await fetchDonation();
             clearError();
+
+            if (!hasLoadedOnce) {
+              setLoading(false);
+              hasLoadedOnce = true;
+            }
 
             amountText.textContent = `${formatSats(data.amountSat)} sats`;
             tierText.textContent = tierDisplayName(data.tier);
@@ -777,6 +830,8 @@
         lnRefreshBtn.addEventListener('click', refreshLightning);
 
         // initial load + polling
+        setLoading(true);
+        setStatus('Loading donation…', 'waiting');
         await sync();
         if (!isFatal) pollTimer = setInterval(sync, 3000);
       })();
