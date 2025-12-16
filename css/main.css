@@ -6777,6 +6777,17 @@ nav a#pull {
   gap: 16px;
 }
 
+.tier-note {
+  grid-column: 1 / -1;
+  background: rgba(255, 86, 7, 0.06);
+  border: 1px solid rgba(255, 86, 7, 0.14);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: #546079;
+  font-weight: 400;
+  text-align: center;
+}
+
 .tier-card {
   background: #fff;
   border: 1px solid #e5e8ef;
@@ -7840,6 +7851,10 @@ nav a#pull {
   margin-top: 18px;
 }
 
+.donate-page .supporter-tier.tier-honorable {
+  grid-column: 1 / -1;
+}
+
 @media (min-width: 768px) {
   .donate-page .supporter-tiers {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -8052,6 +8067,22 @@ nav a#pull {
   --tier-b: #5ed16f;
   --tier-c: #86c8fd;
   --avatar: 102px;
+}
+
+.donate-page .tier-honorable {
+  --tier-a: #444964;
+  --tier-b: #444964;
+  --tier-c: #444964;
+  --avatar: 78px;
+  --ring: 0px;
+}
+
+.donate-page .tier-honorable .supporter-avatar::before {
+  display: none;
+}
+
+.donate-page .tier-honorable .supporter-name-pill {
+  display: none;
 }
 
 @media (max-width: 767px) {

@@ -197,6 +197,11 @@
                 </p>
               </div>
               <div class="tier-grid">
+                <div class="tier-note p-md" role="note">
+                  <p class="p-sm mb-0">
+                    Any donation above 10K sats gets an honorable mention
+                  </p>
+                </div>
                 <div class="tier-card active" data-tier="sparks">
                   <div class="tier-label">Sparks</div>
                   <p class="tier-amount">100K sats</p>
@@ -256,7 +261,7 @@
                     <label
                       class="custom-control-label"
                       for="recognition-enabled"
-                      >Add me to the Supporters list
+                      >Add me to the <strong>Supporters</strong> list below
                     </label>
                   </div>
                 </div>
@@ -435,6 +440,17 @@
                   </div>
                   <div id="sparks-grid" class="supporter-grid"></div>
                 </div>
+
+                <div
+                  id="honorable-section"
+                  class="supporter-tier tier-honorable"
+                  hidden
+                >
+                  <div class="supporter-tier-header">
+                    <div class="supporter-tier-pill">Honorable Mentions</div>
+                  </div>
+                  <div id="honorable-grid" class="supporter-grid"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -466,11 +482,16 @@
     <script>
       (() => {
         const tierMinimums = {
+          honorable: 10000,
           sparks: 100000,
           bolts: 500000,
           ion_drivers: 1000000,
           critical_mass: 10000000,
         };
+
+        const tierMinimumEntries = Object.entries(tierMinimums).sort(
+          (a, b) => a[1] - b[1]
+        );
 
         const platformPlaceholders = {
           github: 'username',
@@ -507,6 +528,7 @@
         const tierDisplayName = (tier) => {
           const value = String(tier || '').trim();
           if (!value) return '';
+          if (value === 'honorable') return 'Honorable Mention';
           if (value === 'critical_mass') return 'Critical Mass';
           if (value === 'ion_drivers') return 'Ion Drivers';
           if (value === 'bolts') return 'Bolts';
@@ -803,11 +825,9 @@
         };
 
         const matchTierForAmount = (amountSat) => {
-          if (amountSat < tierMinimums.sparks) return null;
-          const tiers = Object.keys(tierMinimums);
-          let matchedTier = tiers[0];
-          tiers.forEach((tier) => {
-            if (amountSat >= tierMinimums[tier]) matchedTier = tier;
+          let matchedTier = null;
+          tierMinimumEntries.forEach(([tier, min]) => {
+            if (amountSat >= min) matchedTier = tier;
           });
           return matchedTier;
         };
@@ -824,7 +844,7 @@
           setPayButtonEnabled(true);
 
           const matchedTier = matchTierForAmount(parsed.amountSat);
-          if (!matchedTier) {
+          if (!matchedTier || matchedTier === 'honorable') {
             clearTierSelection();
           } else {
             selectedTier = matchedTier;
@@ -874,7 +894,7 @@
           }
           const amountSat = parsed.amountSat;
           const matchedTier = matchTierForAmount(amountSat);
-          if (!matchedTier) {
+          if (!matchedTier || matchedTier === 'honorable') {
             clearTierSelection();
           } else {
             selectedTier = matchedTier;
@@ -993,11 +1013,12 @@
             avatarInner.appendChild(img);
             avatar.appendChild(avatarInner);
 
-            const namePill = document.createElement('div');
-            namePill.className = 'supporter-name-pill';
-            namePill.textContent = displayNameForSupporter(s);
-
-            avatar.appendChild(namePill);
+            if (tier !== 'honorable') {
+              const namePill = document.createElement('div');
+              namePill.className = 'supporter-name-pill';
+              namePill.textContent = displayNameForSupporter(s);
+              avatar.appendChild(namePill);
+            }
 
             tile.appendChild(avatar);
 
@@ -1131,6 +1152,7 @@
         const ionDriversGrid = document.getElementById('ion-drivers-grid');
         const boltsGrid = document.getElementById('bolts-grid');
         const sparksGrid = document.getElementById('sparks-grid');
+        const honorableGrid = document.getElementById('honorable-grid');
 
         const supportersSubtitle = document.getElementById(
           'supporters-subtitle'
@@ -1145,17 +1167,20 @@
         );
         const boltsSection = document.getElementById('bolts-section');
         const sparksSection = document.getElementById('sparks-section');
+        const honorableSection = document.getElementById('honorable-section');
 
         const hideAllTiers = () => {
           if (criticalMassSection) criticalMassSection.hidden = true;
           if (ionDriversSection) ionDriversSection.hidden = true;
           if (boltsSection) boltsSection.hidden = true;
           if (sparksSection) sparksSection.hidden = true;
+          if (honorableSection) honorableSection.hidden = true;
 
           if (criticalMassGrid) criticalMassGrid.innerHTML = '';
           if (ionDriversGrid) ionDriversGrid.innerHTML = '';
           if (boltsGrid) boltsGrid.innerHTML = '';
           if (sparksGrid) sparksGrid.innerHTML = '';
+          if (honorableGrid) honorableGrid.innerHTML = '';
         };
 
         const showSupporters = (supporters) => {
@@ -1181,6 +1206,7 @@
           const ionDrivers = list.filter((s) => s?.tier === 'ion_drivers');
           const bolts = list.filter((s) => s?.tier === 'bolts');
           const sparks = list.filter((s) => s?.tier === 'sparks');
+          const honorable = list.filter((s) => s?.tier === 'honorable');
 
           if (criticalMassSection)
             criticalMassSection.hidden = criticalMass.length === 0;
@@ -1188,11 +1214,14 @@
             ionDriversSection.hidden = ionDrivers.length === 0;
           if (boltsSection) boltsSection.hidden = bolts.length === 0;
           if (sparksSection) sparksSection.hidden = sparks.length === 0;
+          if (honorableSection)
+            honorableSection.hidden = honorable.length === 0;
 
           renderSupporterTier(criticalMassGrid, list, 'critical_mass', true);
           renderSupporterTier(ionDriversGrid, list, 'ion_drivers', false);
           renderSupporterTier(boltsGrid, list, 'bolts', false);
           renderSupporterTier(sparksGrid, list, 'sparks', false);
+          renderSupporterTier(honorableGrid, list, 'honorable', false);
         };
 
         // Default UI while loading (and if API is unavailable)

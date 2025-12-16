@@ -562,6 +562,7 @@
         const tierDisplayName = (tier) => {
           const value = String(tier || '').trim();
           if (!value) return '-';
+          if (value === 'honorable') return 'Honorable Mention';
           if (value === 'critical_mass') return 'Critical Mass';
           if (value === 'ion_drivers') return 'Ion Drivers';
           if (value === 'bolts') return 'Bolts';
