@@ -1032,6 +1032,67 @@ ul.content-list li:last-child {
   border-color: #c5ccda;
 }
 
+/* Animated gradient ring (Ion Drivers colors) for the navbar Donate CTA */
+.navbar .btn-donate-ring {
+  --tier-a: #ff6949;
+  --tier-b: #86c8fd;
+  --tier-c: #5496ff;
+  --donate-ring-angle: 0deg;
+  position: relative;
+  isolation: isolate;
+}
+
+@property --donate-ring-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.navbar .btn-donate-ring::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--donate-ring-angle),
+    var(--tier-a),
+    var(--tier-b),
+    var(--tier-c),
+    var(--tier-a)
+  );
+  /* Mask out the center so only the "border ring" shows */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.9;
+  transition: opacity 180ms ease;
+  z-index: -1;
+  pointer-events: none;
+  will-change: --donate-ring-angle;
+}
+
+@keyframes donateRingSpin {
+  to {
+    --donate-ring-angle: 360deg;
+  }
+}
+
+/* Use the gradient ring as the border; keep the outline border from competing */
+.navbar .btn-outline-secondary.btn-donate-ring,
+.navbar .btn-outline-secondary.btn-donate-ring:hover,
+.navbar .btn-outline-secondary.btn-donate-ring:focus,
+.navbar .btn-outline-secondary.btn-donate-ring:active {
+  border-color: transparent;
+}
+
+.navbar .btn-donate-ring:hover::before,
+.navbar .btn-donate-ring:focus::before,
+.navbar .btn-donate-ring:focus-visible::before {
+  opacity: 1;
+  animation: donateRingSpin 1.2s linear infinite;
+}
+
 .btn-darkblue,
 .white-color .btn-darkblue {
   color: #fff;
@@ -2247,6 +2308,88 @@ span.id-color {
   -ms-transition: all 400ms ease-in-out;
   transition: all 400ms ease-in-out;
   z-index: 1000 !important;
+}
+
+/* ==========================================================================
+   TOP SUPPORT BANNER (Home)
+  ========================================================================== */
+
+.has-top-support-banner {
+  --top-support-banner-height: 46px;
+}
+
+.has-top-support-banner .top-support-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--top-support-banner-height);
+  padding: 10px 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  z-index: 1100;
+  background: #57038d;
+}
+
+@keyframes topSupportBannerShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.has-top-support-banner .top-support-banner:hover,
+.has-top-support-banner .top-support-banner:focus-within {
+  background-image: linear-gradient(110deg, #57038d, #5496ff, #ff6949, #57038d);
+  background-size: 240% 240%;
+  animation: topSupportBannerShift 1.8s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-top-support-banner .top-support-banner:hover,
+  .has-top-support-banner .top-support-banner:focus-within {
+    animation: none;
+  }
+}
+
+.has-top-support-banner .top-support-banner-link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  color: #fff;
+  text-decoration: none;
+}
+
+.has-top-support-banner .top-support-banner-cta {
+  /* text-decoration: underline; */
+  font-weight: 400;
+}
+
+.has-top-support-banner .navbar.fixed-top {
+  top: var(--top-support-banner-height);
+}
+
+@media (max-width: 767px) {
+  .has-top-support-banner {
+    --top-support-banner-height: 54px;
+  }
+
+  .has-top-support-banner .top-support-banner-link {
+    font-size: 1.125rem;
+  }
+}
+
+/* Match the template's small-screen paragraph sizing (see responsive.css @media (max-width: 575px)) */
+@media (max-width: 575px) {
+  .has-top-support-banner .top-support-banner-link {
+    font-size: 1.5925rem;
+  }
 }
 
 .navbar.bg-tra {

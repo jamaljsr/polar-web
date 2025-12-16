@@ -120,7 +120,7 @@
     <link href="css/responsive.css" rel="stylesheet" />
   </head>
 
-  <body>
+  <body class="has-top-support-banner">
     <!-- PRELOADER SPINNER
 		============================================= -->
     <div id="loader-wrapper">
@@ -137,6 +137,14 @@
       <!-- HEADER
 			============================================= -->
       <header id="header" class="header">
+        <div class="top-support-banner">
+          <div class="container">
+            <a class="top-support-banner-link" href="/donate/">
+              Enjoy Polar and want to support it?
+              <span class="top-support-banner-cta">Here's how.</span>
+            </a>
+          </div>
+        </div>
         <nav
           class="navbar fixed-top navbar-expand-md navbar-light bg-tra hover-menu"
         >
@@ -179,9 +187,6 @@
                 <li class="nav-item nl-simple">
                   <a class="nav-link" href="#faqs-2">FAQs</a>
                 </li>
-                <li class="nav-item nl-simple">
-                  <a class="nav-link" href="/donate/">Donate</a>
-                </li>
                 <!-- <li class="nav-item nl-simple">
 										<a class="nav-link nav-icon" href="https://github.com/jamaljsr/polar" target="_blank">
 											<i class="fab fa-github"></i>
@@ -190,11 +195,11 @@
               </ul>
 
               <!-- Header Button -->
-              <span class="navbar-text white-color">
+              <span class="navbar-text">
                 <a
-                  href="#"
-                  class="dl-primary btn btn-primary-color tra-black-hover"
-                  >Download</a
+                  href="/donate/"
+                  class="btn btn-outline-secondary btn-donate-ring"
+                  >Donate</a
                 >
               </span>
             </div>
