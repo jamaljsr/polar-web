@@ -976,12 +976,7 @@
             : 'Supporter';
         };
 
-        const renderSupporterTier = (
-          gridEl,
-          supporters,
-          tier,
-          isChampion = false
-        ) => {
+        const renderSupporterTier = (gridEl, supporters, tier) => {
           if (!gridEl) return;
           gridEl.innerHTML = '';
 
@@ -1217,11 +1212,11 @@
           if (honorableSection)
             honorableSection.hidden = honorable.length === 0;
 
-          renderSupporterTier(criticalMassGrid, list, 'critical_mass', true);
-          renderSupporterTier(ionDriversGrid, list, 'ion_drivers', false);
-          renderSupporterTier(boltsGrid, list, 'bolts', false);
-          renderSupporterTier(sparksGrid, list, 'sparks', false);
-          renderSupporterTier(honorableGrid, list, 'honorable', false);
+          renderSupporterTier(criticalMassGrid, list, 'critical_mass');
+          renderSupporterTier(ionDriversGrid, list, 'ion_drivers');
+          renderSupporterTier(boltsGrid, list, 'bolts');
+          renderSupporterTier(sparksGrid, list, 'sparks');
+          renderSupporterTier(honorableGrid, list, 'honorable');
         };
 
         // Default UI while loading (and if API is unavailable)
