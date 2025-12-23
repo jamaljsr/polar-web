@@ -8181,6 +8181,29 @@ nav a#pull {
   display: none;
 }
 
+/* Honorable Mentions: stacked avatars with overlap + hover brings to front */
+.donate-page .supporter-tier.tier-honorable .supporter-grid {
+  gap: 0;
+}
+
+.donate-page #honorable-grid {
+  padding-left: calc(var(--avatar) * 0.25);
+}
+
+.donate-page #honorable-grid .supporter-tile {
+  position: relative;
+  z-index: 0;
+}
+
+.donate-page #honorable-grid .supporter-tile + .supporter-tile {
+  margin-left: calc(var(--avatar) * -0.25);
+}
+
+.donate-page #honorable-grid .supporter-tile:hover,
+.donate-page #honorable-grid .supporter-tile:focus-visible {
+  z-index: 10;
+}
+
 @media (max-width: 767px) {
   .donate-page .supporter-tier-pill {
     font-size: 1.35rem;
