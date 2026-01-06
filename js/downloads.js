@@ -4,7 +4,7 @@
   'use strict';
 
   // Single source of truth:
-  var VERSION = '4.0.0';
+  var VERSION = '3.3.0';
 
   function getOS() {
     var userAgent = window.navigator.userAgent || '';
