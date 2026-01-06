@@ -480,8 +480,23 @@
         const isLocalHost =
           window.location.hostname === 'localhost' ||
           window.location.hostname === '127.0.0.1';
+
+        const normalizeApiOverride = (value) => {
+          if (!value) return null;
+          try {
+            const u = new URL(value);
+            // Allow override only when running locally, or when explicitly pointing to the official API.
+            if (isLocalHost) return u.origin;
+            return u.origin === 'https://api.lightningpolar.com'
+              ? u.origin
+              : null;
+          } catch {
+            return null;
+          }
+        };
+
         const apiBase =
-          apiParam ||
+          normalizeApiOverride(apiParam) ||
           (isLocalHost
             ? 'http://localhost:8787'
             : 'https://api.lightningpolar.com');

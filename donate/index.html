@@ -255,6 +255,7 @@
                   <div class="custom-control custom-switch recognition-toggle">
                     <input
                       type="checkbox"
+                      checked="checked"
                       class="custom-control-input"
                       id="recognition-enabled"
                     />
@@ -519,8 +520,30 @@
         const host = window.location.hostname;
         const isProdSite =
           host === 'lightningpolar.com' || host.endsWith('.lightningpolar.com');
+
+        const normalizeApiOverride = (value) => {
+          if (!value) return null;
+          try {
+            const u = new URL(value);
+            // In production, never allow arbitrary API override (prevents phishing/misdirection).
+            if (isProdSite) {
+              return u.origin === 'https://api.lightningpolar.com'
+                ? u.origin
+                : null;
+            }
+            // In non-prod, allow https anywhere, and allow http only for localhost.
+            if (u.protocol === 'https:') return u.origin;
+            const isLocalHttp =
+              u.protocol === 'http:' &&
+              (u.hostname === 'localhost' || u.hostname === '127.0.0.1');
+            return isLocalHttp ? u.origin : null;
+          } catch {
+            return null;
+          }
+        };
+
         const apiBase =
-          apiParam ||
+          normalizeApiOverride(apiParam) ||
           (isProdSite
             ? 'https://api.lightningpolar.com'
             : `${window.location.protocol}//${host}:${apiPort}`);
