@@ -469,6 +469,117 @@
         </div>
       </section>
       <!-- END SUPPORTERS LISTS -->
+
+      <!-- FOOTER-4
+      			============================================= -->
+      <footer id="footer-4" class="wide-40 footer division">
+        <div class="container">
+          <!-- FOOTER CONTENT -->
+          <div class="row">
+            <!-- FOOTER INFO -->
+            <div class="col-md-4 col-lg-4 col-xl-4">
+              <div class="footer-info mb-40">
+                <!-- Footer Logo -->
+                <img
+                  src="../images/logo.png"
+                  width="120"
+                  height="30"
+                  alt="footer-logo"
+                />
+
+                <!-- Email -->
+                <p class="foo-email">
+                  <i class="fas fa-envelope"></i>
+                  <a href="mailto:contact@lightningpolar.com"
+                    >contact@lightningpolar.com</a
+                  >
+                </p>
+
+                <!-- Social Icons -->
+                <div class="footer-socials-links mt-20">
+                  <ul class="foo-socials text-center clearfix">
+                    <li>
+                      <a
+                        href="https://github.com/jamaljsr/polar"
+                        class="ico-github"
+                        ><i class="fab fa-github"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://twitter.com/jamaljsr" class="ico-twitter"
+                        ><i class="fab fa-twitter"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- END FOOTER INFO -->
+
+            <!-- FOOTER PRODUCTS LINKS -->
+            <div class="col-md-1 col-lg-2 col-xl-2 offset-lg-1 offset-xl-2">
+              <div class="footer-links mb-40"></div>
+            </div>
+
+            <!-- FOOTER COMPANY LINKS -->
+            <div class="col-md-3 col-lg-2 col-xl-2">
+              <div class="footer-links mb-40">
+                <!-- Title -->
+                <h5 class="h5-sm">Navigation</h5>
+
+                <!-- Footer Links -->
+                <ul class="clearfix">
+                  <li><a href="../#hero-2">Home</a></li>
+                  <li><a href="../#services-1">Benefits</a></li>
+                  <li><a href="../#content-1">Features</a></li>
+                  <li><a href="../#reviews-2">Reviews</a></li>
+                  <li><a href="/donate/">Donate</a></li>
+                  <li><a href="../#faqs-2">FAQs</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="col-md-4 col-lg-3 col-xl-2">
+              <div class="footer-links mb-20">
+                <!-- Title -->
+                <h5 class="h5-sm">Get The App</h5>
+
+                <a class="btn btn-black tra-black-hover dl-apple" href="#">
+                  <i class="fab fa-apple"></i>
+                  Mac
+                </a>
+
+                <a class="btn btn-black tra-black-hover dl-linux" href="#">
+                  <i class="fab fa-linux"></i>
+                  Linux
+                </a>
+
+                <a class="btn btn-black tra-black-hover dl-windows" href="#">
+                  <i class="fab fa-windows"></i>
+                  Windows
+                </a>
+              </div>
+            </div>
+            <!-- END FOOTER NEWSLETTER FORM -->
+          </div>
+          <!-- END FOOTER CONTENT -->
+
+          <!-- FOOTER COPYRIGHT -->
+          <div class="bottom-footer">
+            <div class="row">
+              <div class="col-md-12">
+                <p class="footer-copyright">
+                  &copy; <span id="current-year">2024</span> <span>Polar</span>.
+                  All Rights Reserved
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End container -->
+      </footer>
+      <!-- END FOOTER-4 -->
     </div>
     <!-- END PAGE -->
 
@@ -476,9 +587,16 @@
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/jquery.easing.js"></script>
     <script src="../js/wow.js"></script>
+    <script src="../js/downloads.js?v4.0.0"></script>
     <script src="../js/custom.js?v4.0.0"></script>
     <script>
       new WOW().init();
+    </script>
+    <script>
+      (function () {
+        var el = document.getElementById('current-year');
+        if (el) el.textContent = String(new Date().getFullYear());
+      })();
     </script>
     <script>
       (() => {
